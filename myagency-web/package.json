@@ -12,10 +12,7 @@
     "electron build": "ng build --base-href ./ && tsc --p electron && electron .",
     "electron packager-windows": "electron-packager . MyAgency --platform=win32 --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
     "electron packager-ios": "electron-packager . MyAgency --platform=darwin --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
-    "electron packager-all": "electron-packager . MyAgency --all --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
-    "cordova build": "ng build --prod --base-href . --output-path=CordovaMyAgency/www/",
-    "cordova browser": "cd CordovaMyAgency && cordova run browser",
-    "cordova android": "cd CordovaMyAgency && cordova emulate android"
+    "electron packager-all": "electron-packager . MyAgency --all --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency"
   },
   "private": true,
   "dependencies": {
