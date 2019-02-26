@@ -2,3 +2,11 @@
 /myagency-web/electron/dist/main.js
 /myagency-web/MyAgencyElectron
 /myagency-web/CordovaMyAgency/www/
+/myagency-web/CordovaMyAgency/platforms/ios
+/myagency-web/CordovaMyAgency/node_modules/cordova-ios/
+/myagency-web/CordovaMyAgency/node_modules/
+/myagency-web/CordovaMyAgency/plugins/ios.json
+/myagency-web/CordovaMyAgency/platforms/android/
+/myagency-web/CordovaMyAgency/platforms/browser/
+/myagency-web/CordovaMyAgency/plugins/android.json
+/myagency-web/CordovaMyAgency/plugins/browser.json
