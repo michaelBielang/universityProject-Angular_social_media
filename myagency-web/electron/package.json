@@ -1,0 +1,13 @@
+{
+  "name": "electron",
+  "version": "0.0.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "electron build": "cd .. && ng build --base-href ./ && tsc --p electron && electron .",
+    "electron packager-windows": "cd .. && electron-packager . MyAgency --platform=win32 --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
+    "electron packager-ios": "cd .. && electron-packager . MyAgency --platform=darwin --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
+    "electron packager-all": "cd .. && electron-packager . MyAgency --all --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency"
+  },
+  "dependencies": {
+  }
+}

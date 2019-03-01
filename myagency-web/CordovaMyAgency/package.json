@@ -7,9 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cordova prepare": "cordova prepare",
-    "cordova deploy myagency": "cd .. && ng build --prod --base-href . --output-path=CordovaMyAgency/www/",
-    "cordova browser": "cordova run browser",
-    "cordova android": "cordova emulate android"
+    "cordova deploy myagency": "cd .. && ng build --cordova --base-href . --output-path=CordovaMyAgency/www/",
+    "cordova browser": "cordova build browser && cordova run browser",
+    "cordova android device": "cordova build android && cordova run android",
+    "cordova android ios": "cordova build ios && cordova run ios"
   },
   "author": "MyAgency GBr",
   "license": "Apache-2.0",
