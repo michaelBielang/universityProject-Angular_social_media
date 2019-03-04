@@ -10,9 +10,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron build": "ng build --base-href ./ && tsc --p electron && electron .",
-    "electron packager-windows": "electron-packager . MyAgency --platform=win32 --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
-    "electron packager-ios": "electron-packager . MyAgency --platform=darwin --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
-    "electron packager-all": "electron-packager . MyAgency --all --out=MyAgencyElectron --overwrite --icon=assets/icons/MyAgency"
+    "electron packager-windows": "electron-packager . MyAgency --platform=win32 --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
+    "electron packager-ios": "electron-packager . MyAgency --platform=darwin --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
+    "electron packager-all": "electron-packager . MyAgency --all --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency"
   },
   "private": true,
   "dependencies": {
