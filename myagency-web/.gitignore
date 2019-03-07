@@ -44,5 +44,8 @@ testem.log
 Thumbs.db
 
 
-#cordova
+#electron
 /electron/MyAgencyElectron
+
+#cordova
+/CordovaMyAgency/node_modules
