@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/CordovaMyAgency/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/electron/MyAgencyElectron/MyAgency-win32-x64/resources/app/CordovaMyAgency/platforms" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
