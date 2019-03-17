@@ -18,7 +18,7 @@ function createWindow() {
 
   win.loadURL(
     url.format({
-      pathname: path.join(__dirname, `/../../dist/myagency-web/index.html`),
+      pathname: path.join(__dirname, `../../../dist/myagency-web/index.html`),
       protocol: 'file:',
       slashes: true
     })
