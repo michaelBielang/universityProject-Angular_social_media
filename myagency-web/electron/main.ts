@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import {app, BrowserWindow, ipcMain} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs';
@@ -14,17 +14,28 @@ app.on('activate', () => {
 });
 
 function createWindow() {
-  win = new BrowserWindow({ fullscreen: true, minHeight: 300, minWidth: 200 });
+  win = new BrowserWindow({
+    minHeight: 400,
+    minWidth: 300,
+    show: false,
+    fullscreenable: true,
+    title: 'MyAgency',
+    skipTaskbar: true,
+    autoHideMenuBar: true
+  });
 
   win.loadURL(
     url.format({
-      pathname: path.join(__dirname, `../../../dist/myagency-web/index.html`),
+      pathname: path.join(__dirname, `../../dist/myagency-web/index.html`),
       protocol: 'file:',
       slashes: true
     })
   );
 
-  win.webContents.openDevTools();
+  win.once('ready-to-show', () => {
+    win.maximize();
+    win.show();
+  });
 
   win.on('closed', () => {
     win = null;

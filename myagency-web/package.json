@@ -1,7 +1,7 @@
 {
   "name": "myagency-web",
   "version": "0.0.0",
-  "main": "electron/dist/electron/main.js",
+  "main": "electron/dist/main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -9,10 +9,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron build": "ng build --base-href ./ && tsc --p electron && electron .",
-    "electron packager-windows": "electron-packager . MyAgency --platform=win32 --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
-    "electron packager-ios": "electron-packager . MyAgency --platform=darwin --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
-    "electron packager-all": "electron-packager . MyAgency --all --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency"
+    "electron-build": "ng build --base-href ./ && tsc --p electron",
+    "electron-run": "npm run electron-build && electron .",
+    "electron-packager-windows": "npm run electron-build && electron-packager . MyAgency --platform=win32 --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
+    "electron-packager-ios": "npm run electron-build && electron-packager . MyAgency --platform=darwin --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency",
+    "electron-packager-all": "npm run electron-build && electron-packager . MyAgency --all --out=electron/MyAgencyElectron --overwrite --icon=assets/icons/MyAgency"
   },
   "private": true,
   "dependencies": {
