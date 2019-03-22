@@ -10,7 +10,7 @@
   "cordova-plugin-appcenter-analytics": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-appcenter-analytics"
+      "id": "cordova-plugin-appcenter-analytics@^0.3.2"
     },
     "is_top_level": true,
     "variables": {}
@@ -18,7 +18,7 @@
   "cordova-plugin-appcenter-shared": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-appcenter-shared@0.3.2"
+      "id": "cordova-plugin-appcenter-shared@0.3.3"
     },
     "is_top_level": false,
     "variables": {}
@@ -26,7 +26,7 @@
   "cordova-plugin-appcenter-crashes": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-appcenter-crashes"
+      "id": "cordova-plugin-appcenter-crashes@^0.3.2"
     },
     "is_top_level": true,
     "variables": {}
