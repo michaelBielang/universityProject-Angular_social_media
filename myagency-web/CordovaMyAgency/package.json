@@ -9,9 +9,9 @@
     "cordova prepare": "cordova prepare",
     "cordova deploy myagency": "cd .. && ng build --prod --base-href . --output-path=CordovaMyAgency/www/",
     "cordova browser": "cordova build browser && cordova run browser",
-    "cordova android emulate": "cordova build android && cordova emulate android",
+    "cordova android emulate": "cordova build android && cordova run --emulator",
     "cordova android device": "cordova build android && cordova run android",
-    "cordova android release": "cordova build --release android",
+    "cordova android release": "cordova build android --release -- --keystore=MyAgency-keystore.jks --storePassword=app4models --alias=release --password=app4models",
     "cordova ios release": "cordova build --release ios"
   },
   "author": "MyAgency GBr",
