@@ -1,1 +1,8 @@
 @import "assets/scss/browser-clear";
+@import "assets/scss/basic";
+
+app-root {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
