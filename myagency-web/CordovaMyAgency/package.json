@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cordova prepare": "cordova prepare",
-    "cordova deploy myagency": "cd .. && ng build --prod --base-href . --output-path=CordovaMyAgency/www/",
+    "cordova-deploy-myagency": "cd .. && ng build --prod --base-href . --output-path=CordovaMyAgency/www/",
     "cordova browser": "cordova build browser && cordova run browser",
     "cordova android emulate": "cordova build android && cordova run --emulator",
     "cordova android device": "cordova build android && cordova run android",
@@ -24,7 +24,8 @@
     "cordova-plugin-appcenter-analytics": "^0.3.2",
     "cordova-plugin-appcenter-crashes": "^0.3.2",
     "cordova-plugin-appcenter-shared": "^0.3.2",
-    "cordova-plugin-whitelist": "^1.3.3"
+    "cordova-plugin-whitelist": "^1.3.3",
+    "firebase": "^5.9.1"
   },
   "cordova": {
     "plugins": {

@@ -1,9 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {WelcomeComponent} from './welcome/welcome.component';
+import {TaskComponent} from "./task/task.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/welcome', pathMatch: 'full'},
+  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: 'tasks', component: TaskComponent},
   {path: 'welcome', component: WelcomeComponent}
 ];
 

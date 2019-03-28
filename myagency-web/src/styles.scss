@@ -1,5 +1,10 @@
-@import "assets/scss/browser-clear";
-@import "assets/scss/basic";
+html {
+  background: url(app/data/start_backround.jpg) no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 app-root {
   display: flex;
