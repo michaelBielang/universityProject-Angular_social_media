@@ -1,12 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {WelcomeComponent} from './welcome/welcome.component';
-import {TaskComponent} from "./task/task.component";
+import {TasksComponent} from "./components/tasks/tasks.component";
+import {AuthComponent} from "./components/auth/auth.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: 'tasks', component: TaskComponent},
-  {path: 'welcome', component: WelcomeComponent}
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'auth', component: AuthComponent},
+  {path: 'tasks', component: TasksComponent}
 ];
 
 @NgModule({

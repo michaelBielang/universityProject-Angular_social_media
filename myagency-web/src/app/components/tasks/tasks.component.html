@@ -1,0 +1,8 @@
+<div class="jumbotron">
+  <ul id="tasks" class="list-group">
+    <li class="list-group-item" *ngFor="let item of items | async">
+      {{ item.name }}
+    </li>
+  </ul>
+</div>
+
