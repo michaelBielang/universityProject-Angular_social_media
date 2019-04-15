@@ -11,7 +11,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $my-agency-primary: mat-palette($primary-color-palette, $primary-color, #efefef);
-$my-agency-secondary: mat-palette($secondary-color-palette, $primary-color, #efefef);
+$my-agency-accent: mat-palette($accent-color-palette, $primary-color, #efefef);
 
 // The warn palette is optional (defaults to red).
 $my-agency-warn: mat-palette($mat-red);
