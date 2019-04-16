@@ -4,15 +4,6 @@ $header-height: 64px;
 
 .header {
   height: $header-height;
-  display: flex;
-  box-sizing: border-box;
-  padding: 0 16px;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  white-space: nowrap;
-  background-color: $color-400;
-  font-size: $title-font-size;
 }
 
 .intro.fullscreen {
