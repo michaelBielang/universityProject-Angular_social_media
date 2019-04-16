@@ -1,7 +1,7 @@
-<div class="header">
+<mat-toolbar class="header">
   <span>MyAgency</span>
   <a mat-button routerLink="/register">Register</a>
-</div>
+</mat-toolbar>
 
 <div class="fullscreen intro">
   <img src="assets/icons/MyAgency.png">
@@ -20,7 +20,8 @@
 </div>
 
 <div id="discover-model" class="fullscreen">
-  <div>Why models join us
+  <div>
+    <div class="title">Why models join us</div>
     <div>{{lorem}}</div>
   </div>
   <img
@@ -29,7 +30,8 @@
 
 <div id="discover-client" class="fullscreen">
   <img src="https://static.thenounproject.com/png/1144989-200.png">
-  <div>Why clients join us
+  <div>
+    <div class="title"> Why clients join us</div>
     <div>{{lorem}}</div>
   </div>
 </div>
