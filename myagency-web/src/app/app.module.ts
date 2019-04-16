@@ -3,18 +3,23 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LandingPageComponent} from './landing-page/landing-page.component';
+import {TeamMembersComponent} from './landing-page/team-members/team-members.component';
+import {MatButtonModule, MatToolbarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    LandingPageComponent,
+    TeamMembersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
