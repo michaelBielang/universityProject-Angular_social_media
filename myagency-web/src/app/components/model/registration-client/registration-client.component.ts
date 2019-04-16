@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-registration-client',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationClientComponent implements OnInit {
 
-  constructor() { }
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
 
-  ngOnInit() {
+  constructor(private _formBuilder: FormBuilder) {
   }
 
+  ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
 }
