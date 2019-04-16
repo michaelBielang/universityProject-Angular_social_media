@@ -56,6 +56,31 @@ $header-height: 64px;
   justify-items: center;
   align-items: center;
   grid-template-columns: 1fr auto;
+  grid-column-gap: 5%;
+  padding: 0 5%;
+  width: 90%;
+
+  div {
+    margin: 20px 0;
+  }
+}
+
+#discover-client {
+  background-color: $color-200;
+}
+
+.footer {
+  height: 60px;
+  background-color: $color-700;
+  color: $light-primary-text;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.title {
+  font-size: $title-font-size;
 }
 
 .fullscreen {
