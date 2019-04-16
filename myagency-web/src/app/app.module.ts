@@ -7,16 +7,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LandingPageComponent} from './components/shared/landing-page/landing-page.component';
 import {TeamMembersComponent} from './components/shared/landing-page/team-members/team-members.component';
 import {MatButtonModule, MatToolbarModule} from '@angular/material';
-import { ModelRegistrationComponent } from './components/client/model-registration/model-registration.component';
-import { RegistrationClientComponent } from './components/model/registration-client/registration-client.component';
-import { RegistrationModelComponent } from './components/client/registration-model/registration-model.component';
+import {RegistrationClientComponent} from './components/model/registration-client/registration-client.component';
+import {RegistrationModelComponent} from './components/client/registration-model/registration-model.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     TeamMembersComponent,
-    ModelRegistrationComponent,
     RegistrationClientComponent,
     RegistrationModelComponent
   ],
