@@ -1,0 +1,64 @@
+@import "../../../../assets/scss/variables";
+
+$header-height: 64px;
+
+.header {
+  height: $header-height;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  background-color: $color-400;
+  font-size: $title-font-size;
+}
+
+.intro.fullscreen {
+  height: calc(100vh - #{$header-height});
+  display: grid;
+  grid-template-columns: calc((90vh - #{$header-height}) / 2) 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+
+  img {
+    height: auto;
+    margin-left: calc((-90vh + #{$header-height}) / 2);
+    width: calc(90vh - #{$header-height});
+  }
+}
+
+#discover {
+  display: grid;
+  grid-template-areas: ". title title ." ". model client .";
+  grid-template-columns: auto;
+  grid-template-rows: 20% 80%;
+  justify-items: center;
+  align-items: center;
+  background-color: $color-200;
+
+  .title {
+    grid-area: title;
+  }
+
+  .model-selection {
+    grid-area: model;
+  }
+
+  .client-selection {
+    grid-area: client;
+  }
+}
+
+#discover-model, #discover-client {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+}
+
+.fullscreen {
+  width: 100%;
+  height: 100vh;
+}

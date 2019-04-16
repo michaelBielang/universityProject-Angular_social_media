@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.myagency.web" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.myagency.web" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>MyAgency</name>
     <description>
-    A sample Apache Cordova application that responds to the deviceready event.
+    A platform for models and those who search them.
   </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-    Apache Cordova Team
+    <author email="myagency4you@gmail.com" href="http://cordova.io">
+    MyAgency team
   </author>
+    <icon src="../src/assets/icons/MyAgency.png" />
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
