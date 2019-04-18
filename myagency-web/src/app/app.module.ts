@@ -14,10 +14,24 @@ import {
   MatStepperModule,
   MatToolbarModule
 } from '@angular/material';
-import {RegistrationClientComponent} from './components/model/registration-client/registration-client.component';
-import {RegistrationModelComponent} from './components/client/registration-model/registration-model.component';
+import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
+import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {AuthService} from "./services/auth.service";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {NotifyService} from "./services/notify.service";
+import {AngularFireModule} from "@angular/fire";
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+
+var config = {
+  apiKey: 'AIzaSyDW3lgo8KKHpGfEeDrboaadrpiiyHcZCPs',
+  authDomain: 'myagency-9a758.firebaseapp.com',
+  databaseURL: 'https://myagency-9a758.firebaseio.com',
+  projectId: 'myagency-9a758',
+  storageBucket: 'myagency-9a758.appspot.com',
+  messagingSenderId: '620735747060'
+};
 
 @NgModule({
   declarations: [
@@ -26,7 +40,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     TeamMembersComponent,
     RegistrationClientComponent,
     RegistrationModelComponent,
-    RegisterStartComponent
+    RegisterStartComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +52,12 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatGridListModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(config),
   ],
-  providers: [],
+  providers: [AuthService, NotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

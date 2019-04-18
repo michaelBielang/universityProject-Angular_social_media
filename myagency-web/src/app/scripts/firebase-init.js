@@ -2,11 +2,11 @@ import firebase from 'firebase/index'
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg",
-  authDomain: "myagency-b6072.firebaseapp.com",
-  databaseURL: "https://myagency-b6072.firebaseio.com",
-  projectId: "myagency-b6072",
-  storageBucket: "myagency-b6072.appspot.com",
-  messagingSenderId: "546859213991"
-};
-firebase.initializeApp(config);
+  apiKey: "AIzaSyDW3lgo8KKHpGfEeDrboaadrpiiyHcZCPs",
+  authDomain: "myagency-9a758.firebaseapp.com",
+  databaseURL: "https://myagency-9a758.firebaseio.com",
+  projectId: "myagency-9a758",
+  storageBucket: "myagency-9a758.appspot.com",
+  messagingSenderId: "620735747060"
+}
+firebase.initializeApp(config)
