@@ -18,6 +18,7 @@ export class AuthService {
               private router: Router,
               private notify: NotifyService) {
     // Define the user observable
+    // TODO check whether custom user is appropriated here
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
@@ -33,11 +34,17 @@ export class AuthService {
   //// Email/Password Auth ////
 
   emailSignUp(email: string, password: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(user => {
-        return this.setUserDoc(user) // create initial user document
-      })
-      .catch(error => this.handleError(error));
+    this.user = Observable.of({
+      uid: "test",
+      email: "test",
+      photoURL: 'https://goo.gl/Fz9nrQ'
+    })
+    //TODO
+    /*    return this.afAuth.authService.createUserWithEmailAndPassword(email, password)
+          .then(user => {
+            return this.setUserDoc(user) // create initial user document
+          })
+          .catch(error => this.handleError(error));*/
   }
 
   // Update properties on the user document

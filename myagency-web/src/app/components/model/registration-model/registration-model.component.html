@@ -1,97 +1,94 @@
-<!--
-https://material.angular.io/components/stepper/overview
--->
+<mat-toolbar class="header">
+  <span>MyAgency</span>
+  <a mat-button routerLink="/register">Register</a>
+</mat-toolbar>
 
-<div style="text-align: center">
-  <ng-container *ngIf="(auth.user | async) || {} as user">
+<ng-container *ngIf="(authService.user | async) || {} as user">
+  <mat-horizontal-stepper [linear]=true>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Who</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="surname" formControlName="age" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="name" formControlName="age" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="email" formControlName="age" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="password" formControlName="age" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+          <div *ngIf="password.invalid && password.touched">
+            <br>
+            Password must be between 6 and 24 chars and have at least one number
+          </div>
+          <div *ngIf="email.invalid && email.touched">
+            <br>
+            Please check your email again!
+          </div>
+          <div *ngIf="name.invalid && name.touched">
+            <br>
+            Please enter your name!
+          </div>
+          <div *ngIf="surname.invalid && surname.touched">
+            Please enter your surname!
+          </div>
+        </div>
+      </form>
+    </mat-step>
 
-    <form [formGroup]="firstFormGroup" *ngIf="!user.uid" (ngSubmit)="signup()">
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Where</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="street" formControlName="street" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
 
-      <h3>New User Signup</h3>
-      <p></p>
-      <label for="email">Email</label>
-      <input type="email" formControlName="email">
-
-
-      <div *ngIf="email.invalid && email.dirty">
-        Your email doesn't look quite right...
-      </div>
-      <p></p>
-      <label for="password">Password</label>
-      <input type="password" formControlName="password" required>
-
-      <div *ngIf="password.invalid && password.touched">
-
-        Password must be between 6 and 24 chars and have at least one number
-      </div>
-
-      <div *ngIf="firstFormGroup.valid">Form looks good! Let's do this.
-        <p></p>
-        <span>{{firstFormGroup.get("password").value}}</span></div>
-
-      <button type="submit" [disabled]="!firstFormGroup.valid">Submit</button>
-
-
-    </form>
-
-
-    <form [formGroup]="detailForm" *ngIf="user.uid && !user.catchPhrase" (ngSubmit)="setCatchPhrase(user)">
-
-      <h3>Set your Catch Phrase</h3>
-
-      <label for="catchPhrase">CatchPhrase</label>
-      <input type="test" formControlName="catchPhrase">
-
-
-      <button type="submit" [disabled]="!detailForm.valid">Submit</button>
-
-
-    </form>
-
-    <p *ngIf="user.catchPhrase">
-      You have completed the form!
-    </p>
-
-  </ng-container>
-</div>
-
-
-<!--<mat-horizontal-stepper #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill your your email</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="email" formControlName="name" required>
-      </mat-form-field>
-      <p></p>
-      <mat-form-field>
-        <input matInput placeholder="password" formControlName="name" required>
-      </mat-form-field>
-      <div>
-        <button type="submit">Next</button>
-      </div>
-    </form>
-  </mat-step>-->
-
-<!--
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="password" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>-->
-<!--</mat-horizontal-stepper>-->
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Body</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="height" formControlName="height" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="taint" formControlName="haircolor" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="hair color" formControlName="taint" required>
+        </mat-form-field>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button [disabled]="thirdFormGroup.invalid" (click)="signup()">signup</button>
+          <br>
+          <div *ngIf="height.invalid && height.touched">
+            Please enter your height
+          </div>
+          <br>
+          <div *ngIf="haircolor.invalid && haircolor.touched">
+            Please enter your haircolor
+          </div>
+          <br>
+          <div *ngIf="taint.invalid && taint.touched">
+            Please enter your taint
+          </div>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-container>
