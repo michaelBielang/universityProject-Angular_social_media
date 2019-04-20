@@ -1,16 +1,9 @@
-.btn {
-  width: 100px;
-  height: 30px;
-  background-color: cornflowerblue;
-  border: 1px solid cornflowerblue;
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
+@import "variables";
 
-  &:hover {
-    background-color: white;
-    cursor: pointer;
-  }
+.full-size-btn {
+  width: 100%;
+  line-height: 1px;
+  padding: 50% 0;
+  border: 1px solid $color-900;
+  border-radius: 0;
 }
