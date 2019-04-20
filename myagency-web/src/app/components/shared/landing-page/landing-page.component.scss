@@ -10,6 +10,7 @@ $header-height: 64px;
   height: calc(100vh - #{$header-height});
   display: grid;
   grid-template-columns: calc((90vh - #{$header-height}) / 2) 1fr 1fr;
+  grid-column-gap: 3%;
   justify-items: center;
   align-items: center;
 
@@ -32,6 +33,7 @@ $header-height: 64px;
   grid-template-areas: ". title title ." ". model client .";
   grid-template-columns: auto;
   grid-template-rows: 20% 80%;
+  grid-column-gap: 3%;
   justify-items: center;
   align-items: center;
   background-color: $color-200;
