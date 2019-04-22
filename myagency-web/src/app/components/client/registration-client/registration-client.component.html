@@ -1,33 +1,39 @@
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+<mat-toolbar class="header">
+  <span>MyAgency</span>
+  <a mat-button routerLink="/register">Register</a>
+</mat-toolbar>
+<form [formGroup]="formGroup">
+  <mat-grid-list cols="3">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+      <div class="selection-container">
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="password" formControlName="password" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Company name" formControlName="content" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Street" formControlName="content" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="City" formControlName="content" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Postcode" formControlName="content" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Select" required>
+            <mat-option *ngFor="let country of countryList">
+              {{country}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+</form>

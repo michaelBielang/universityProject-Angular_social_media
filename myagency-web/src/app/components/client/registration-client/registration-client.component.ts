@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CountriesService} from "../../../services/countries.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-registration-client',
@@ -8,19 +10,41 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class RegistrationClientComponent implements OnInit {
 
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  formGroup: FormGroup;
+  countryList: String[];
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder, countriesService: CountriesService,
+              private authService: AuthService) {
+    this.countryList = countriesService.countries;
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+    this.formGroup = this._formBuilder.group({
+      email: ['', Validators.required, Validators.email],
+      content: ['', Validators.required, Validators.minLength(1)],
+      password: ['', Validators.required, Validators.minLength(1)]
     });
   }
+
+  get email() {
+    return this.formGroup.get('email')
+  }
+
+  get content() {
+    return this.formGroup.get('content')
+  }
+
+  get countries() {
+    return this.countryList
+  }
+
+  get password() {
+    return this.formGroup.get('password')
+  }
+
+  signup() {
+    return this.authService.emailSignUp(this.email.value, this.password.value)
+  }
+
 }
+

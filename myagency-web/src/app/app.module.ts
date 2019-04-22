@@ -10,7 +10,7 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatGridListModule,
-  MatInputModule,
+  MatInputModule, MatSelectModule,
   MatStepperModule,
   MatToolbarModule
 } from '@angular/material';
@@ -56,6 +56,7 @@ var config = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(config),
+    MatSelectModule,
   ],
   providers: [AuthService, NotifyService],
   bootstrap: [AppComponent]

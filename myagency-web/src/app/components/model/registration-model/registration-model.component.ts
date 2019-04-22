@@ -22,7 +22,7 @@ export class RegistrationModelComponent implements OnInit {
   ngOnInit() {
     // First Step
     this.firstFormGroup = this.formBuilder.group({
-      /*    'email': ['', [
+      /*'email': ['', [
             Validators.required,
             Validators.email]],
           'password': ['', [
@@ -31,9 +31,9 @@ export class RegistrationModelComponent implements OnInit {
             Validators.maxLength(25),
             Validators.required
           ]],*/
-      'name': ['',],
-      'surname': ['',],
-      'age': ['', [Validators.required, Validators.minLength(2)]]
+      'lastName': ['',],
+      'firstName': ['',],
+      'age': ['', [Validators.required, Validators.minLength(1)]]
     });
 
     // Second Step
@@ -44,30 +44,26 @@ export class RegistrationModelComponent implements OnInit {
     // Third Step
     this.thirdFormGroup = this.formBuilder.group({
       'height': ['', [Validators.required]],
-      'haircolor': ['', [Validators.required]],
+      'hairColor': ['', [Validators.required]],
       'taint': ['', [Validators.required]]
     });
   }
 
-  // Using getters will make your code look pretty
   get email() {
     //TODO
     return this.firstFormGroup.get('age')
   }
 
-  get name() {
-    //TODO
-    return this.firstFormGroup.get('name')
+  get lastName() {
+    return this.firstFormGroup.get('lastName')
   }
 
   get street() {
-    //TODO
     return this.firstFormGroup.get('street')
   }
 
-  get surname() {
-    //TODO
-    return this.firstFormGroup.get('surname')
+  get firstName() {
+    return this.firstFormGroup.get('firstName')
   }
 
   get password() {
@@ -84,13 +80,11 @@ export class RegistrationModelComponent implements OnInit {
     return this.thirdFormGroup.get('height')
   }
 
-  get haircolor() {
-    return this.thirdFormGroup.get('haircolor')
+  get hairColor() {
+    return this.thirdFormGroup.get('hairColor')
   }
 
-  // Step 1
   signup() {
-    console.log("reached singup");
     return this.authService.emailSignUp(this.email.value, this.password.value)
   }
 }
