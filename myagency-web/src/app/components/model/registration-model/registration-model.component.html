@@ -1,6 +1,6 @@
-<mat-toolbar class="header">
+<mat-toolbar class="toolbar">
   <span>MyAgency</span>
-  <a mat-button routerLink="/register">Register</a>
+  <a mat-button routerLink="/landing-page">Home</a>
 </mat-toolbar>
 
 <ng-container *ngIf="(authService.user | async) || {} as user">

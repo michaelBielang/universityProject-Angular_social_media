@@ -1,0 +1,30 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/basic";
+
+.selection {
+  height: calc(100vh - #{$header-height});
+  display: grid;
+  grid-template-columns: 3% 1fr 1fr 3%;
+  grid-template-areas: ". model client .";
+  grid-column-gap: 3%;
+  align-items: center;
+
+  .model {
+    grid-area: model;
+    @extend .full-size-btn;
+  }
+
+  .client {
+    grid-area: client;
+    border: 0;
+    @extend .full-size-btn;
+  }
+
+  .client, .model {
+    background-size: cover;
+
+    .button-text {
+      text-shadow: 0 0 3px $light-primary-text;
+    }
+  }
+}

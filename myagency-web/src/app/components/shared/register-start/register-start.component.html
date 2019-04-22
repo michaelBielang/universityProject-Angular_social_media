@@ -1,13 +1,9 @@
-<mat-toolbar class="header">
+<mat-toolbar class="toolbar">
   <span>MyAgency</span>
-  <a mat-button routerLink="/register">Register</a>
+  <a mat-button routerLink="/landing-page">Home</a>
 </mat-toolbar>
 
-<mat-grid-list cols="2" rowHeight="1:1">
-  <mat-grid-tile>
-    <a mat-button routerLink="/regModel">Model</a>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <a mat-button routerLink="/regClient">Client</a>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="selection">
+  <a mat-button class="model manequins" routerLink="/regModel"><span class="button-text">Model</span></a>
+  <a mat-button class="client tailor" routerLink="/regClient"><span class="button-text">Client</span></a>
+</div>

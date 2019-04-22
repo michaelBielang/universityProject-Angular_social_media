@@ -1,4 +1,4 @@
-<mat-toolbar class="header">
+<mat-toolbar class="toolbar">
   <span>MyAgency</span>
   <a mat-button routerLink="/register">Register</a>
 </mat-toolbar>
@@ -11,8 +11,8 @@
 
 <div id="discover" class="fullscreen">
   <div class="title">Either you are a model or you need one, here you are completely right.</div>
-  <a mat-button class="model-selection full-size-btn" routerLink="./" [fragment]="'discover-model'">MODEL</a>
-  <a mat-button class="client-selection full-size-btn" routerLink="./" [fragment]="'discover-client'">CLIENT</a>
+  <a mat-button class="model-selection" routerLink="./" [fragment]="'discover-model'">MODEL</a>
+  <a mat-button class="client-selection" routerLink="./" [fragment]="'discover-client'">CLIENT</a>
 </div>
 
 <div id="discover-model" class="fullscreen">
