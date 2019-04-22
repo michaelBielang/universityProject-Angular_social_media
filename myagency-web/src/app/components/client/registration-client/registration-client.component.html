@@ -2,38 +2,90 @@
   <span>MyAgency</span>
   <a mat-button routerLink="/register">Register</a>
 </mat-toolbar>
-<form [formGroup]="formGroup">
-  <mat-grid-list cols="3">
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile>
-      <div class="selection-container">
+
+<ng-container *ngIf="(_authService.user | async) || {} as user">
+  <mat-horizontal-stepper [linear]=true>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>You</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-select placeholder="Title" required>
+            <mat-option *ngFor="let title of titles">
+              {{title}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="name" formControlName="content" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="surname" formControlName="content" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="email" formControlName="content" required>
+        </mat-form-field>
+        <br>
         <mat-form-field>
           <input matInput placeholder="password" formControlName="password" required>
         </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+          <div *ngIf="password.invalid && password.touched">
+            <br>
+            Password must be between 6 and 24 chars and have at least one number
+          </div>
+          <div *ngIf="email.invalid && email.touched">
+            <br>
+            Please check your email again!
+          </div>
+          <div *ngIf="content.invalid && content.touched">
+            <br>
+            Please check up the form again!
+          </div>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Company</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Company name" formControlName="content" required>
+          <input matInput placeholder="Company" formControlName="content" required>
         </mat-form-field>
+        <br>
         <mat-form-field>
           <input matInput placeholder="Street" formControlName="content" required>
         </mat-form-field>
+        <br>
         <mat-form-field>
           <input matInput placeholder="City" formControlName="content" required>
         </mat-form-field>
+        <br>
         <mat-form-field>
           <input matInput placeholder="Postcode" formControlName="content" required>
         </mat-form-field>
+        <br>
         <mat-form-field>
-          <mat-select placeholder="Select" required>
+          <mat-select placeholder="Country" required>
             <mat-option *ngFor="let country of countryList">
               {{country}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
-</form>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button [disabled]="secondFormGroup.invalid" (click)="signup()">signup</button>
+          <br>
+          <div *ngIf="content.invalid && content.touched">
+            Please check fields again
+          </div>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-container>

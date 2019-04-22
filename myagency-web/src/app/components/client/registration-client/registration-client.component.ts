@@ -10,16 +10,25 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class RegistrationClientComponent implements OnInit {
 
-  formGroup: FormGroup;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
   countryList: String[];
+  titles = ["Mr.", "Mrs"];
 
   constructor(private _formBuilder: FormBuilder, countriesService: CountriesService,
-              private authService: AuthService) {
+              private _authService: AuthService) {
     this.countryList = countriesService.countries;
   }
 
   ngOnInit() {
-    this.formGroup = this._formBuilder.group({
+    this.firstFormGroup = this._formBuilder.group({
+      email: ['', Validators.required, Validators.email],
+      content: ['', Validators.required, Validators.minLength(1)],
+      password: ['', Validators.required, Validators.minLength(1)]
+    });
+
+    // Second Step
+    this.secondFormGroup = this._formBuilder.group({
       email: ['', Validators.required, Validators.email],
       content: ['', Validators.required, Validators.minLength(1)],
       password: ['', Validators.required, Validators.minLength(1)]
@@ -27,11 +36,11 @@ export class RegistrationClientComponent implements OnInit {
   }
 
   get email() {
-    return this.formGroup.get('email')
+    return this.firstFormGroup.get('email')
   }
 
   get content() {
-    return this.formGroup.get('content')
+    return this.firstFormGroup.get('content')
   }
 
   get countries() {
@@ -39,11 +48,11 @@ export class RegistrationClientComponent implements OnInit {
   }
 
   get password() {
-    return this.formGroup.get('password')
+    return this.firstFormGroup.get('password')
   }
 
   signup() {
-    return this.authService.emailSignUp(this.email.value, this.password.value)
+    return this._authService.emailSignUp(this.email.value, this.password.value)
   }
 
 }
