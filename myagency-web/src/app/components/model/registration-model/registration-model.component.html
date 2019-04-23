@@ -6,7 +6,7 @@
 <ng-container *ngIf="(authService.user | async) || {} as user">
   <mat-horizontal-stepper [linear]=true>
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" class="single-step">
         <ng-template matStepLabel>Who</ng-template>
         <mat-form-field>
           <input matInput placeholder="name" formControlName="age" required>
@@ -45,7 +45,7 @@
     </mat-step>
 
     <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+      <form [formGroup]="secondFormGroup" class="single-step">
         <ng-template matStepLabel>Where</ng-template>
         <mat-form-field>
           <input matInput placeholder="street" formControlName="street" required>
@@ -58,7 +58,7 @@
     </mat-step>
 
     <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup" class="single-step">
         <ng-template matStepLabel>Body</ng-template>
         <mat-form-field>
           <input matInput placeholder="height" formControlName="height" required>

@@ -1,5 +1,6 @@
 .clothes {
-  background-image: url("assets/images/clothes2.jpg");
+  background-image: url("assets/images/clothes_low.jpg"), url("assets/images/clothes.jpg");
+  background-blend-mode: saturation;
 }
 
 .manequins {

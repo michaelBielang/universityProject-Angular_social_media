@@ -6,7 +6,7 @@
 <ng-container *ngIf="(_authService.user | async) || {} as user">
   <mat-horizontal-stepper [linear]=true>
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" class="single-step">
         <ng-template matStepLabel>You</ng-template>
         <mat-form-field>
           <mat-select placeholder="Title" required>
@@ -51,7 +51,7 @@
 
 
     <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+      <form [formGroup]="secondFormGroup" class="single-step">
         <ng-template matStepLabel>Company</ng-template>
         <mat-form-field>
           <input matInput placeholder="Company" formControlName="content" required>
