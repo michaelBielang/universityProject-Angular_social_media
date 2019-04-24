@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject} from "rxjs";
+import {Subject} from 'rxjs';
 
 /// Notify users about errors and other helpful stuff
 export interface Msg {
@@ -10,9 +10,6 @@ export interface Msg {
 @Injectable({
   providedIn: 'root'
 })
-
-
-@Injectable()
 export class NotifyService {
 
   private _msgSource = new Subject<Msg | null>();

@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {User} from "../components/model/registration-model/user-interface";
-import {AngularFireAuth} from "@angular/fire/auth";
-import {Router} from "@angular/router";
-import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
-import {NotifyService} from "./notify.service";
-import "rxjs-compat/add/operator/switchMap";
-import "rxjs-compat/add/observable/of";
+import {Observable} from 'rxjs';
+import {User} from '../components/model/registration-model/user-interface';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {Router} from '@angular/router';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {NotifyService} from './notify.service';
+import 'rxjs-compat/add/operator/switchMap';
+import 'rxjs-compat/add/observable/of';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   user: Observable<User>;
@@ -23,22 +25,22 @@ export class AuthService {
       .switchMap(user => {
         if (user) {
           // logged in, get custom user from Firestore
-          return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges()
+          return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           // logged out, null
-          return Observable.of(null)
+          return Observable.of(null);
         }
-      })
+      });
   }
 
   //// Email/Password Auth ////
 
   emailSignUp(email: string, password: string) {
     this.user = Observable.of({
-      uid: "test",
-      email: "test",
+      uid: 'test',
+      email: 'test',
       photoURL: 'https://goo.gl/Fz9nrQ'
-    })
+    });
     //TODO
     /*    return this.afAuth.authService.createUserWithEmailAndPassword(email, password)
           .then(user => {
@@ -47,15 +49,29 @@ export class AuthService {
           .catch(error => this.handleError(error));*/
   }
 
+  /**
+   * login for the user
+   * @param userName
+   * @param password
+   */
+  public emailLogin(userName: string, password: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.auth.signInWithEmailAndPassword(userName, password)
+        .then(res => {
+          resolve(res);
+        }, err => reject(err));
+    });
+  }
+
   // Update properties on the user document
   updateUser(user: User, data: any) {
-    return this.angularFirestore.doc(`users/${user.uid}`).update(data)
+    return this.angularFirestore.doc(`users/${user.uid}`).update(data);
   }
 
   // If error, console log and notify user
   private handleError(error) {
     console.error(error);
-    this.notify.update(error.message, 'error')
+    this.notify.update(error.message, 'error');
   }
 
   // Sets user data to firestore after succesful login
@@ -69,6 +85,6 @@ export class AuthService {
       photoURL: 'https://goo.gl/Fz9nrQ'
     };
     console.log(data.uid);
-    return userRef.set(data)
+    return userRef.set(data);
   }
 }

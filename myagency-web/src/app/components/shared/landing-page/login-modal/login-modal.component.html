@@ -1,16 +1,18 @@
 <h1 mat-dialog-title>Login</h1>
-<div mat-dialog-content [formGroup]="loginFormGroup" class="login-possibilities">
+<div mat-dialog-content class="login-possibilities">
   <div class="social-media-login">
-    <div class="google-login">G</div>
-    <div class="facebook-login">F</div>
+    <div class="google-login"><img src="https://avatars1.githubusercontent.com/u/7328930?v=4"></div>
+    <div class="facebook-login"><img
+      src="https://www.teltarif.de/arch/2011/kw07/facebook-gefaellt-mir-abamhnung-1m.jpg"></div>
   </div>
-  <div class="mail-login">
+  <form [formGroup]="loginFormGroup" class="mail-login">
     <mat-form-field>
-      <input matInput type="email" placeholder="Email" [formControl]="emailFormControl">
+      <input matInput placeholder="Email" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getMailErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl">
+      <input matInput type="password" placeholder="Password" [formControl]="password">
     </mat-form-field>
     <button mat-button (click)="mailLogin()">Login</button>
-  </div>
+  </form>
 </div>
