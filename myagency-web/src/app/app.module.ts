@@ -8,21 +8,24 @@ import {LandingPageComponent} from './components/shared/landing-page/landing-pag
 import {TeamMembersComponent} from './components/shared/landing-page/team-members/team-members.component';
 import {
   MatButtonModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatGridListModule,
-  MatInputModule, MatSelectModule,
+  MatInputModule,
+  MatSelectModule,
   MatStepperModule,
   MatToolbarModule
 } from '@angular/material';
 import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
 import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {AuthService} from "./services/auth.service";
-import {AngularFireAuthModule} from "@angular/fire/auth";
-import {NotifyService} from "./services/notify.service";
-import {AngularFireModule} from "@angular/fire";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './services/auth.service';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {NotifyService} from './services/notify.service';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {LoginModalComponent} from './components/shared/landing-page/login-modal/login-modal.component';
 
 var config = {
   apiKey: 'AIzaSyDW3lgo8KKHpGfEeDrboaadrpiiyHcZCPs',
@@ -41,6 +44,7 @@ var config = {
     RegistrationClientComponent,
     RegistrationModelComponent,
     RegisterStartComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
@@ -53,13 +57,15 @@ var config = {
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(config),
-    MatSelectModule,
+    AngularFireModule.initializeApp(config)
   ],
   providers: [AuthService, NotifyService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginModalComponent]
 })
 export class AppModule {
 }

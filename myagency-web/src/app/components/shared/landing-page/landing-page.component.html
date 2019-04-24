@@ -1,6 +1,9 @@
 <mat-toolbar class="toolbar">
   <span>MyAgency</span>
-  <a mat-button routerLink="/register">Register</a>
+  <div class="toolbar-actions">
+    <a mat-button routerLink="/register">Register</a>
+    <button mat-button (click)="openDialog()">Login</button>
+  </div>
 </mat-toolbar>
 
 <div class="fullscreen intro clothes">

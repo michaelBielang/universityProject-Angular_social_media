@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content [formGroup]="loginFormGroup" class="login-possibilities">
+  <div class="social-media-login">
+    <div class="google-login">G</div>
+    <div class="facebook-login">F</div>
+  </div>
+  <div class="mail-login">
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email" [formControl]="emailFormControl">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl">
+    </mat-form-field>
+    <button mat-button (click)="mailLogin()">Login</button>
+  </div>
+</div>
