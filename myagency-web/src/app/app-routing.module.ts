@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LandingPageComponent} from './components/shared/landing-page/landing-page.component';
-import {RegisterStartComponent} from "./components/shared/register-start/register-start.component";
-import {RegistrationModelComponent} from "./components/model/registration-model/registration-model.component";
-import {RegistrationClientComponent} from "./components/client/registration-client/registration-client.component";
-import {MatInputModule} from "@angular/material";
+import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
+import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
+import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},

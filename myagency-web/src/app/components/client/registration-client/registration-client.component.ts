@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CountriesService} from "../../../services/countries.service";
-import {AuthService} from "../../../services/auth.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CountriesService} from '../../../services/countries.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-registration-client',
@@ -12,23 +12,23 @@ export class RegistrationClientComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  countryList: String[];
-  titles = ["Mr.", "Mrs"];
+  countryList: string[];
+  titles = ['Mr.', 'Mrs'];
 
-  constructor(private _formBuilder: FormBuilder, countriesService: CountriesService,
-              private _authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, countriesService: CountriesService,
+              private authService: AuthService) {
     this.countryList = countriesService.countries;
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.firstFormGroup = this.formBuilder.group({
       email: ['', Validators.required, Validators.email],
       content: ['', Validators.required, Validators.minLength(1)],
       password: ['', Validators.required, Validators.minLength(1)]
     });
 
     // Second Step
-    this.secondFormGroup = this._formBuilder.group({
+    this.secondFormGroup = this.formBuilder.group({
       email: ['', Validators.required, Validators.email],
       content: ['', Validators.required, Validators.minLength(1)],
       password: ['', Validators.required, Validators.minLength(1)]
@@ -36,23 +36,23 @@ export class RegistrationClientComponent implements OnInit {
   }
 
   get email() {
-    return this.firstFormGroup.get('email')
+    return this.firstFormGroup.get('email');
   }
 
   get content() {
-    return this.firstFormGroup.get('content')
+    return this.firstFormGroup.get('content');
   }
 
   get countries() {
-    return this.countryList
+    return this.countryList;
   }
 
   get password() {
-    return this.firstFormGroup.get('password')
+    return this.firstFormGroup.get('password');
   }
 
   signup() {
-    return this._authService.emailSignUp(this.email.value, this.password.value)
+    return this.authService.emailSignUp(this.email.value, this.password.value);
   }
 
 }

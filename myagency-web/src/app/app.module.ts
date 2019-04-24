@@ -10,27 +10,28 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatGridListModule,
-  MatInputModule, MatSelectModule,
+  MatInputModule,
+  MatSelectModule,
   MatStepperModule,
   MatToolbarModule
 } from '@angular/material';
 import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
 import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {AuthService} from "./services/auth.service";
-import {AngularFireAuthModule} from "@angular/fire/auth";
-import {NotifyService} from "./services/notify.service";
-import {AngularFireModule} from "@angular/fire";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './services/auth.service';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {NotifyService} from './services/notify.service';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
-var config = {
-  apiKey: 'AIzaSyDW3lgo8KKHpGfEeDrboaadrpiiyHcZCPs',
-  authDomain: 'myagency-9a758.firebaseapp.com',
-  databaseURL: 'https://myagency-9a758.firebaseio.com',
-  projectId: 'myagency-9a758',
-  storageBucket: 'myagency-9a758.appspot.com',
-  messagingSenderId: '620735747060'
+const config = {
+  apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
+  authDomain: 'myagency-b6072.firebaseapp.com',
+  databaseURL: 'https://myagency-b6072.firebaseio.com',
+  projectId: 'myagency-b6072',
+  storageBucket: 'myagency-b6072.appspot.com',
+  messagingSenderId: '546859213991'
 };
 
 @NgModule({
