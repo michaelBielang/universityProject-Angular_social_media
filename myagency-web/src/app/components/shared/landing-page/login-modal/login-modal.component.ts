@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../../services/auth.service';
+import {NavigatorService} from '../../../../services/navigator.service';
 
 @Component({
   selector: 'login-modal',
@@ -14,7 +15,8 @@ export class LoginModalComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private dialogRef: MatDialogRef<LoginModalComponent>,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private navigatorService: NavigatorService) {
   }
 
   ngOnInit(): void {
@@ -28,8 +30,8 @@ export class LoginModalComponent implements OnInit {
    * login per mail
    */
   public mailLogin() {
-    this.authService.emailLogin(this.email.value, this.password.value)
-      .then((value: any) => console.log('logged in', value))
+    this.authService.loginEmail(this.email.value, this.password.value)
+      .then((value: any) => this.navigatorService.goToMain())
       .catch((reason: any) => console.log('error: ', reason));
 
   }

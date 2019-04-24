@@ -1,0 +1,34 @@
+import {Injectable} from '@angular/core';
+import {UserRole} from '../enums/user-role.enum';
+import {Router} from '@angular/router';
+import {AuthService} from './auth.service';
+import {User} from '../enums/user-interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NavigatorService {
+
+  constructor(private authService: AuthService,
+              private router: Router) {
+  }
+
+  /**
+   * navigates to main according to user role
+   */
+  public goToMain(): void {
+    this.authService.user.subscribe((user: User) => {
+      switch (user.role) {
+        case UserRole.MODEL:
+          this.router.navigate(['model']);
+          break;
+        case UserRole.CLIENT:
+          this.router.navigate(['client']);
+          break;
+        default:
+          this.router.navigate(['landing-page']);
+      }
+    });
+
+  }
+}

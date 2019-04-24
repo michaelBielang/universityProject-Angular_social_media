@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {User} from '../components/model/registration-model/user-interface';
+import {User} from '../enums/user-interface';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
@@ -54,7 +54,7 @@ export class AuthService {
    * @param userName
    * @param password
    */
-  public emailLogin(userName: string, password: string): Promise<any> {
+  public loginEmail(userName: string, password: string): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.auth.signInWithEmailAndPassword(userName, password)
         .then(res => {
