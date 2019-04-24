@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../../services/auth.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../services/auth.service';
+import {CountriesService} from '../../../services/countries.service';
 
 
 @Component({
@@ -8,83 +9,83 @@ import {AuthService} from "../../../services/auth.service";
   templateUrl: './registration-model.component.html',
   styleUrls: ['./registration-model.component.scss']
 })
-
-
 export class RegistrationModelComponent implements OnInit {
-
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+  countryList: string[];
+  titles = ['Mr.', 'Mrs'];
+  eyes = ['Blue.', 'Green', 'Brown'];
+  hairColors = ['Blond.', 'Brunette', 'Black'];
+  clothesSize = ['S', 'M', 'L', 'XL'];
+  heights = Array.from({length: (210 - 150)}, (value, key) => key + 150);
+  bustMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
+  waistMeasurement = Array.from({length: (90 - 40)}, (value, key) => key + 40);
+  hipMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
+  date = new Date().getFullYear();
+  ages = Array.from({length: 50}, (value, key) => this.date - 50);
 
-  constructor(public formBuilder: FormBuilder, public authService: AuthService) {
+  constructor(public formBuilder: FormBuilder, public authService: AuthService, countryService: CountriesService) {
+    this.countryList = countryService.country_list;
   }
 
   ngOnInit() {
     // First Step
     this.firstFormGroup = this.formBuilder.group({
-      /*'email': ['', [
-            Validators.required,
-            Validators.email]],
-          'password': ['', [
-            Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-            Validators.minLength(6),
-            Validators.maxLength(25),
-            Validators.required
-          ]],*/
-      'lastName': ['',],
-      'firstName': ['',],
-      'age': ['', [Validators.required, Validators.minLength(1)]]
+      email: ['', [
+        Validators.required,
+        Validators.email]],
+      password: ['', [
+        Validators.minLength(6),
+        Validators.maxLength(25),
+        Validators.required
+      ]],
+      lastName: ['', Validators.required],
+      firstName: ['', Validators.required]
     });
 
     // Second Step
     this.secondFormGroup = this.formBuilder.group({
-      'street': ['', [Validators.required, Validators.minLength(2)]]
-    });
-
-    // Third Step
-    this.thirdFormGroup = this.formBuilder.group({
-      'height': ['', [Validators.required]],
-      'hairColor': ['', [Validators.required]],
-      'taint': ['', [Validators.required]]
+      street: ['', [Validators.required, Validators.minLength(2)]],
+      city: ['', [Validators.required, Validators.minLength(2)]],
+      postcode: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
 
+
   get email() {
-    //TODO
-    return this.firstFormGroup.get('age')
+    return this.firstFormGroup.get('email');
   }
 
   get lastName() {
-    return this.firstFormGroup.get('lastName')
-  }
-
-  get street() {
-    return this.firstFormGroup.get('street')
+    return this.firstFormGroup.get('lastName');
   }
 
   get firstName() {
-    return this.firstFormGroup.get('firstName')
+    return this.firstFormGroup.get('firstName');
   }
 
   get password() {
-    //TODO
-    return this.firstFormGroup.get('age')
+    return this.firstFormGroup.get('password');
   }
 
-  get taint() {
-    //TODO
-    return this.firstFormGroup.get('age')
+  get city() {
+    return this.secondFormGroup.get('city');
   }
 
-  get height() {
-    return this.thirdFormGroup.get('height')
+
+  get postcode() {
+    return this.secondFormGroup.get('postcode');
   }
 
-  get hairColor() {
-    return this.thirdFormGroup.get('hairColor')
+
+  get street() {
+    return this.secondFormGroup.get('street');
   }
+
 
   signup() {
-    return this.authService.emailSignUp(this.email.value, this.password.value)
+    console.log(this.email.value);
+    console.log(this.password.value);
+    return this.authService.emailSignUp(this.email.value, this.password.value);
   }
 }

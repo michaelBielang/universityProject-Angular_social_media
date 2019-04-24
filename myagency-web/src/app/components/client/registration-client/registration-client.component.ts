@@ -12,23 +12,23 @@ export class RegistrationClientComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  countryList: String[];
+  countryList: string[];
   titles = ['Mr.', 'Mrs'];
 
-  constructor(private _formBuilder: FormBuilder, countriesService: CountriesService,
-              private _authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, countriesService: CountriesService,
+              private authService: AuthService) {
     this.countryList = countriesService.countries;
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.firstFormGroup = this.formBuilder.group({
       email: ['', Validators.required, Validators.email],
       content: ['', Validators.required, Validators.minLength(1)],
       password: ['', Validators.required, Validators.minLength(1)]
     });
 
     // Second Step
-    this.secondFormGroup = this._formBuilder.group({
+    this.secondFormGroup = this.formBuilder.group({
       email: ['', Validators.required, Validators.email],
       content: ['', Validators.required, Validators.minLength(1)],
       password: ['', Validators.required, Validators.minLength(1)]
@@ -52,7 +52,7 @@ export class RegistrationClientComponent implements OnInit {
   }
 
   signup() {
-    return this._authService.emailSignUp(this.email.value, this.password.value);
+    return this.authService.emailSignUp(this.email.value, this.password.value);
   }
 
 }

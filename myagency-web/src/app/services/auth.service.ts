@@ -36,17 +36,11 @@ export class AuthService {
   //// Email/Password Auth ////
 
   emailSignUp(email: string, password: string) {
-    this.user = Observable.of({
-      uid: 'test',
-      email: 'test',
-      photoURL: 'https://goo.gl/Fz9nrQ'
-    });
-    //TODO
-    /*    return this.afAuth.authService.createUserWithEmailAndPassword(email, password)
-          .then(user => {
-            return this.setUserDoc(user) // create initial user document
-          })
-          .catch(error => this.handleError(error));*/
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        return this.setUserDoc(user);
+      })
+      .catch(error => this.handleError(error));
   }
 
   /**
@@ -74,14 +68,19 @@ export class AuthService {
     this.notify.update(error.message, 'error');
   }
 
+  async signOut() {
+    await this.afAuth.auth.signOut();
+    this.router.navigate(['/']);
+  }
+
   // Sets user data to firestore after succesful login
   private setUserDoc(user) {
-    console.log(user);
-    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${user.uid}`);
+    const uid = user.user.uid;
+    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${uid}`);
 
     const data: User = {
-      uid: user.uid,
-      email: user.email || null,
+      uid,
+      email: user.user.email || null,
       photoURL: 'https://goo.gl/Fz9nrQ'
     };
     console.log(data.uid);
