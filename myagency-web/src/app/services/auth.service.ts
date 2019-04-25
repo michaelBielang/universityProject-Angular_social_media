@@ -67,7 +67,6 @@ export class AuthService {
       email: user.user.email || null,
       photoURL: 'https://goo.gl/Fz9nrQ'
     };
-    console.log(data.uid);
     return userRef.set(data);
   }
 }
