@@ -11,8 +11,11 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatGridListModule,
+  MatIconModule,
   MatInputModule,
+  MatListModule,
   MatSelectModule,
+  MatSidenavModule,
   MatStepperModule,
   MatToolbarModule
 } from '@angular/material';
@@ -24,8 +27,8 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {LoginModalComponent} from './components/shared/landing-page/login-modal/login-modal.component';
-import { LandingPageClientComponent } from './components/client/landing-page-client/landing-page-client.component';
-import { LandingPageModelComponent } from './components/model/landing-page-model/landing-page-model.component';
+import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
+import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -61,6 +64,9 @@ const config = {
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(config)
