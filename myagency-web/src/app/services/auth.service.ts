@@ -7,6 +7,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {NotifyService} from './notify.service';
 import 'rxjs-compat/add/operator/switchMap';
 import 'rxjs-compat/add/observable/of';
+import {UserRole} from '../enums/user-role.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -81,9 +82,9 @@ export class AuthService {
     const data: User = {
       uid,
       email: user.user.email || null,
-      photoURL: 'https://goo.gl/Fz9nrQ'
+      photoURL: 'https://goo.gl/Fz9nrQ',
+      role: UserRole.CLIENT
     };
-    console.log(data.uid);
     return userRef.set(data);
   }
 }
