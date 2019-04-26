@@ -8,6 +8,7 @@ import {LandingPageComponent} from './components/shared/landing-page/landing-pag
 import {TeamMembersComponent} from './components/shared/landing-page/team-members/team-members.component';
 import {
   MatButtonModule,
+  MatCardModule,
   MatDialogModule,
   MatFormFieldModule,
   MatGridListModule,
@@ -67,6 +68,7 @@ const config = {
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    MatCardModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(config)

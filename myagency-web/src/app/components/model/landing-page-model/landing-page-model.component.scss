@@ -1,7 +1,7 @@
 @import "~src/assets/scss/variables";
 
 .sidenav-container {
-  min-height: calc(100vh - #{$header-height});
+  height: calc(100vh - #{$header-height});
 
   .sidenav-actions {
     display: flex;
@@ -15,13 +15,42 @@
   mat-sidenav-content {
     display: grid;
     justify-content: center;
-    padding: 50px 0;
 
     div {
       margin: 20px;
 
       .title {
         font-size: $title-font-size;
+      }
+
+      &.other {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-auto-rows: 100px;
+
+        .high {
+          grid-row-end: span 4;
+        }
+
+        .normal {
+          grid-row-end: span 3;
+        }
+
+        .tiny {
+          grid-row-end: span 2;
+        }
+
+        mat-card-content {
+          display: grid;
+          justify-items: center;
+          align-items: center;
+          grid-row-gap: 10px;
+
+          img {
+            width: 150px;
+          }
+        }
       }
     }
   }
