@@ -1,3 +1,34 @@
-<p>
-  landing-page-client works!
-</p>
+<mat-toolbar class="toolbar">
+  <span>MyAgency</span>
+  <button mat-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" position="end">
+    <div class="sidenav-actions">
+      <a mat-button>Create a Job</a>
+      <a mat-button>Open Jobs</a>
+      <a mat-button>Messages</a>
+      <a mat-button>Profile</a>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="latest-actions">
+      <div class="title">News:</div>
+      <mat-list>
+        <mat-list-item>Lisa send you a message.</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Lisa joins the job!</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Peter send you Option2 for the 22. May</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Your Job has been created</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>...</mat-list-item>
+      </mat-list>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
