@@ -23,7 +23,7 @@ export class AuthService {
           // logged in, get custom user from Firestore
           return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
-          // logged out, null
+          // logged out -> null
           return Observable.of(null);
         }
       });
