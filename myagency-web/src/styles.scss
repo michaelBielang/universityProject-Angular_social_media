@@ -1,10 +1,12 @@
 @import "assets/scss/browser-clear";
 @import "assets/scss/basic";
 @import "assets/scss/marterials-theme";
+@import "assets/scss/images";
 
 html, body {
   height: 100%;
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 body {

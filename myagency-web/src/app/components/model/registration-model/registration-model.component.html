@@ -1,97 +1,152 @@
-<!--
-https://material.angular.io/components/stepper/overview
--->
+<mat-toolbar class="toolbar">
+  <span>MyAgency</span>
+  <a mat-button routerLink="/landing-page">Home</a>
+</mat-toolbar>
 
-<div style="text-align: center">
-  <ng-container *ngIf="(auth.user | async) || {} as user">
+<ng-container *ngIf="(authService.user | async) || {} as user">
+  <mat-horizontal-stepper [linear]=true>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" class="single-step">
+        <ng-template matStepLabel>Who</ng-template>
+        <mat-form-field>
+          <mat-select placeholder="Title" required>
+            <mat-option *ngFor="let title of titles" [value]='title'>
+              {{title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="name" formControlName="firstName" required>
+          <mat-error *ngIf="firstName.invalid && firstName.touched">
+            Please enter your name
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="surname" formControlName="lastName" required>
+          <mat-error *ngIf="lastName.invalid && lastName.touched">
+            Please enter your surname
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="email" formControlName="email" required>
+          <mat-error *ngIf="email.invalid && email.touched">
+            Please enter your email
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="password" formControlName="password" required>
+          <mat-error *ngIf="password.invalid && password.touched">
+            Please enter your password
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
 
-    <form [formGroup]="firstFormGroup" *ngIf="!user.uid" (ngSubmit)="signup()">
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup" class="single-step">
+        <ng-template matStepLabel>Where</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Street" formControlName="street" required>
+          <mat-error *ngIf="street.invalid && street.touched">
+            Please enter your street
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="City" formControlName="city" required>
+          <mat-error *ngIf="city.invalid && city.touched">
+            Please enter your city
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Postcode" formControlName="postcode" required>
+          <mat-error *ngIf="postcode.invalid && postcode.touched">
+            Please enter your postcode
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Country" required>
+            <mat-option *ngFor="let country of countryList" [value]='country'>
+              {{country}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
 
-      <h3>New User Signup</h3>
-      <p></p>
-      <label for="email">Email</label>
-      <input type="email" formControlName="email">
-
-
-      <div *ngIf="email.invalid && email.dirty">
-        Your email doesn't look quite right...
-      </div>
-      <p></p>
-      <label for="password">Password</label>
-      <input type="password" formControlName="password" required>
-
-      <div *ngIf="password.invalid && password.touched">
-
-        Password must be between 6 and 24 chars and have at least one number
-      </div>
-
-      <div *ngIf="firstFormGroup.valid">Form looks good! Let's do this.
-        <p></p>
-        <span>{{firstFormGroup.get("password").value}}</span></div>
-
-      <button type="submit" [disabled]="!firstFormGroup.valid">Submit</button>
-
-
-    </form>
-
-
-    <form [formGroup]="detailForm" *ngIf="user.uid && !user.catchPhrase" (ngSubmit)="setCatchPhrase(user)">
-
-      <h3>Set your Catch Phrase</h3>
-
-      <label for="catchPhrase">CatchPhrase</label>
-      <input type="test" formControlName="catchPhrase">
-
-
-      <button type="submit" [disabled]="!detailForm.valid">Submit</button>
-
-
-    </form>
-
-    <p *ngIf="user.catchPhrase">
-      You have completed the form!
-    </p>
-
-  </ng-container>
-</div>
-
-
-<!--<mat-horizontal-stepper #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill your your email</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="email" formControlName="name" required>
-      </mat-form-field>
-      <p></p>
-      <mat-form-field>
-        <input matInput placeholder="password" formControlName="name" required>
-      </mat-form-field>
-      <div>
-        <button type="submit">Next</button>
-      </div>
-    </form>
-  </mat-step>-->
-
-<!--
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="password" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>-->
-<!--</mat-horizontal-stepper>-->
+    <mat-step>
+      <form [formGroup]="firstFormGroup" class="single-step">
+        <ng-template matStepLabel>Body</ng-template>
+        <mat-form-field>
+          <mat-select placeholder="Age" required>
+            <mat-option *ngFor="let age of ages" [value]='age'>
+              {{age}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Height" required>
+            <mat-option *ngFor="let height of heights" [value]='height'>
+              {{height}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Clothes Size" required>
+            <mat-option *ngFor="let size of clothesSize" [value]='size'>
+              {{size}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Hair Color" required>
+            <mat-option *ngFor="let color of hairColors" [value]='color'>
+              {{color}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Eye Color" required>
+            <mat-option *ngFor="let color of eyes" [value]='color'>
+              {{color}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Hip Size" required>
+            <mat-option *ngFor="let hip of hipMeasurement" [value]='hip'>
+              {{hip}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Waist Size" required>
+            <mat-option *ngFor="let waist of waistMeasurement" [value]='waist'>
+              {{waist}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Bust Size" required>
+            <mat-option *ngFor="let bust of bustMeasurement" [value]='bust'>
+              {{bust}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="signup()">Signup</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-container>

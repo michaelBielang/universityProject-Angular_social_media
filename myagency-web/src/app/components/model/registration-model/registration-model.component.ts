@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../../services/auth.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../services/auth.service';
+import {CountriesService} from '../../../services/countries.service';
 
 
 @Component({
@@ -8,63 +9,83 @@ import {AuthService} from "../../../services/auth.service";
   templateUrl: './registration-model.component.html',
   styleUrls: ['./registration-model.component.scss']
 })
-
-
 export class RegistrationModelComponent implements OnInit {
-
   firstFormGroup: FormGroup;
-  detailForm: FormGroup;
+  secondFormGroup: FormGroup;
+  countryList: string[];
+  titles = ['Mr.', 'Mrs'];
+  eyes = ['Blue.', 'Green', 'Brown'];
+  hairColors = ['Blond.', 'Brunette', 'Black'];
+  clothesSize = ['S', 'M', 'L', 'XL'];
+  heights = Array.from({length: (210 - 150)}, (value, key) => key + 150);
+  bustMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
+  waistMeasurement = Array.from({length: (90 - 40)}, (value, key) => key + 40);
+  hipMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
+  date = new Date().getFullYear();
+  ages = Array.from({length: 50}, (value, key) => this.date - 50);
 
-  constructor(public fb: FormBuilder, public auth: AuthService) {
+  constructor(public formBuilder: FormBuilder, public authService: AuthService, countryService: CountriesService) {
+    this.countryList = countryService.country_list;
   }
 
   ngOnInit() {
     // First Step
-    this.firstFormGroup = this.fb.group({
-      'email': ['', [
+    this.firstFormGroup = this.formBuilder.group({
+      email: ['', [
         Validators.required,
         Validators.email]],
-      'password': ['', [
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+      password: ['', [
         Validators.minLength(6),
         Validators.maxLength(25),
         Validators.required
       ]],
-      'name': ['',],
-      'age': ['', []],
-      'height': ['', []]
+      lastName: ['', Validators.required],
+      firstName: ['', Validators.required]
     });
 
     // Second Step
-    this.detailForm = this.fb.group({
-      'catchPhrase': ['', [Validators.required]]
+    this.secondFormGroup = this.formBuilder.group({
+      street: ['', [Validators.required, Validators.minLength(2)]],
+      city: ['', [Validators.required, Validators.minLength(2)]],
+      postcode: ['', [Validators.required, Validators.minLength(2)]]
     });
-
   }
 
-  // Using getters will make your code look pretty
+
   get email() {
-    return this.firstFormGroup.get('email')
+    return this.firstFormGroup.get('email');
+  }
+
+  get lastName() {
+    return this.firstFormGroup.get('lastName');
+  }
+
+  get firstName() {
+    return this.firstFormGroup.get('firstName');
   }
 
   get password() {
-    return this.firstFormGroup.get('password')
+    return this.firstFormGroup.get('password');
   }
 
-  get catchPhrase() {
-    return this.detailForm.get('catchPhrase')
+  get city() {
+    return this.secondFormGroup.get('city');
   }
 
 
-  // Step 1
+  get postcode() {
+    return this.secondFormGroup.get('postcode');
+  }
+
+
+  get street() {
+    return this.secondFormGroup.get('street');
+  }
+
+
   signup() {
-    console.log("reached singup")
-    return this.auth.emailSignUp(this.email.value, this.password.value)
-  }
-
-  // Step 2
-  setCatchPhrase(user) {
-    console.log("received");
-    return this.auth.updateUser(user, {catchPhrase: this.catchPhrase.value})
+    console.log(this.email.value);
+    console.log(this.password.value);
+    return this.authService.emailSignUp(this.email.value, this.password.value);
   }
 }
