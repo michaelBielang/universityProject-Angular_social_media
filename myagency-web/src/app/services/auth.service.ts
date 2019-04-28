@@ -33,7 +33,6 @@ export class AuthService {
   }
 
   // Email/Password Auth
-
   emailSignUp(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
@@ -80,7 +79,6 @@ export class AuthService {
     const data: User = {
       uid,
       email: user.user.email || null,
-      photoURL: 'https://goo.gl/Fz9nrQ',
       role: UserRole.CLIENT
     };
     console.log(data.uid);
