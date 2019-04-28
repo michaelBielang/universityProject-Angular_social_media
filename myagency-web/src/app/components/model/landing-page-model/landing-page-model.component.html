@@ -8,8 +8,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" position="end">
     <div class="sidenav-actions">
-      <a mat-button>Jobs</a>
-      <a mat-button>Messages</a>
+      <a mat-button>Open Requests</a>
+      <a mat-button>Coming Jobs</a>
       <a mat-button>Bookings</a>
       <a mat-button>Profile</a>
       <a mat-button>Calendar</a>
@@ -20,20 +20,12 @@
   <mat-sidenav-content>
     <div class="latest-actions">
       <div class="title">News:</div>
-      <mat-list>
-        <mat-list-item>You are booked for armani!</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>We're sorry to tell you it didn't work out with Calvin Klein. <3 Keep Going!</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>You have a request for armani :)</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>...</mat-list-item>
-      </mat-list>
+      <news-list [news]="userNewsService.modelNews()"></news-list>
     </div>
     <div class="tip-of-the-day">
       <div class="title">Tip of the Day:</div>
       <mat-list>
-        <mat-list-item>The best photos are taken when you are relaxed and completely yourself.</mat-list-item>
+        <mat-list-item>{{modelTipService.tipOfTheDay()}}</mat-list-item>
       </mat-list>
     </div>
     <mat-divider></mat-divider>
