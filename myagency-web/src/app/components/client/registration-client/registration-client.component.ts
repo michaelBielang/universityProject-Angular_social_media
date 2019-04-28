@@ -23,7 +23,7 @@ export class RegistrationClientComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     // Second Step
@@ -51,6 +51,18 @@ export class RegistrationClientComponent implements OnInit {
   signup() {
     return this.authService.emailSignUp(this.email.value, this.password.value);
   }
+
+// relevant after MVP
+  /*
+  https://angular.io/guide/reactive-forms
+  moveToSelectedTab(tabName: string) {
+      for (let i = 0; i < document.querySelectorAll('.mat-tab-label-content').length; i++) {
+        if ((document.querySelectorAll('.mat-tab-label-content')[i] as HTMLElement).innerText === tabName) {
+          (document.querySelectorAll('.mat-tab-label')[i] as HTMLElement).click();
+        }
+      }
+    }*/
+
 
 }
 

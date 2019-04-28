@@ -2,6 +2,8 @@
 @import "assets/scss/basic";
 @import "assets/scss/marterials-theme";
 @import "assets/scss/images";
+/*make themes working*/
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body {
   height: 100%;

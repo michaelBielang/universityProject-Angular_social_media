@@ -8,12 +8,17 @@ import {LandingPageComponent} from './components/shared/landing-page/landing-pag
 import {TeamMembersComponent} from './components/shared/landing-page/team-members/team-members.component';
 import {
   MatButtonModule,
+  MatCardModule,
   MatDialogModule,
   MatFormFieldModule,
   MatGridListModule,
+  MatIconModule,
   MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
   MatSelectModule,
   MatStepperModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
@@ -24,8 +29,11 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {LoginModalComponent} from './components/shared/landing-page/login-modal/login-modal.component';
-import { LandingPageClientComponent } from './components/client/landing-page-client/landing-page-client.component';
-import { LandingPageModelComponent } from './components/model/landing-page-model/landing-page-model.component';
+import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
+import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
+import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
+import {SearchResultsComponent} from './components/client/search-results/search-results.component';
+import {ProfileComponent} from './components/model/profile/profile.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -46,7 +54,10 @@ const config = {
     RegisterStartComponent,
     LoginModalComponent,
     LandingPageClientComponent,
-    LandingPageModelComponent
+    LandingPageModelComponent,
+    SearchMaskComponent,
+    SearchResultsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +74,12 @@ const config = {
     MatDialogModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(config)
+    AngularFireModule.initializeApp(config),
+    MatTabsModule,
+    MatIconModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]

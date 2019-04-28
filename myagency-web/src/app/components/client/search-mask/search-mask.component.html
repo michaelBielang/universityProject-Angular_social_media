@@ -1,0 +1,12 @@
+<mat-toolbar class="toolbar">
+  <span>MyAgency</span>
+  <a mat-button routerLink="/landing-page">Home</a>
+</mat-toolbar>
+
+<p>test</p>
+<mat-paginator [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+<button mat-button (click)="processSearchRequest()">Search</button>
+<app-search-results></app-search-results>
