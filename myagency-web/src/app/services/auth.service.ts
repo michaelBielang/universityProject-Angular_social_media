@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {User} from '../components/model/registration-model/user-interface';
+import {User} from '../components/model/user-interface';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
@@ -17,8 +17,6 @@ export class AuthService {
               private angularFirestore: AngularFirestore,
               private router: Router,
               private notify: NotifyService) {
-    // Define the user observable
-    // TODO check whether custom user is appropriated here
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
@@ -31,7 +29,7 @@ export class AuthService {
       });
   }
 
-  //// Email/Password Auth ////
+  // Email/Password Auth
 
   emailSignUp(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
@@ -64,8 +62,7 @@ export class AuthService {
 
     const data: User = {
       uid,
-      email: user.user.email || null,
-      photoURL: 'https://goo.gl/Fz9nrQ'
+      email: user.user.email || null
     };
     return userRef.set(data);
   }
