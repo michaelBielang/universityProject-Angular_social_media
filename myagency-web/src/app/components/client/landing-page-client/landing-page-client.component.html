@@ -10,7 +10,6 @@
     <div class="sidenav-actions">
       <a mat-button>Create a Job</a>
       <a mat-button>Open Jobs</a>
-      <a mat-button>Messages</a>
       <a mat-button>Profile</a>
     </div>
   </mat-sidenav>
@@ -18,17 +17,7 @@
   <mat-sidenav-content>
     <div class="latest-actions">
       <div class="title">News:</div>
-      <mat-list>
-        <mat-list-item>Lisa send you a message.</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Lisa joins the job!</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Peter send you Option2 for the 22. May</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Your Job has been created</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>...</mat-list-item>
-      </mat-list>
+      <news-list [news]="userNewsService.clientNews()"></news-list>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

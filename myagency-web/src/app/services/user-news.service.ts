@@ -16,4 +16,14 @@ export class UserNewsService {
     ];
     return news.concat(news).concat(news);
   }
+
+  public clientNews(): string[] {
+    const news = [
+      'Lisa send you a message.',
+      'Lisa joins the job!',
+      'Peter send you Option2 for the 22. May',
+      'Your Job has been created'
+    ];
+    return news.concat(news).concat(news);
+  }
 }
