@@ -1,11 +1,13 @@
 <div class="masonry-container">
-  <mat-card #item *ngFor="let item of content | slice:0:currentlyDisplayedItems">
-    <mat-card-title>{{item.title}}</mat-card-title>
-    <mat-card-content>
-      <img *ngIf="!!item.imageSrc"
+  <div #card *ngFor="let item of content | slice:0:currentlyDisplayedItems">
+    <div class="card-content">
+      <mat-card-title>{{item.title}}</mat-card-title>
+      <img *ngIf="item.imageSrc"
            [src]="item.imageSrc">
       <span *ngIf="!!item.content">{{item.content}}</span>
-    </mat-card-content>
-  </mat-card>
-  <button mat-button (click)="currentlyDisplayedItems= currentlyDisplayedItems + displayedItems">more ...</button>
+    </div>
+  </div>
 </div>
+<button mat-button *ngIf="currentlyDisplayedItems < content.length"
+        (click)="currentlyDisplayedItems= currentlyDisplayedItems + displayedItems">more ...
+</button>

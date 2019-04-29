@@ -32,7 +32,6 @@ import {LandingPageClientComponent} from './components/client/landing-page-clien
 import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
 import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
 import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
-import {NgxImagesloadedModule} from 'ngx-imagesloaded';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -76,8 +75,7 @@ const config = {
     MatCardModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(config),
-    NgxImagesloadedModule
+    AngularFireModule.initializeApp(config)
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]

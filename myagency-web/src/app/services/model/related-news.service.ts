@@ -46,6 +46,6 @@ export class RelatedNewsService {
         content: 'across the sky'
       }
     ];
-    return items;
+    return items.concat(items).concat(items);
   }
 }

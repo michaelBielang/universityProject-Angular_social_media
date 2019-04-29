@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, Input, QueryList, ViewChildren} from '@angular/core';
 import {RelatedNews} from '../../../../services/model/related-news.service';
 
 @Component({
@@ -22,33 +22,31 @@ export class RelatedNewsComponent implements AfterViewInit {
 
   public currentlyDisplayedItems = this.displayedItems;
 
-  @ViewChildren('item')
-  private allItems;
+  @ViewChildren('card')
+  private allItems: QueryList<any>;
+
+  private rowHeight;
+  private rowGap;
 
   constructor() {
   }
 
   ngAfterViewInit() {
+    const grid = document.getElementsByClassName('masonry-container')[0];
+    this.rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'), 10);
+    this.rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'), 10);
     this.resizeAllGridItems();
+    this.allItems.changes.subscribe((value) => this.resizeAllGridItems());
+    window.addEventListener('resize', this.resizeAllGridItems);
   }
 
   private resizeGridItem(item): void {
-    debugger;
-    const grid = document.getElementsByClassName('masonry-container')[0];
-    const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'), 10);
-    const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'), 10);
-    const rowSpan = Math.ceil((item.nativeElement.querySelector('.content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
-    item.style.gridRowEnd = 'span ' + rowSpan;
+    const rowSpan = Math.ceil((item.nativeElement.querySelector('.card-content').getBoundingClientRect().height + this.rowGap) /
+      (this.rowHeight + this.rowGap));
+    item.nativeElement.style.gridRowEnd = 'span ' + rowSpan;
   }
 
   private resizeAllGridItems(): void {
     this.allItems.forEach((value) => this.resizeGridItem(value));
   }
-
-
-  public resizeInstance(instance): void {
-    debugger;
-    const item = instance.elements[0];
-  }
-
 }
