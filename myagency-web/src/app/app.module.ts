@@ -30,6 +30,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {LoginModalComponent} from './components/shared/landing-page/login-modal/login-modal.component';
 import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
 import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
+import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
+import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -50,7 +52,9 @@ const config = {
     RegisterStartComponent,
     LoginModalComponent,
     LandingPageClientComponent,
-    LandingPageModelComponent
+    LandingPageModelComponent,
+    NewsListComponent,
+    RelatedNewsComponent
   ],
   imports: [
     BrowserModule,

@@ -84,8 +84,6 @@ export class RegistrationModelComponent implements OnInit {
 
 
   signup() {
-    console.log(this.email.value);
-    console.log(this.password.value);
     return this.authService.emailSignUp(this.email.value, this.password.value);
   }
 }

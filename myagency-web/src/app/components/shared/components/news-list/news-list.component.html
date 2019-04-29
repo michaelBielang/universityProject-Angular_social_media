@@ -1,0 +1,9 @@
+<mat-list>
+  <ng-container *ngFor="let info of news | slice:0:currentlyDisplayedItems; index as i">
+    <mat-list-item>{{info}}</mat-list-item>
+    <mat-divider *ngIf="i != news.length-1"></mat-divider>
+  </ng-container>
+  <mat-list-item *ngIf="currentlyDisplayedItems < news.length">
+    <button mat-button (click)="currentlyDisplayedItems= currentlyDisplayedItems + displayedItems">more ...</button>
+  </mat-list-item>
+</mat-list>
