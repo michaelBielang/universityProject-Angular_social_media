@@ -24,7 +24,7 @@ import {
 import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
 import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
@@ -33,7 +33,7 @@ import {LandingPageClientComponent} from './components/client/landing-page-clien
 import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
 import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
 import {SearchResultsComponent} from './components/client/search-results/search-results.component';
-import {ProfileComponent} from './components/model/profile/profile.component';
+import { ProfileComponent } from './components/model/profile/profile.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -79,7 +79,8 @@ const config = {
     MatIconModule,
     MatCardModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FormsModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]

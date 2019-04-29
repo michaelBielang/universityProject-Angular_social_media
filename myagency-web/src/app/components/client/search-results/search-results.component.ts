@@ -1,7 +1,7 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ModelService} from "../../../services/model.service";
-import {User} from "../../../enums/user-interface";
+import {ModelService} from '../../../services/model.service';
+import {User} from '../../../enums/user-interface';
 
 @NgModule({
   imports: [BrowserAnimationsModule],
@@ -18,6 +18,7 @@ export class SearchResultsComponent implements OnInit {
   mode = 'indeterminate';
   searchRequest = false;
   models: User[];
+  showResults = true;
 
   constructor(private modelService: ModelService) {
   }

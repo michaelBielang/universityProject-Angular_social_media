@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {User} from '../enums/user-interface';
-import {Users} from '../mocks/user.mocks';
+import {Users} from '../mocks/model.mocks';
 
 @Injectable({
   providedIn: 'root'

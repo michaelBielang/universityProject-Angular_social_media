@@ -7,6 +7,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SearchMaskComponent implements OnInit {
 
+  eyes = ['Blue.', 'Green', 'Brown'];
+  hairColors = ['Blond.', 'Brunette', 'Black'];
+  clothesSize = ['S', 'M', 'L', 'XL'];
+  heights = Array.from({length: (210 - 150)}, (value, key) => key + 150);
+  bustMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
+  waistMeasurement = Array.from({length: (90 - 40)}, (value, key) => key + 40);
+  hipMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
+  date = new Date().getFullYear();
+  ages = Array.from({length: 50}, (value, key) => this.date - 50);
 
 
   constructor() {
