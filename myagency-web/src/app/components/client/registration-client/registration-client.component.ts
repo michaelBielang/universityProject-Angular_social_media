@@ -22,16 +22,13 @@ export class RegistrationClientComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
-      content: ['', Validators.required, Validators.minLength(1)],
-      password: ['', Validators.required, Validators.minLength(1)]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5)]]
     });
 
     // Second Step
     this.secondFormGroup = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
-      content: ['', Validators.required, Validators.minLength(1)],
-      password: ['', Validators.required, Validators.minLength(1)]
+      content: ['', Validators.required]
     });
   }
 
@@ -40,7 +37,7 @@ export class RegistrationClientComponent implements OnInit {
   }
 
   get content() {
-    return this.firstFormGroup.get('content');
+    return this.secondFormGroup.get('content');
   }
 
   get countries() {
