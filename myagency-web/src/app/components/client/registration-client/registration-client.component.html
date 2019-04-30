@@ -1,0 +1,76 @@
+<mat-toolbar class="toolbar">
+  <span>MyAgency</span>
+  <a mat-button routerLink="/landing-page">Home</a>
+</mat-toolbar>
+
+<ng-container *ngIf="(authService.user | async) || {} as user">
+  <mat-horizontal-stepper [linear]=true>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" class="single-step">
+        <ng-template matStepLabel>You</ng-template>
+        <mat-form-field>
+          <mat-select placeholder="Title" required>
+            <mat-option *ngFor="let title of titles " [value]='title'>
+              {{title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="name" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="surname" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="email" formControlName="email" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="password" formControlName="password" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup" class="single-step">
+        <ng-template matStepLabel>Company</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Company" formControlName="content" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Street" formControlName="content" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="City" formControlName="content" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Postcode" formControlName="content" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-select placeholder="Country" required>
+            <mat-option *ngFor="let country of countryList" [value]='country'>
+              {{country}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button [disabled]="secondFormGroup.invalid" (click)="signup()">signup</button>
+          <br>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-container>
