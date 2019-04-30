@@ -9,7 +9,7 @@ import {TeamMembersComponent} from './components/shared/landing-page/team-member
 import {
   MatButtonModule,
   MatCardModule,
-  MatDialogModule,
+  MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
@@ -34,6 +34,7 @@ import {LandingPageModelComponent} from './components/model/landing-page-model/l
 import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
 import {SearchResultsComponent} from './components/client/search-results/search-results.component';
 import { ProfileComponent } from './components/model/profile/profile.component';
+import { NavigationComponent } from './components/shared/navigation/navigation.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -57,7 +58,8 @@ const config = {
     LandingPageModelComponent,
     SearchMaskComponent,
     SearchResultsComponent,
-    ProfileComponent
+    ProfileComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ const config = {
     MatCardModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    MatDividerModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]

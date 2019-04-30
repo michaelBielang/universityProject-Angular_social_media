@@ -1,10 +1,18 @@
-<div *ngIf="model">
-  <h2>{{model.email | uppercase}} Details</h2>
-  <div><span>id: </span>{{model.uid}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="model.name" placeholder="name"/>
-    </label>
-  </div>
-  <button (click)="goBack()">go back</button>
-</div>
+<app-navigation></app-navigation>
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{model.name}}</mat-card-title>
+    <mat-card-subtitle>High Fashion</mat-card-subtitle>
+  </mat-card-header>
+  <mat-grid-list cols="3">
+    <mat-grid-tile>
+      <img mat-card-image src="../../../../assets/images/models/{{model.uid}}.jpg" alt="profile_pic">
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <img mat-card-image src="../../../../assets/images/models/{{model.uid}}.jpg" alt="profile_pic">
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</mat-card>
+<button (click)="goBack()">go back</button>

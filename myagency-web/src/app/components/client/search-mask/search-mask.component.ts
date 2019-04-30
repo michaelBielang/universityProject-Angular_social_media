@@ -15,7 +15,7 @@ export class SearchMaskComponent implements OnInit {
   waistMeasurement = Array.from({length: (90 - 40)}, (value, key) => key + 40);
   hipMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
   date = new Date().getFullYear();
-  ages = Array.from({length: 50}, (value, key) => this.date - 50);
+  ages = ['dummy'];
 
 
   constructor() {
