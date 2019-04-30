@@ -10,6 +10,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
@@ -18,6 +19,7 @@ import {
   MatSelectModule,
   MatSidenavModule,
   MatStepperModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
@@ -30,6 +32,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {LoginModalComponent} from './components/shared/landing-page/login-modal/login-modal.component';
 import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
 import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
+import {JobItemComponent} from './components/model/job-overview/job-item/job-item.component';
+import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -50,7 +54,9 @@ const config = {
     RegisterStartComponent,
     LoginModalComponent,
     LandingPageClientComponent,
-    LandingPageModelComponent
+    LandingPageModelComponent,
+    JobItemComponent,
+    JobOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +75,8 @@ const config = {
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    MatTabsModule,
+    MatExpansionModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(config)

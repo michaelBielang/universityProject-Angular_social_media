@@ -1,0 +1,16 @@
+<div class="jobContainer">
+  <div class="header">
+    <img [src]="job.imgSrc">
+    <span>{{job.client}}</span>
+    <span>{{job.date}}</span>
+    <span>{{job.location}}</span>
+    <span>{{job.fee}}</span>
+    <mat-icon>expand_more</mat-icon>
+    <mat-icon>expand_less</mat-icon>
+  </div>
+
+  <div class="content">
+    {{jobService.jobDetails(job.jobId)}}
+  </div>
+
+</div>

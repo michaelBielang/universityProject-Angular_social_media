@@ -1,0 +1,17 @@
+<mat-tab-group>
+  <mat-tab label="open Requests">
+    <div class="open-requests tab-container">
+      <job-item *ngFor="let job of jobsService.jobsOverview()" [job]="job"></job-item>
+    </div>
+  </mat-tab>
+  <mat-tab label="coming Jobs">
+    <h1>Some more tab content</h1>
+    <p>...</p>
+  </mat-tab>
+  <mat-tab label="past Jobs">
+    <h1>Some more tab content</h1>
+    <p>...</p>
+  </mat-tab>
+</mat-tab-group>
+
+<router-outlet></router-outlet>
