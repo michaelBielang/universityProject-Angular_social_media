@@ -2,7 +2,7 @@ import {Component, NgModule, OnInit} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ModelService} from '../../../services/model.service';
 import {User} from '../../../enums/user-interface';
-import {FindModelService} from "../../../services/find-model.service";
+import {FindModelService} from '../../../services/find-model.service';
 
 @NgModule({
   imports: [BrowserAnimationsModule],
@@ -15,23 +15,34 @@ import {FindModelService} from "../../../services/find-model.service";
 })
 export class SearchResultsComponent implements OnInit {
 
-  color = 'accent';
-  mode = 'indeterminate';
-  searchRequest = false;
-  models: User[];
-  showResults = false;
+  private color = 'accent';
+  private mode = 'indeterminate';
+  private searchRequest = false;
+  private models: User[];
+  private showResults = false;
 
   constructor(private modelService: ModelService, private findModelService: FindModelService) {
+    this.getModels();
   }
 
   ngOnInit() {
-    this.getModels();
-    this.findModelService.subject.subscribe(async () => {
-      this.showResults = false;
-      this.searchRequest = true;
-      await new Promise(resolve => setTimeout(resolve, 750));
-      this.searchRequest = false;
-      this.showResults = true;
+    this.findModelService.subject.subscribe(async (callSource) => {
+      console.log('source: ' + callSource);
+      if (callSource === 'profile') {
+        console.log("here");
+        await new Promise(resolve => setTimeout(resolve, 750));
+        console.log("here2");
+        console.log(this.models.length);
+        this.showResults = false;
+        this.showResults = true;
+      } else {
+        console.log("here3");
+        this.showResults = false;
+        this.searchRequest = true;
+        await new Promise(resolve => setTimeout(resolve, 750));
+        this.searchRequest = false;
+        this.showResults = true;
+      }
     });
   }
 

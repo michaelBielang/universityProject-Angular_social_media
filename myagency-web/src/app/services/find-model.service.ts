@@ -12,8 +12,8 @@ export class FindModelService {
   constructor() {
   }
 
-  newSearchRequested() {
-    this.subject.next();
+  newSearchRequested(callSource) {
+    this.subject.next(callSource);
   }
 
 }

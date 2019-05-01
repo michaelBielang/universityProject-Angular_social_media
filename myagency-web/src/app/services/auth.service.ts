@@ -80,6 +80,7 @@ export class AuthService {
       uid,
       email: user.model.email || null,
       name: 'dummy',
+      location: 'dummy',
       role: UserRole.CLIENT
     };
     console.log(data.uid);

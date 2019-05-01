@@ -27,6 +27,6 @@ export class SearchMaskComponent implements OnInit {
   }
 
   processSearchRequest() {
-    this.findModelService.newSearchRequested();
+    this.findModelService.newSearchRequested('searchMask');
   }
 }

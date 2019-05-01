@@ -1,19 +1,28 @@
 <app-navigation></app-navigation>
-<!--
-<mat-card>
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{model.name}}</mat-card-title>
-    <mat-card-subtitle>High Fashion</mat-card-subtitle>
-  </mat-card-header>
-  <mat-grid-list cols="3">
-    <mat-grid-tile>
-      <img mat-card-image src="../../../../assets/images/models/{{model.uid}}.jpg" alt="profile_pic">
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <img mat-card-image src="../../../../assets/images/models/{{model.uid}}.jpg" alt="profile_pic">
-    </mat-grid-tile>
-  </mat-grid-list>
-</mat-card>
-<button (click)="goBack()">go back</button>
--->
+
+<mat-grid-list cols="4" rowHeight="75px">
+  <mat-grid-tile colspan="1" rowspan="1">
+    <div class="text-inside-grid">Location: {{model.location}}</div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="1">
+
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="3">
+    <img src="../../../../assets/images/models/{{model.uid}}.jpg" alt="profile pic">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <div class="text-inside-grid">Measurements</div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="1">
+
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowspan="1">
+    <button mat-raised-button color="primary" (click)="goBack()">Search</button>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-tab-group class="mat-tab-group" mat-align-tabs="center" animationDuration="2000ms">
+  <mat-tab label="First">Content 1</mat-tab>
+  <mat-tab label="Second">Content 2</mat-tab>
+  <mat-tab label="Third">Content 3</mat-tab>
+</mat-tab-group>
