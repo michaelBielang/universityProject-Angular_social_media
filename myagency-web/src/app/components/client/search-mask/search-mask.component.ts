@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+import {FindModelService} from '../../../services/find-model.service';
 
 @Component({
   selector: 'app-search-mask',
   templateUrl: './search-mask.component.html',
   styleUrls: ['./search-mask.component.scss']
 })
+
 export class SearchMaskComponent implements OnInit {
 
   eyes = ['Blue.', 'Green', 'Brown'];
@@ -15,16 +17,16 @@ export class SearchMaskComponent implements OnInit {
   waistMeasurement = Array.from({length: (90 - 40)}, (value, key) => key + 40);
   hipMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
   date = new Date().getFullYear();
-  ages = ['dummy'];
+  ages = Array.from({length: 18}, (value, key) => key + 18);
 
 
-  constructor() {
+  constructor(private findModelService: FindModelService) {
   }
 
   ngOnInit() {
   }
 
   processSearchRequest() {
-
+    this.findModelService.newSearchRequested();
   }
 }

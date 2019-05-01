@@ -2,6 +2,7 @@ import {Component, NgModule, OnInit} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ModelService} from '../../../services/model.service';
 import {User} from '../../../enums/user-interface';
+import {FindModelService} from "../../../services/find-model.service";
 
 @NgModule({
   imports: [BrowserAnimationsModule],
@@ -14,17 +15,24 @@ import {User} from '../../../enums/user-interface';
 })
 export class SearchResultsComponent implements OnInit {
 
-  color = 'primary';
+  color = 'accent';
   mode = 'indeterminate';
   searchRequest = false;
   models: User[];
-  showResults = true;
+  showResults = false;
 
-  constructor(private modelService: ModelService) {
+  constructor(private modelService: ModelService, private findModelService: FindModelService) {
   }
 
   ngOnInit() {
     this.getModels();
+    this.findModelService.subject.subscribe(async () => {
+      this.showResults = false;
+      this.searchRequest = true;
+      await new Promise(resolve => setTimeout(resolve, 750));
+      this.searchRequest = false;
+      this.showResults = true;
+    });
   }
 
   getModels(): void {
