@@ -27,7 +27,7 @@ export class JobsService {
 
   public jobsOverview(): JobOverview[] {
     const jobOverview = [{
-      imgSrc: 'https://st3.depositphotos.com/4263287/14331/v/1600/depositphotos_143311359-stock-illustration-xy-x-y-hand-writing.jpg',
+      imgSrc: 'https://image.pitchbook.com/aVTBCrqHkm8LAvzqdXt8u8ELcJG1476941927661_200x200?uq=H8lJTeVz',
       client: 'XY',
       date: '18.06.2019 - 20.06.2019',
       location: 'Moskva, Russia',

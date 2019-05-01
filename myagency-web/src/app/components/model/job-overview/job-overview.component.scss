@@ -1,7 +1,17 @@
-.open-requests {
+@import "~src/assets/scss/variables";
+
+.job-tabs {
+  height: calc(100vh - #{$header-height});
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: 20px;
-  padding: 20px;
-  width: 80%;
+  grid-template-rows: auto 1fr;
+
+  .open-requests {
+    $gaps: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: $gaps;
+    padding: $gaps;
+    background-color: $color-300;
+    min-height: calc(100% - 2 * #{$gaps});
+  }
 }

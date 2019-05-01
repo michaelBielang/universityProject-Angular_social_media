@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {JobOverview, JobsService} from '../../../../services/jobs.service';
 
 @Component({
@@ -6,15 +6,14 @@ import {JobOverview, JobsService} from '../../../../services/jobs.service';
   templateUrl: './job-item.component.html',
   styleUrls: ['./job-item.component.scss']
 })
-export class JobItemComponent implements OnInit {
+export class JobItemComponent {
 
   @Input()
   public job: JobOverview;
 
-  constructor(public jobService: JobsService) {
-  }
+  public collapsed = false;
 
-  ngOnInit() {
+  constructor(public jobService: JobsService) {
   }
 
 }

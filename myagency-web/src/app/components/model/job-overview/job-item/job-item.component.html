@@ -1,16 +1,20 @@
-<div class="jobContainer">
-  <div class="header">
-    <img [src]="job.imgSrc">
-    <span>{{job.client}}</span>
-    <span>{{job.date}}</span>
-    <span>{{job.location}}</span>
-    <span>{{job.fee}}</span>
-    <mat-icon>expand_more</mat-icon>
-    <mat-icon>expand_less</mat-icon>
+<div class="jobContainer" (click)="collapsed = !collapsed">
+  <img [src]="job.imgSrc">
+  <div class="infos">
+    <span class="client">{{job.client}}</span>
+    <span class="date">{{job.date}}</span>
+    <span class="location">{{job.location}}</span>
+    <span class="fee">{{job.fee}}</span>
+    <div class="expand-icon">
+      <mat-icon *ngIf="!collapsed">expand_more</mat-icon>
+      <mat-icon *ngIf="collapsed">expand_less</mat-icon>
+    </div>
   </div>
-
-  <div class="content">
-    {{jobService.jobDetails(job.jobId)}}
+  <div [hidden]="!collapsed" class="detailed-infos">
+    {{jobService.jobDetails(job.jobId).contact}}
+    {{jobService.jobDetails(job.jobId).photographer}}
+    {{jobService.jobDetails(job.jobId).detailedLocation}}
+    {{jobService.jobDetails(job.jobId).jobDetails}}
+    {{jobService.jobDetails(job.jobId).clientDetails}}
   </div>
-
 </div>

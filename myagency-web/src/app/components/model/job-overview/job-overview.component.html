@@ -1,7 +1,11 @@
-<mat-tab-group>
+<mat-toolbar class="toolbar">
+  <span>MyAgency</span>
+</mat-toolbar>
+
+<mat-tab-group animationDuration="0ms" class="job-tabs">
   <mat-tab label="open Requests">
     <div class="open-requests tab-container">
-      <job-item *ngFor="let job of jobsService.jobsOverview()" [job]="job"></job-item>
+      <job-item *ngFor="let job of jobs" [job]="job"></job-item>
     </div>
   </mat-tab>
   <mat-tab label="coming Jobs">
@@ -13,5 +17,3 @@
     <p>...</p>
   </mat-tab>
 </mat-tab-group>
-
-<router-outlet></router-outlet>
