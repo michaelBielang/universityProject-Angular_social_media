@@ -14,6 +14,9 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
+  MatSelectModule,
+  MatSidenavModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSelectModule, MatSnackBarModule,
@@ -35,6 +38,10 @@ import {SearchMaskComponent} from './components/client/search-mask/search-mask.c
 import {SearchResultsComponent} from './components/client/search-results/search-results.component';
 import { ProfileComponent } from './components/model/profile/profile.component';
 import { NavigationComponent } from './components/shared/navigation/navigation.component';
+import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
+import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
+import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
+import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -60,6 +67,9 @@ const config = {
     SearchResultsComponent,
     ProfileComponent,
     NavigationComponent
+    LandingPageModelComponent,
+    NewsListComponent,
+    RelatedNewsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +84,10 @@ const config = {
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(config),

@@ -1,0 +1,27 @@
+@import "~src/assets/scss/variables";
+
+.sidenav-container {
+  height: calc(100vh - #{$header-height});
+
+  .sidenav-actions {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      margin: 10px;
+    }
+  }
+
+  mat-sidenav-content {
+    display: grid;
+    justify-content: center;
+
+    div {
+      margin: 20px 0;
+
+      .title {
+        font-size: $title-font-size;
+      }
+    }
+  }
+}

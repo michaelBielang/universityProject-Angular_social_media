@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserNewsService} from '../../../services/user-news.service';
 
 @Component({
   selector: 'app-landing-page-client',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageClientComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userNewsService: UserNewsService) {
+  }
 
   ngOnInit() {
   }
