@@ -1,0 +1,25 @@
+@import "~src/assets/scss/variables";
+
+.masonry-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-rows: 20px;
+
+  .card-content {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-row-gap: 10px;
+    background-color: $color-0;
+    padding: 10px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+button {
+  width: 100%;
+}

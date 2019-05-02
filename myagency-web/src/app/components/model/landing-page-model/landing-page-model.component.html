@@ -8,8 +8,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" position="end">
     <div class="sidenav-actions">
-      <a mat-button>Jobs</a>
-      <a mat-button>Messages</a>
+      <a mat-button>Open Requests</a>
+      <a mat-button>Coming Jobs</a>
       <a mat-button>Bookings</a>
       <a mat-button>Profile</a>
       <a mat-button>Calendar</a>
@@ -20,57 +20,17 @@
   <mat-sidenav-content>
     <div class="latest-actions">
       <div class="title">News:</div>
-      <mat-list>
-        <mat-list-item>You are booked for armani!</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>We're sorry to tell you it didn't work out with Calvin Klein. <3 Keep Going!</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>You have a request for armani :)</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>...</mat-list-item>
-      </mat-list>
+      <news-list [news]="userNewsService.modelNews()"></news-list>
     </div>
     <div class="tip-of-the-day">
       <div class="title">Tip of the Day:</div>
       <mat-list>
-        <mat-list-item>The best photos are taken when you are relaxed and completely yourself.</mat-list-item>
+        <mat-list-item>{{modelTipService.tipOfTheDay()}}</mat-list-item>
       </mat-list>
     </div>
     <mat-divider></mat-divider>
     <div class="other">
-      <mat-card class="normal">
-        <mat-card-title>Fashion</mat-card-title>
-        <mat-card-content>
-          <img
-            src="https://mosaic04.ztat.net/vgs/media/articles/catalog-lg/1a16e8b6a1424deb9d156b11ec3d667d/592d82c7f6ec4b93bcfddfccd9e98f8d.jpeg">
-          <span>Zalando summer styles!</span>
-        </mat-card-content>
-      </mat-card>
-      <mat-card>
-        <mat-card-title>Fashion</mat-card-title>
-        <mat-card-content>Top 10 fashion trends 2019.</mat-card-content>
-      </mat-card>
-      <mat-card class="tiny">
-        <mat-card-title>Training</mat-card-title>
-        <mat-card-content>Acting class for models. To perform at your best you can always learn and practice.
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="tiny">
-        <mat-card-title>interesting</mat-card-title>
-        <mat-card-content>;)</mat-card-content>
-      </mat-card>
-      <mat-card>
-        <mat-card-title>some stuff</mat-card-title>
-        <mat-card-content>You can see some new things</mat-card-content>
-      </mat-card>
-      <mat-card>
-        <mat-card-title>super interesting</mat-card-title>
-        <mat-card-content>wow thats amazing</mat-card-content>
-      </mat-card>
-      <mat-card>
-        <mat-card-title>tripple rainbow</mat-card-title>
-        <mat-card-content>across the sky</mat-card-content>
-      </mat-card>
+      <related-news [content]="relatedNewsService.items()"></related-news>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

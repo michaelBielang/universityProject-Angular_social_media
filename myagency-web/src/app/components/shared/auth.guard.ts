@@ -7,7 +7,9 @@ import 'rxjs-compat/add/operator/take';
 import 'rxjs-compat/add/operator/do';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router, private notify: NotifyService) {
   }
