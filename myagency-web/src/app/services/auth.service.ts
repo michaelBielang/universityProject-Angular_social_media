@@ -8,6 +8,7 @@ import {NotifyService} from './notify.service';
 import 'rxjs-compat/add/operator/switchMap';
 import 'rxjs-compat/add/observable/of';
 import {UserRole} from '../enums/user-role.enum';
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root'
@@ -32,11 +33,16 @@ export class AuthService {
       });
   }
 
-  // Email/Password Auth
-  emailSignUp(email: string, password: string) {
+  /**
+   * sign up with e-mail and password
+   * @param email
+   * @param password
+   * @param role
+   */
+  public emailSignUp(email: string, password: string, role: UserRole): Promise<void> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
-        return this.setUserDoc(user);
+        return this.setUserDoc(user, role);
       })
       .catch(error => this.handleError(error));
   }
@@ -72,16 +78,15 @@ export class AuthService {
   }
 
   // Sets user data to firestore after succesful login
-  private setUserDoc(user) {
+  private setUserDoc(user: UserCredential, role: UserRole): Promise<void> {
     const uid = user.user.uid;
     const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${uid}`);
 
     const data: User = {
       uid,
       email: user.user.email || null,
-      role: UserRole.CLIENT
+      role
     };
-    console.log(data.uid);
     return userRef.set(data);
   }
 }
