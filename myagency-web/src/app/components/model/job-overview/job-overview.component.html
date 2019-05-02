@@ -2,18 +2,46 @@
   <span>MyAgency</span>
 </mat-toolbar>
 
-<mat-tab-group animationDuration="0ms" class="job-tabs">
-  <mat-tab label="open Requests">
-    <div class="open-requests tab-container">
-      <job-item *ngFor="let job of jobs" [job]="job"></job-item>
+<mat-tab-group class="job-tabs">
+  <mat-tab label="requests">
+    <div class="tab-container">
+      <job-item *ngFor="let job of openRequest" [job]="job">
+        <div class="status request-selection">
+          <div class="decline" (click)="denyJob(job)">
+            <mat-icon>close</mat-icon>
+          </div>
+          <div class="accept" (click)="acceptJob(job)">
+            <mat-icon>check</mat-icon>
+          </div>
+        </div>
+      </job-item>
+    </div>
+  </mat-tab>
+  <mat-tab label="options">
+    <div class="tab-container">
+      <job-item *ngFor="let job of jobOptions" [job]="job">
+        <div class="status">
+          OPTION
+        </div>
+      </job-item>
     </div>
   </mat-tab>
   <mat-tab label="coming Jobs">
-    <h1>Some more tab content</h1>
-    <p>...</p>
+    <div class="tab-container">
+      <job-item *ngFor="let job of comingJobs" [job]="job">
+        <div class="status">
+          ACCEPTED
+        </div>
+      </job-item>
+    </div>
   </mat-tab>
   <mat-tab label="past Jobs">
-    <h1>Some more tab content</h1>
-    <p>...</p>
+    <div class="tab-container">
+      <job-item *ngFor="let job of pastJobs" [job]="job">
+        <div class="status">
+          DONE
+        </div>
+      </job-item>
+    </div>
   </mat-tab>
 </mat-tab-group>

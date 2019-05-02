@@ -7,6 +7,7 @@ import {RegistrationClientComponent} from './components/client/registration-clie
 import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
 import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
 import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
+import {JobDetailsComponent} from './components/model/job-details/job-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
@@ -24,7 +25,8 @@ const routes: Routes = [
     path: 'model',
     children: [
       {path: '', component: LandingPageModelComponent},
-      {path: 'jobs', component: JobOverviewComponent}
+      {path: 'jobs', component: JobOverviewComponent},
+      {path: 'job-details/:id', component: JobDetailsComponent}
     ]
   }
 ];

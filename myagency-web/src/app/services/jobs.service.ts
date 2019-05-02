@@ -7,6 +7,7 @@ export interface JobOverview {
   location: string;
   fee: string;
   jobId: string;
+  status: JobStatus;
 }
 
 export interface JobDetails {
@@ -15,6 +16,13 @@ export interface JobDetails {
   contact: string;
   detailedLocation: string;
   photographer: string;
+}
+
+export enum JobStatus {
+  REQUEST,
+  OPTION,
+  COMING,
+  PAST
 }
 
 @Injectable({
@@ -32,7 +40,8 @@ export class JobsService {
       date: '18.06.2019 - 20.06.2019',
       location: 'Moskva, Russia',
       fee: '250.000 Rubel (~3460€)',
-      jobId: '123'
+      jobId: '123',
+      status: JobStatus.REQUEST
     }];
     const jobList = jobOverview.concat(jobOverview).concat(jobOverview).concat(jobOverview);
     return jobList;

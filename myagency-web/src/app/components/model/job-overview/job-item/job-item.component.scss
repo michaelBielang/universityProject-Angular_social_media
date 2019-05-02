@@ -2,6 +2,8 @@
 
 .jobContainer {
   background-color: $color-0;
+  outline: 0;
+  cursor: pointer;
 
   img {
     width: 100%;
@@ -10,8 +12,8 @@
 
   .infos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "client client fee""date location expand-icon";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "client fee""date location";
     grid-gap: 10px;
     justify-items: center;
     align-content: center;

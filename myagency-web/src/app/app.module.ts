@@ -34,6 +34,7 @@ import {LandingPageClientComponent} from './components/client/landing-page-clien
 import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
 import {JobItemComponent} from './components/model/job-overview/job-item/job-item.component';
 import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
+import {JobDetailsComponent} from './components/model/job-details/job-details.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -56,7 +57,8 @@ const config = {
     LandingPageClientComponent,
     LandingPageModelComponent,
     JobItemComponent,
-    JobOverviewComponent
+    JobOverviewComponent,
+    JobDetailsComponent
   ],
   imports: [
     BrowserModule,
