@@ -19,32 +19,22 @@ export class SearchResultsComponent implements OnInit {
   private mode = 'indeterminate';
   private searchRequest = false;
   private models: User[];
-  private showResults = false;
 
   constructor(private modelService: ModelService, private findModelService: FindModelService) {
-    this.getModels();
   }
 
   ngOnInit() {
-    this.findModelService.subject.subscribe(async (callSource) => {
-      console.log('source: ' + callSource);
-      if (callSource === 'profile') {
-        console.log("here");
-        await new Promise(resolve => setTimeout(resolve, 750));
-        console.log("here2");
-        console.log(this.models.length);
-        this.showResults = false;
-        this.showResults = true;
-      } else {
-        console.log("here3");
-        this.showResults = false;
-        this.searchRequest = true;
-        await new Promise(resolve => setTimeout(resolve, 750));
-        this.searchRequest = false;
-        this.showResults = true;
-      }
-    });
+    this.getModels();
   }
+
+  getShowResults() {
+    return this.findModelService.showResults;
+  }
+
+  getShowProgress() {
+    return this.findModelService.showProgress;
+  }
+
 
   getModels(): void {
     this.modelService.getModels()

@@ -5,5 +5,7 @@ export interface User {
   email: string;
   name: string;
   location: string;
+  height: string;
+  size: string;
   role: UserRole;
 }

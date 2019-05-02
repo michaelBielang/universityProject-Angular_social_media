@@ -3,14 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ModelService} from '../../../services/model.service';
 import {User} from '../../../enums/user-interface';
 import {Location} from '@angular/common';
-import {FindModelService} from "../../../services/find-model.service";
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-profile',
@@ -20,18 +13,31 @@ export interface Tile {
 export class ProfileComponent implements OnInit {
 
   model: User;
+  numberOfProfilePics = [1, 2, 3, 4, 5, 6];
 
   constructor(
     private route: ActivatedRoute,
     private modelService: ModelService,
     private location: Location,
-    private findModelService: FindModelService) {
-
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
     this.getModel();
   }
+
+  savedPicture() {
+    this.snackBar.open('Picture saved', 'contact', {
+      duration: 1500,
+    });
+  }
+
+  saveModel() {
+    this.snackBar.open('Model saved', 'contact', {
+      duration: 1500,
+    });
+  }
+
 
   getModel(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -41,6 +47,5 @@ export class ProfileComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
-    this.findModelService.newSearchRequested('profile');
   }
 }

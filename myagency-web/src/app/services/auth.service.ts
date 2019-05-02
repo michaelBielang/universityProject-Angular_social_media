@@ -81,6 +81,8 @@ export class AuthService {
       email: user.model.email || null,
       name: 'dummy',
       location: 'dummy',
+      height: 'dummy',
+      size: 'dummy',
       role: UserRole.CLIENT
     };
     console.log(data.uid);

@@ -16,7 +16,7 @@ import {
   MatInputModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
-  MatSelectModule,
+  MatSelectModule, MatSnackBarModule,
   MatStepperModule,
   MatTabsModule,
   MatToolbarModule
@@ -83,7 +83,8 @@ const config = {
     MatPaginatorModule,
     MatProgressSpinnerModule,
     FormsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSnackBarModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]

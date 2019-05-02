@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
 
 
 @Injectable({
@@ -7,13 +6,17 @@ import {Subject} from 'rxjs';
 })
 export class FindModelService {
 
-  subject: Subject<any> = new Subject();
+  showResults = false;
+  showProgress = false;
 
   constructor() {
   }
 
-  newSearchRequested(callSource) {
-    this.subject.next(callSource);
+  async newSearchRequested() {
+    this.showProgress = true;
+    await new Promise(resolve => setTimeout(resolve, 750));
+    this.showProgress = false;
+    this.showResults = true;
   }
 
 }

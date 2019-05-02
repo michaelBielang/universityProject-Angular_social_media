@@ -1,28 +1,76 @@
 <app-navigation></app-navigation>
 
-<mat-grid-list cols="4" rowHeight="75px">
+<mat-grid-list cols="4" rowHeight="50px">
   <mat-grid-tile colspan="1" rowspan="1">
-    <div class="text-inside-grid">Location: {{model.location}}</div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1">
-
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="3">
-    <img src="../../../../assets/images/models/{{model.uid}}.jpg" alt="profile pic">
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1">
-    <div class="text-inside-grid">Measurements</div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1">
-
+    <div class="text-inside-grid">
+      <span style="font-weight: bold;">Height:</span> {{model.height}}
+      <span class="span-text" style="font-weight: bold;">Size:</span> {{model.size}}
+    </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="3" rowspan="1">
-    <button mat-raised-button color="primary" (click)="goBack()">Search</button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <div class="text-inside-grid"><span style="font-weight: bold">Location:</span> {{model.location}}</div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="1">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <div class="contact-and-back-button">
+      <button mat-raised-button (click)="saveModel()">Save</button>
+      <button class="button-back" mat-raised-button color="primary" (click)="goBack()">Back</button>
+    </div>
   </mat-grid-tile>
 </mat-grid-list>
 
 <mat-tab-group class="mat-tab-group" mat-align-tabs="center" animationDuration="2000ms">
-  <mat-tab label="First">Content 1</mat-tab>
-  <mat-tab label="Second">Content 2</mat-tab>
-  <mat-tab label="Third">Content 3</mat-tab>
+  <mat-tab label="High-Fashion">
+    <div class="grid grid-pad">
+      <a *ngFor="let profilePic of numberOfProfilePics">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{model.name}}</mat-card-title>
+            <mat-card-subtitle>High Fashion</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image
+               src="../../../../assets/images/models/highfashion/{{profilePic}}.jpg" alt="profile_pic">
+          <mat-card-content>
+            <div class="job-description">
+              <p>
+                Job for Dior
+              </p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button (click)="savedPicture()">Save</button>
+          </mat-card-actions>
+        </mat-card>
+      </a>
+    </div>
+  </mat-tab>
+  <mat-tab label="Outdoor">
+    <div class="grid grid-pad">
+      <a *ngFor="let profilePic of numberOfProfilePics">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{model.name}}</mat-card-title>
+            <mat-card-subtitle>High Fashion</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="../../../../assets/images/models/outdoor/{{profilePic}}.jpg" alt="profile_pic">
+          <mat-card-content>
+            <p>
+              I started my modeling career at the age of 18. After moving to New York, I landed work with Victoria's
+              Secret. I reached supermodel status after appearing on the cover of Sports Illustrated swimsuit
+              issue. I have produced and served as host of the reality fashion competition show Project Runway.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button (click)="savedPicture()">Save</button>
+          </mat-card-actions>
+        </mat-card>
+      </a>
+    </div>
+  </mat-tab>
+  <mat-tab label="Instagram">
+    <span>Instagram API</span>
+  </mat-tab>
 </mat-tab-group>
