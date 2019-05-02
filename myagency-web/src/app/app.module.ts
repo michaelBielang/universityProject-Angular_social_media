@@ -9,17 +9,18 @@ import {TeamMembersComponent} from './components/shared/landing-page/team-member
 import {
   MatButtonModule,
   MatCardModule,
-  MatDialogModule, MatDividerModule,
+  MatDialogModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatSelectModule,
-  MatSidenavModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
-  MatSelectModule, MatSnackBarModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule,
   MatStepperModule,
   MatTabsModule,
   MatToolbarModule
@@ -36,10 +37,8 @@ import {LandingPageClientComponent} from './components/client/landing-page-clien
 import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
 import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
 import {SearchResultsComponent} from './components/client/search-results/search-results.component';
-import { ProfileComponent } from './components/model/profile/profile.component';
-import { NavigationComponent } from './components/shared/navigation/navigation.component';
-import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
-import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
+import {ProfileComponent} from './components/model/profile/profile.component';
+import {NavigationComponent} from './components/shared/navigation/navigation.component';
 import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
 import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
 
@@ -66,7 +65,7 @@ const config = {
     SearchMaskComponent,
     SearchResultsComponent,
     ProfileComponent,
-    NavigationComponent
+    NavigationComponent,
     LandingPageModelComponent,
     NewsListComponent,
     RelatedNewsComponent
