@@ -34,17 +34,19 @@ export class JobsService {
   }
 
   public jobsOverview(): JobOverview[] {
-    const jobOverview = [{
-      imgSrc: 'https://image.pitchbook.com/aVTBCrqHkm8LAvzqdXt8u8ELcJG1476941927661_200x200?uq=H8lJTeVz',
-      client: 'XY',
-      date: '18.06.2019 - 20.06.2019',
-      location: 'Moskva, Russia',
-      fee: '250.000 Rubel (~3460€)',
-      jobId: '123',
-      status: JobStatus.REQUEST
-    }];
-    const jobList = jobOverview.concat(jobOverview).concat(jobOverview).concat(jobOverview);
-    return jobList;
+    const jobOverview = [];
+    for (let i = 0; i < 10; i++) {
+      jobOverview.push({
+        imgSrc: 'https://image.pitchbook.com/aVTBCrqHkm8LAvzqdXt8u8ELcJG1476941927661_200x200?uq=H8lJTeVz',
+        client: 'XY ' + i,
+        date: '18.06.2019 - 20.06.2019',
+        location: 'Moskva, Russia',
+        fee: '250.000 Rubel (~3460€)',
+        jobId: '123' + i,
+        status: JobStatus.REQUEST
+      });
+    }
+    return jobOverview;
   }
 
   public jobDetails(id: string): JobDetails {

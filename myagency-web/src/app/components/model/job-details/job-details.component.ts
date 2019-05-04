@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {JobDetails, JobsService} from '../../../services/jobs.service';
 
 @Component({
   selector: 'job-details',
@@ -7,7 +9,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class JobDetailsComponent implements OnInit {
 
-  constructor() {
+  public details: JobDetails;
+
+  constructor(private route: ActivatedRoute,
+              private jobsService: JobsService) {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.details = this.jobsService.jobDetails(id);
   }
 
   ngOnInit() {

@@ -6,12 +6,16 @@
   <mat-tab label="requests">
     <div class="tab-container">
       <job-item *ngFor="let job of openRequest" [job]="job">
-        <div class="status request-selection">
+        <div class="request-selection">
           <div class="decline" (click)="denyJob(job)">
-            <mat-icon>close</mat-icon>
+            <div class="spacer-container">
+              <mat-icon>close</mat-icon>
+            </div>
           </div>
           <div class="accept" (click)="acceptJob(job)">
-            <mat-icon>check</mat-icon>
+            <div class="spacer-container">
+              <mat-icon>check</mat-icon>
+            </div>
           </div>
         </div>
       </job-item>
