@@ -7,7 +7,7 @@
     <div class="tab-container">
       <job-item *ngFor="let job of openRequest" [job]="job">
         <div class="request-selection">
-          <div class="decline" (click)="denyJob(job)">
+          <div class="reject" (click)="rejectJob(job)">
             <div class="spacer-container">
               <mat-icon>close</mat-icon>
             </div>

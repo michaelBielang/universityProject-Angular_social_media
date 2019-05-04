@@ -21,7 +21,7 @@ $small-spacing: 10px;
       grid-template-columns: 1fr 1fr;
       justify-items: center;
 
-      .decline {
+      .reject {
         width: calc(100% - #{$small-spacing});
         padding-left: $small-spacing;
 

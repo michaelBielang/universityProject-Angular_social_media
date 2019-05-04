@@ -18,6 +18,7 @@ import {
   MatListModule,
   MatSelectModule,
   MatSidenavModule,
+  MatSnackBarModule,
   MatStepperModule,
   MatTabsModule,
   MatToolbarModule
@@ -79,6 +80,7 @@ const config = {
     MatCardModule,
     MatTabsModule,
     MatExpansionModule,
+    MatSnackBarModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(config)
