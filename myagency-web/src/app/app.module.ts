@@ -36,6 +36,9 @@ import {LandingPageModelComponent} from './components/model/landing-page-model/l
 import {JobItemComponent} from './components/model/job-overview/job-item/job-item.component';
 import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
+import { JobDetailsInfosComponent } from './components/model/job-details/job-details-infos/job-details-infos.component';
+import { JobDetailsChatComponent } from './components/model/job-details/job-details-chat/job-details-chat.component';
+import { JobDetailsContractsComponent } from './components/model/job-details/job-details-contracts/job-details-contracts.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -59,7 +62,10 @@ const config = {
     LandingPageModelComponent,
     JobItemComponent,
     JobOverviewComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
+    JobDetailsInfosComponent,
+    JobDetailsChatComponent,
+    JobDetailsContractsComponent
   ],
   imports: [
     BrowserModule,

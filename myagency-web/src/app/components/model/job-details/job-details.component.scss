@@ -1,6 +1,6 @@
 @import "~src/assets/scss/variables";
 
-.job-tabs {
+.job-tabs-container {
   height: calc(100vh - #{$header-height});
   display: grid;
   grid-template-rows: auto 1fr;

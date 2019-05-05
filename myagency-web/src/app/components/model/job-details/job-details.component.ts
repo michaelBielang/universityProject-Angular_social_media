@@ -1,23 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {JobDetails, JobsService} from '../../../services/jobs.service';
+import {Component} from '@angular/core';
+import {NavigatedFromRouteService} from './navigated-from-route.service';
+import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'job-details',
   templateUrl: './job-details.component.html',
   styleUrls: ['./job-details.component.scss']
 })
-export class JobDetailsComponent implements OnInit {
+export class JobDetailsComponent {
 
-  public details: JobDetails;
-
-  constructor(private route: ActivatedRoute,
-              private jobsService: JobsService) {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.details = this.jobsService.jobDetails(id);
+  constructor(private navigatedFromRouteService: NavigatedFromRouteService,
+              private location: Location,
+              private router: Router) {
   }
 
-  ngOnInit() {
+  public navigateBack(): void {
+    if (!!this.navigatedFromRouteService.getPreviousUrl()) {
+      console.log('navigated back to: ', this.navigatedFromRouteService.getPreviousUrl());
+      this.router.navigateByUrl(this.navigatedFromRouteService.getPreviousUrl());
+    } else {
+      this.router.navigateByUrl('/model');
+    }
   }
 
 }
