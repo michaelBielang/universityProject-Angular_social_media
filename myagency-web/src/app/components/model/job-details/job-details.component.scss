@@ -6,11 +6,7 @@
   grid-template-rows: auto 1fr;
 
   .tab-container {
-    $gaps: 20px;
-    display: grid;
-    grid-gap: $gaps;
-    padding: $gaps;
     background-color: $color-300;
-    min-height: calc(100% - 2 * #{$gaps});
+    min-height: 100%;
   }
 }

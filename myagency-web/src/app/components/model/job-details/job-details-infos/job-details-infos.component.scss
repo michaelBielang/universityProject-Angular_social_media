@@ -1,0 +1,6 @@
+.tab-container {
+  $gaps: 20px;
+  display: grid;
+  grid-gap: $gaps;
+  padding: $gaps;
+}
