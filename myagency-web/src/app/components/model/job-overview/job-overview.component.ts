@@ -26,7 +26,7 @@ export class JobOverviewComponent implements OnInit {
 
   /**
    * denied job is removed out of the list
-   * @param job
+   * @param job that should be rejected
    */
   public rejectJob(job: JobOverview) {
     const index = this.jobs.indexOf(job);
@@ -42,7 +42,7 @@ export class JobOverviewComponent implements OnInit {
 
   /**
    * gives an option for the job
-   * @param job
+   * @param job that should be accepted
    */
   public acceptJob(job: JobOverview) {
     job.status = JobStatus.OPTION;
