@@ -1,6 +1,19 @@
 <div class="tab-container">
   <div>
+    <img [src]="details.jobOverview.imgSrc">
+  </div>
+  <div>
+    {{details.jobOverview.status}}
+  </div>
+  <div>
+    {{details.jobOverview.fee}}
+  </div>
+  <div>
+    {{details.jobOverview.date}}
+  </div>
+  <div>
     {{details.detailedLocation}}
+    <here-map [address]="details.detailedLocation"></here-map>
   </div>
   <div>
     {{details.contact}}

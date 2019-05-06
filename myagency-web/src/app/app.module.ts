@@ -39,6 +39,7 @@ import {JobDetailsComponent} from './components/model/job-details/job-details.co
 import { JobDetailsInfosComponent } from './components/model/job-details/job-details-infos/job-details-infos.component';
 import { JobDetailsChatComponent } from './components/model/job-details/job-details-chat/job-details-chat.component';
 import { JobDetailsContractsComponent } from './components/model/job-details/job-details-contracts/job-details-contracts.component';
+import { HereMapComponent } from './components/shared/components/here-map/here-map.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -65,7 +66,8 @@ const config = {
     JobDetailsComponent,
     JobDetailsInfosComponent,
     JobDetailsChatComponent,
-    JobDetailsContractsComponent
+    JobDetailsContractsComponent,
+    HereMapComponent
   ],
   imports: [
     BrowserModule,
