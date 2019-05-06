@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavigatedFromRouteService} from './navigated-from-route.service';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
+import {NavigatorService} from '../../../services/navigator.service';
 
 @Component({
   selector: 'job-details',
@@ -12,7 +13,8 @@ export class JobDetailsComponent {
 
   constructor(private navigatedFromRouteService: NavigatedFromRouteService,
               private location: Location,
-              private router: Router) {
+              private router: Router,
+              private navigatorService: NavigatorService) {
   }
 
   public navigateBack(): void {
@@ -20,7 +22,7 @@ export class JobDetailsComponent {
       console.log('navigated back to: ', this.navigatedFromRouteService.getPreviousUrl());
       this.router.navigateByUrl(this.navigatedFromRouteService.getPreviousUrl());
     } else {
-      this.router.navigateByUrl('/model');
+      this.navigatorService.goToMain();
     }
   }
 
