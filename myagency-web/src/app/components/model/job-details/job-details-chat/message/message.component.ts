@@ -11,6 +11,9 @@ export class MessageComponent {
   @Input()
   public message: Message;
 
+  @Input()
+  public userId: string;
+
   constructor() {
   }
 

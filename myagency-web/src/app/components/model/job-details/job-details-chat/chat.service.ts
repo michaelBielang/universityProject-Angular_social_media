@@ -5,7 +5,7 @@ export interface Message {
   content: string;
   senderId: string;
   timestamp: number;
-  id: number;
+  id: string;
 }
 
 @Injectable({
@@ -35,25 +35,27 @@ export class ChatService {
       content,
       senderId,
       timestamp: Date.now(),
-      id: this.messages.length + 1
+      id: `#{this.messages.length + 1}`
     };
     this.messages = [message, ...this.messages];
     this.randomMessageReply();
   }
 
   public randomMessageReply(): void {
-    if (this.messages.length % (Math.random() * 10) === 0) {
+    if (this.messages.length % Math.round(Math.random() * 2) === 0) {
+      console.log('im in');
       const randomMessage = {
-        content: 'hihiohiohih',
+        content: 'ich verstehe',
         senderId: '4321',
         timestamp: Date.now(),
-        id: this.messages.length + 1
+        id: `#{this.messages.length + 1}`
       };
       this.messages = [randomMessage, ...this.messages];
     }
+    console.log(this.messages.length % (Math.random() * 2));
   }
 
-  public deleteMessage(id: number) {
+  public deleteMessage(id: string) {
     this.messages = this.messages.filter(todo => todo.id !== id);
   }
 

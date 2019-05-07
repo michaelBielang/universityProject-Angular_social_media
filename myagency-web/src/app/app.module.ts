@@ -26,7 +26,7 @@ import {
 import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
 import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
@@ -36,11 +36,11 @@ import {LandingPageModelComponent} from './components/model/landing-page-model/l
 import {JobItemComponent} from './components/model/job-overview/job-item/job-item.component';
 import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
-import { JobDetailsInfosComponent } from './components/model/job-details/job-details-infos/job-details-infos.component';
-import { JobDetailsChatComponent } from './components/model/job-details/job-details-chat/job-details-chat.component';
-import { JobDetailsContractsComponent } from './components/model/job-details/job-details-contracts/job-details-contracts.component';
-import { HereMapComponent } from './components/shared/components/here-map/here-map.component';
-import { MessageComponent } from './components/model/job-details/job-details-chat/message/message.component';
+import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
+import {JobDetailsChatComponent} from './components/model/job-details/job-details-chat/job-details-chat.component';
+import {JobDetailsContractsComponent} from './components/model/job-details/job-details-contracts/job-details-contracts.component';
+import {HereMapComponent} from './components/shared/components/here-map/here-map.component';
+import {MessageComponent} from './components/model/job-details/job-details-chat/message/message.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -93,7 +93,8 @@ const config = {
     MatSnackBarModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(config)
+    AngularFireModule.initializeApp(config),
+    FormsModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]

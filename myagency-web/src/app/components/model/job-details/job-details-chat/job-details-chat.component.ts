@@ -9,8 +9,19 @@ import {ChatService} from './chat.service';
 })
 export class JobDetailsChatComponent {
 
+  public value = '';
+
+  private userId = '123';
+
   constructor(private navigatedFromRouteService: NavigatedFromRouteService,
               private chatService: ChatService) {
     this.navigatedFromRouteService.resetCurrentUrlToPrevious();
+  }
+
+  public sendMessage(): void {
+    if (!!this.value) {
+      this.chatService.sendMessage(this.value, this.userId);
+      this.value = '';
+    }
   }
 }

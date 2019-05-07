@@ -1,4 +1,4 @@
-<div class="message">
+<div class="" [className]="(message.senderId === userId ? 'send' : 'received')+' message'">
   <div class="content">{{message.content}}</div>
   <div class="time">{{time()}}</div>
 </div>
