@@ -40,6 +40,7 @@ import { JobDetailsInfosComponent } from './components/model/job-details/job-det
 import { JobDetailsChatComponent } from './components/model/job-details/job-details-chat/job-details-chat.component';
 import { JobDetailsContractsComponent } from './components/model/job-details/job-details-contracts/job-details-contracts.component';
 import { HereMapComponent } from './components/shared/components/here-map/here-map.component';
+import { MessageComponent } from './components/model/job-details/job-details-chat/message/message.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -67,7 +68,8 @@ const config = {
     JobDetailsInfosComponent,
     JobDetailsChatComponent,
     JobDetailsContractsComponent,
-    HereMapComponent
+    HereMapComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,9 @@
-<p>
-  job-details-chat works!
-</p>
+<div class="message-container">
+  <message *ngFor="let message of chatService.messages$ | async"
+           [message]="message"
+           (remove)="chatService.deleteMessage($event)"></message>
+</div>
+<mat-form-field>
+  <input matInput>
+  <mat-icon matSuffix>send</mat-icon>
+</mat-form-field>
