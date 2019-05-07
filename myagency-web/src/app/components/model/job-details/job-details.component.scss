@@ -7,6 +7,6 @@
 
   .tab-container {
     background-color: $color-300;
-    min-height: 100%;
+    overflow: auto;
   }
 }

@@ -1,30 +1,35 @@
 <div class="tab-container">
-  <div>
+  <div class="col-2 row-2">
     <img [src]="details.jobOverview.imgSrc">
   </div>
   <div>
-    {{details.jobOverview.status}}
+    {{details.jobOverview.client}}
   </div>
   <div>
-    {{details.jobOverview.fee}}
+    Status: {{details.jobOverview.status}}
   </div>
   <div>
-    {{details.jobOverview.date}}
+    Fee: {{details.jobOverview.fee}}
   </div>
   <div>
-    {{details.detailedLocation}}
+    Date: {{details.jobOverview.date}}
+  </div>
+  <div class="col-2">
+    Location: {{details.detailedLocation}}
     <here-map [address]="details.detailedLocation"></here-map>
   </div>
   <div>
-    {{details.contact}}
+    Contact: {{details.contact}}
+    <mat-icon>phone</mat-icon>
+    <mat-icon>mail_outline</mat-icon>
   </div>
   <div>
-    {{details.photographer}}
+    Photographer: {{details.photographer}}
   </div>
-  <div>
-    {{details.jobDetails}}
+  <div class="col-2">
+    Job details: {{details.jobDetails}}
   </div>
-  <div>
-    {{details.clientDetails}}
+  <div class="col-2">
+    Client details: {{details.clientDetails}}
   </div>
 </div>
