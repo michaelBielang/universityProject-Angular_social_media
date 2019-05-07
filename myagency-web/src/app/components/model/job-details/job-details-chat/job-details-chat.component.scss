@@ -24,6 +24,10 @@ $max-message-container-width: 800px;
   mat-form-field {
     width: 100%;
     max-width: $max-message-container-width;
+
+    ::ng-deep .mat-form-field-flex {
+      padding-top: 0 !important;
+    }
   }
 }
 
