@@ -41,11 +41,10 @@ export class ChatService {
     this.randomMessageReply();
   }
 
-  public randomMessageReply(): void {
+  private randomMessageReply(): void {
     if (this.messages.length % Math.round(Math.random() * 2) === 0) {
-      console.log('im in');
       const randomMessage = {
-        content: 'ich verstehe',
+        content: this.createRandomMessage(this.messages[0].content),
         senderId: '4321',
         timestamp: Date.now(),
         id: `#{this.messages.length + 1}`
@@ -53,6 +52,16 @@ export class ChatService {
       this.messages = [randomMessage, ...this.messages];
     }
     console.log(this.messages.length % (Math.random() * 2));
+  }
+
+  private createRandomMessage(messageToAnwer: string): string {
+    if (messageToAnwer.indexOf('?') !== -1) {
+      const questionAnswers = ['42', 'sehr gute frage. was sagst du denn dazu?'];
+      return questionAnswers[Math.round(Math.random() * questionAnswers.length)];
+    } else {
+      const answers = ['ich verstehe', 'voll und ganz', 'das finde ich sehr interessant', 'erzähl mir mehr'];
+      return answers[Math.round(Math.random() * answers.length)];
+    }
   }
 
   public deleteMessage(id: string) {

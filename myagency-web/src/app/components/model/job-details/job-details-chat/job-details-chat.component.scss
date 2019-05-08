@@ -11,7 +11,7 @@ $max-message-container-width: 800px;
   justify-items: center;
 
   .message-container {
-    $message-padding: 10px;
+    $message-padding: 15px;
     display: flex;
     flex-direction: column-reverse;
     overflow-y: auto;

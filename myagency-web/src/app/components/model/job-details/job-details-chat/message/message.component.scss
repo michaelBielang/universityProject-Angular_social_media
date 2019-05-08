@@ -4,14 +4,14 @@ $arrow-size: 5px;
 $message-box-radius: 3px;
 
 .message {
-  background-color: $color-300;
   padding: 5px;
   border-radius: $message-box-radius;
   margin: 5px;
   display: grid;
   grid-template-columns: 1fr auto;
-  width: 75%;
+  max-width: 75%;
   position: relative;
+  word-break: break-word;
 
   &:before {
     content: '';
@@ -24,11 +24,16 @@ $message-box-radius: 3px;
     margin-top: 0;
   }
 
-  &.received:before {
-    left: 0;
-    border-right-color: $color-300;
-    border-left: 0;
-    margin-left: -$arrow-size * 2 + $message-box-radius;
+  &.received {
+    background-color: $color-300;
+    float: left;
+
+    &:before {
+      left: 0;
+      border-right-color: $color-300;
+      border-left: 0;
+      margin-left: -$arrow-size * 2 + $message-box-radius;
+    }
   }
 
   &.send {
@@ -41,6 +46,12 @@ $message-box-radius: 3px;
       border-right: 0;
       margin-right: -$arrow-size * 2 + $message-box-radius;
     }
+  }
+
+  .time {
+    margin-left: 30px;
+    font-size: $hint-font-size;
+    align-self: end;
   }
 }
 
