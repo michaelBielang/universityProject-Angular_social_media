@@ -7,8 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  theme = '8ecad2';
-
   constructor() {
   }
 

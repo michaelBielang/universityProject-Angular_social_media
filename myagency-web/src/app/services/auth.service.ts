@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   /**
-   * login for the model
+   * login for the user
    * @param userName
    * @param password
    */
