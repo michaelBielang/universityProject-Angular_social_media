@@ -24,7 +24,7 @@ export class AuthService {
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
-          // logged in, get custom user from Firestore
+          // logged in, get custom model from Firestore
           return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           // logged out -> null
@@ -61,12 +61,12 @@ export class AuthService {
     });
   }
 
-  // Update properties on the user document
+  // Update properties on the model document
   updateUser(user: User, data: any) {
     return this.angularFirestore.doc(`users/${user.uid}`).update(data);
   }
 
-  // If error, console log and notify user
+  // If error, console log and notify model
   private handleError(error) {
     console.error(error);
     this.notify.update(error.message, 'error');
@@ -77,15 +77,19 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  // Sets user data to firestore after succesful login
+  // Sets model data to firestore after succesful login
   private setUserDoc(user: UserCredential, role: UserRole): Promise<void> {
-    const uid = user.user.uid;
+    const uid = user.model.uid;
     const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${uid}`);
 
     const data: User = {
       uid,
-      email: user.user.email || null,
-      role
+      email: user.model.email || null,
+      role,
+      name: 'dummy',
+      location: 'dummy',
+      height: 'dummy',
+      size: 'dummy',
     };
     return userRef.set(data);
   }

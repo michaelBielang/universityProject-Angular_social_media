@@ -14,18 +14,18 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router, private notify: NotifyService) {
   }
 
-
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
 
     return this.authService.user
       .take(1)
-      .map(user => !!(user))
+      .map(user => !!user)
       .do(loggedIn => {
         if (!loggedIn) {
-          this.notify.update('You must be logged in and have a catch phrase!', 'error');
-          this.router.navigate(['/login']);
+          // todo turn on for production
+/*          this.notify.update('You must be logged in', 'error');
+          this.router.navigate(['/login']);*/
         }
       });
   }
