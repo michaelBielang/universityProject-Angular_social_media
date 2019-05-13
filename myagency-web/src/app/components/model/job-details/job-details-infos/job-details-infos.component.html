@@ -1,39 +1,47 @@
 <div class="tab-container">
-  <div class="col-2 row-2">
+  <div class="col-2 row-2 image">
     <img [src]="details.jobOverview.imgSrc">
   </div>
   <div class="client">
     {{details.jobOverview.client}}
   </div>
   <div>
-    <span class="title">Status:</span><span>{{details.jobOverview.status}}</span>
+    <div class="title">Status:</div>
+    <span>{{details.jobOverview.status}}</span>
   </div>
   <div>
-    <span class="title">Fee: </span><span>{{details.jobOverview.fee}}</span>
+    <div class="title">Fee:</div>
+    <span>{{details.jobOverview.fee}}</span>
   </div>
   <div>
-    <span class="title">Date: </span><span>{{details.jobOverview.date}}</span>
+    <div class="title">Date:</div>
+    <span>{{details.jobOverview.date}}</span>
   </div>
   <div class="col-2 location">
     <div>
-      <span class="title">Location: </span><span>{{details.detailedLocation}}</span>
+      <div class="title">Location:</div>
+      <span>{{details.detailedLocation}}</span>
     </div>
     <here-map [address]="details.detailedLocation"></here-map>
   </div>
   <div>
-    <span class="title">Contact:
-    <mat-icon>phone</mat-icon>
-    <mat-icon>mail_outline</mat-icon>
-      </span><span>
+    <div class="title">Contact:
+      <mat-icon>phone</mat-icon>
+      <mat-icon>mail_outline</mat-icon>
+    </div>
+    <span>
       {{details.contact}}</span>
   </div>
   <div>
-    <span class="title">Photographer: </span><span>{{details.photographer}}</span>
+    <div class="title">Photographer:</div>
+    <span>{{details.photographer}}</span>
   </div>
   <div class="col-2">
-    <span class="title">Job details: </span><span>{{details.jobDetails}}</span>
+    <div class="title">Job details:</div>
+    <span>{{details.jobDetails}}</span>
   </div>
   <div class="col-2">
-    <span class="title">Client details: </span><span>{{details.clientDetails}}</span>
+    <div class="title">Client details:</div>
+    <span>{{details.clientDetails}}</span>
   </div>
 </div>
