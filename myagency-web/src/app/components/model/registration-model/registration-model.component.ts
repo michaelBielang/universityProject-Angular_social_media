@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
 import {CountriesService} from '../../../services/countries.service';
+import {NavigatorService} from '../../../services/navigator.service';
+import {UserRole} from '../../../enums/user-role.enum';
 
 
 @Component({
@@ -23,9 +25,13 @@ export class RegistrationModelComponent implements OnInit {
   hipMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
   date = new Date().getFullYear();
   ages = Array.from({length: 50}, (value, key) => this.date - 50);
+  private role = UserRole.MODEL;
 
-  constructor(public formBuilder: FormBuilder, public authService: AuthService, countryService: CountriesService) {
-    this.countryList = countryService.country_list;
+  constructor(public formBuilder: FormBuilder,
+              public authService: AuthService,
+              private countryService: CountriesService,
+              private navigatorService: NavigatorService) {
+    this.countryList = countryService.countries;
   }
 
   ngOnInit() {
@@ -82,10 +88,11 @@ export class RegistrationModelComponent implements OnInit {
     return this.secondFormGroup.get('street');
   }
 
-
-  signup() {
-    console.log(this.email.value);
-    console.log(this.password.value);
-    return this.authService.emailSignUp(this.email.value, this.password.value);
+  /**
+   * signs up wit with e-mail and password
+   */
+  public signUp(): void {
+    this.authService.emailSignUp(this.email.value, this.password.value, this.role)
+      .then((value) => this.navigatorService.goToMain());
   }
 }

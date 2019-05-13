@@ -31,9 +31,11 @@ export class LoginModalComponent implements OnInit {
    */
   public mailLogin() {
     this.authService.loginEmail(this.email.value, this.password.value)
-      .then((value: any) => this.navigatorService.goToMain())
+      .then((value: any) => {
+        this.dialogRef.close();
+        this.navigatorService.goToMain();
+      })
       .catch((reason: any) => console.log('error: ', reason));
-
   }
 
   get email() {

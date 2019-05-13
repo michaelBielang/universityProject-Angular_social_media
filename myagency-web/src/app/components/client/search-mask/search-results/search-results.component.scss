@@ -1,0 +1,45 @@
+
+
+h3{
+  font-size: 40px;
+  padding-top: 12px;
+  padding-bottom: 2px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.progressSpinner{
+  display: grid;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.module:hover {
+  background-color: #eee;
+  cursor: pointer;
+  color: #607d8b;
+}
+
+@media (max-width: 600px) {
+  .module {
+    font-size: 10px;
+    max-height: 75px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    margin: 0;
+  }
+  .module {
+    min-width: 60px;
+  }
+}

@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+
+.button-back {
+  position: absolute;
+  right: 15px;
+  justify-content: right;
+}
+
+img {
+  max-width: 80%;
+  height: 80%;
+  border-radius: 30px;
+}
+
+.text-inside-grid {
+  position: absolute;
+  left: 15px;
+
+}
+
+.span-text {
+  padding-left: 15px;
+}
+
+
+.mat-tab-group {
+  margin-top: -30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.mat-card-image {
+  margin: 0px 16px 0px 16px;
+}
+
+.job-description{
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.contact-and-back-button{
+}

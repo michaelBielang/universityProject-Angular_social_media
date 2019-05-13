@@ -13,5 +13,9 @@
       "",
       "kebab-case"
     ]
-  }
+  },
+  "quotemark": [
+    true,
+    "double"
+  ]
 }

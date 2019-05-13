@@ -14,7 +14,7 @@ export class NavigatorService {
   }
 
   /**
-   * navigates to main according to user role
+   * navigates to main according to model role
    */
   public goToMain(): void {
     this.authService.user.subscribe((user: User) => {

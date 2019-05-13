@@ -10,12 +10,15 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
+  MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
@@ -36,11 +39,17 @@ import {LandingPageModelComponent} from './components/model/landing-page-model/l
 import {JobItemComponent} from './components/model/job-overview/job-item/job-item.component';
 import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
+import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
+import {SearchResultsComponent} from './components/client/search-mask/search-results/search-results.component';
+import {ProfileComponent} from './components/model/profile/profile.component';
+import {NavigationComponent} from './components/shared/components/navigation/navigation.component';
 import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
 import {JobDetailsChatComponent} from './components/model/job-details/job-details-chat/job-details-chat.component';
 import {JobDetailsContractsComponent} from './components/model/job-details/job-details-contracts/job-details-contracts.component';
 import {HereMapComponent} from './components/shared/components/here-map/here-map.component';
 import {MessageComponent} from './components/model/job-details/job-details-chat/message/message.component';
+import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
+import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -69,7 +78,14 @@ const config = {
     JobDetailsChatComponent,
     JobDetailsContractsComponent,
     HereMapComponent,
-    MessageComponent
+    MessageComponent,
+    SearchMaskComponent,
+    SearchResultsComponent,
+    ProfileComponent,
+    NavigationComponent,
+    LandingPageModelComponent,
+    NewsListComponent,
+    RelatedNewsComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +110,15 @@ const config = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(config),
-    FormsModule
+    FormsModule,
+    MatTabsModule,
+    MatIconModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    MatDividerModule,
+    MatSnackBarModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]
