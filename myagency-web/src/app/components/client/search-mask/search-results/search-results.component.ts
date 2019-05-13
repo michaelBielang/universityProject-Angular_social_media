@@ -1,8 +1,8 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ModelService} from '../../../services/model.service';
-import {User} from '../../../enums/user-interface';
-import {FindModelService} from '../../../services/find-model.service';
+import {ModelService} from '../../../../services/model.service';
+import {User} from '../../../../enums/user-interface';
+import {FindModelService} from '../../../../services/find-model.service';
 
 @NgModule({
   imports: [BrowserAnimationsModule],

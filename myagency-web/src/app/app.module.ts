@@ -10,8 +10,8 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
-  MatExpansionModule,
   MatDividerModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
@@ -40,9 +40,9 @@ import {JobItemComponent} from './components/model/job-overview/job-item/job-ite
 import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
 import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
-import {SearchResultsComponent} from './components/client/search-results/search-results.component';
+import {SearchResultsComponent} from './components/client/search-mask/search-results/search-results.component';
 import {ProfileComponent} from './components/model/profile/profile.component';
-import {NavigationComponent} from './components/shared/navigation/navigation.component';
+import {NavigationComponent} from './components/shared/components/navigation/navigation.component';
 import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
 import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
 
@@ -68,7 +68,7 @@ const config = {
     LandingPageModelComponent,
     JobItemComponent,
     JobOverviewComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
     SearchMaskComponent,
     SearchResultsComponent,
     ProfileComponent,
