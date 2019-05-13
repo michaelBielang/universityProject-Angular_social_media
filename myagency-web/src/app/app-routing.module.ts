@@ -8,6 +8,8 @@ import {LandingPageModelComponent} from './components/model/landing-page-model/l
 import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
 import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
+import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
+import {ProfileComponent} from './components/model/profile/profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
@@ -18,7 +20,9 @@ const routes: Routes = [
   {
     path: 'client',
     children: [
-      {path: '', component: LandingPageClientComponent}
+      {path: '', component: LandingPageClientComponent},
+      {path: 'detail/:id', component: ProfileComponent},
+      {path: 'search', component: SearchMaskComponent},
     ]
   },
   {

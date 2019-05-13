@@ -1,0 +1,90 @@
+<app-navigation></app-navigation>
+<br>
+<p style="text-align: center; padding: 5px">Find what you are looking for</p>
+
+<mat-grid-list cols="4" rowHeight="4:1">
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Age" required>
+        <mat-option *ngFor="let age of ages" [value]='age'>
+          {{age}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Height" required>
+        <mat-option *ngFor="let height of heights" [value]='height'>
+          {{height}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Clothes Size" required>
+        <mat-option *ngFor="let size of clothesSize" [value]='size'>
+          {{size}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Hair Color" required>
+        <mat-option *ngFor="let color of hairColors" [value]='color'>
+          {{color}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Eye Color" required>
+        <mat-option *ngFor="let color of eyes" [value]='color'>
+          {{color}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Hip Size" required>
+        <mat-option *ngFor="let hip of hipMeasurement" [value]='hip'>
+          {{hip}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Waist Size" required>
+        <mat-option *ngFor="let waist of waistMeasurement" [value]='waist'>
+          {{waist}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-select placeholder="Bust Size" required>
+        <mat-option *ngFor="let bust of bustMeasurement" [value]='bust'>
+          {{bust}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="buttonGrid">
+  <button mat-raised-button color="primary" (click)="processSearchRequest()">Search</button>
+</div>
+<mat-paginator class="paginatorGrid" [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+<div>
+  <mat-divider></mat-divider>
+</div>
+<app-search-results></app-search-results>

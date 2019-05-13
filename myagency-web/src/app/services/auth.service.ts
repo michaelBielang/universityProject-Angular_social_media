@@ -8,6 +8,7 @@ import {NotifyService} from './notify.service';
 import 'rxjs-compat/add/operator/switchMap';
 import 'rxjs-compat/add/observable/of';
 import {UserRole} from '../enums/user-role.enum';
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root'
@@ -20,26 +21,28 @@ export class AuthService {
               private angularFirestore: AngularFirestore,
               private router: Router,
               private notify: NotifyService) {
-    // Define the user observable
-    // TODO check whether custom user is appropriated here
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
-          // logged in, get custom user from Firestore
+          // logged in, get custom model from Firestore
           return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
-          // logged out, null
+          // logged out -> null
           return Observable.of(null);
         }
       });
   }
 
-  //// Email/Password Auth ////
-
-  emailSignUp(email: string, password: string) {
+  /**
+   * sign up with e-mail and password
+   * @param email
+   * @param password
+   * @param role
+   */
+  public emailSignUp(email: string, password: string, role: UserRole): Promise<void> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
-        return this.setUserDoc(user);
+        return this.setUserDoc(user, role);
       })
       .catch(error => this.handleError(error));
   }
@@ -58,12 +61,12 @@ export class AuthService {
     });
   }
 
-  // Update properties on the user document
+  // Update properties on the model document
   updateUser(user: User, data: any) {
     return this.angularFirestore.doc(`users/${user.uid}`).update(data);
   }
 
-  // If error, console log and notify user
+  // If error, console log and notify model
   private handleError(error) {
     console.error(error);
     this.notify.update(error.message, 'error');
@@ -74,16 +77,19 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  // Sets user data to firestore after succesful login
-  private setUserDoc(user) {
-    const uid = user.user.uid;
+  // Sets model data to firestore after succesful login
+  private setUserDoc(user, role: UserRole): Promise<void> {
+    const uid = user.uid;
     const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${uid}`);
 
     const data: User = {
       uid,
-      email: user.user.email || null,
-      photoURL: 'https://goo.gl/Fz9nrQ',
-      role: UserRole.CLIENT
+      email: user.email || null,
+      role,
+      name: 'dummy',
+      location: 'dummy',
+      height: 'dummy',
+      size: 'dummy',
     };
     return userRef.set(data);
   }
