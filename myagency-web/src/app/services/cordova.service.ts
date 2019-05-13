@@ -8,6 +8,7 @@ function _window(): any {
   return window;
 }
 
+
 /**
  * Service for cordova specific actions
  */

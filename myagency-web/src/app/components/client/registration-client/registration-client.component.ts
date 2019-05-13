@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CountriesService} from '../../../services/countries.service';
 import {AuthService} from '../../../services/auth.service';
+import {NavigatorService} from '../../../services/navigator.service';
+import {UserRole} from '../../../enums/user-role.enum';
 
 @Component({
   selector: 'app-registration-client',
@@ -14,24 +16,24 @@ export class RegistrationClientComponent implements OnInit {
   secondFormGroup: FormGroup;
   countryList: string[];
   titles = ['Mr.', 'Mrs'];
+  private role = UserRole.CLIENT;
 
-  constructor(private formBuilder: FormBuilder, countriesService: CountriesService,
-              private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder,
+              private countriesService: CountriesService,
+              private authService: AuthService,
+              private navigatorService: NavigatorService) {
     this.countryList = countriesService.countries;
   }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
-      content: ['', Validators.required, Validators.minLength(1)],
-      password: ['', Validators.required, Validators.minLength(1)]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     // Second Step
     this.secondFormGroup = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
-      content: ['', Validators.required, Validators.minLength(1)],
-      password: ['', Validators.required, Validators.minLength(1)]
+      content: ['', Validators.required]
     });
   }
 
@@ -40,7 +42,7 @@ export class RegistrationClientComponent implements OnInit {
   }
 
   get content() {
-    return this.firstFormGroup.get('content');
+    return this.secondFormGroup.get('content');
   }
 
   get countries() {
@@ -51,9 +53,11 @@ export class RegistrationClientComponent implements OnInit {
     return this.firstFormGroup.get('password');
   }
 
-  signup() {
-    return this.authService.emailSignUp(this.email.value, this.password.value);
+  /**
+   * signs up wit with e-mail and password
+   */
+  public signUp(): void {
+    this.authService.emailSignUp(this.email.value, this.password.value, this.role)
+      .then((value) => this.navigatorService.goToMain());
   }
-
 }
-
