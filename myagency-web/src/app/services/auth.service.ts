@@ -78,13 +78,13 @@ export class AuthService {
   }
 
   // Sets model data to firestore after succesful login
-  private setUserDoc(user: UserCredential, role: UserRole): Promise<void> {
-    const uid = user.model.uid;
+  private setUserDoc(user, role: UserRole): Promise<void> {
+    const uid = user.uid;
     const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${uid}`);
 
     const data: User = {
       uid,
-      email: user.model.email || null,
+      email: user.email || null,
       role,
       name: 'dummy',
       location: 'dummy',
