@@ -2,11 +2,11 @@ import {Component, Input} from '@angular/core';
 import {JobOverview} from '../../../../services/jobs.service';
 
 @Component({
-  selector: 'job-item',
-  templateUrl: './job-item.component.html',
-  styleUrls: ['./job-item.component.scss']
+  selector: 'model-job-item',
+  templateUrl: './model-job-item.component.html',
+  styleUrls: ['./model-job-item.component.scss']
 })
-export class JobItemComponent {
+export class ModelJobItemComponent {
 
   @Input()
   public job: JobOverview;

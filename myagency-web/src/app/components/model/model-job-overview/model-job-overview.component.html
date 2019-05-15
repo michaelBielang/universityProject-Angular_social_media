@@ -3,7 +3,7 @@
 <mat-tab-group class="job-tabs">
   <mat-tab label="requests">
     <div class="tab-container">
-      <job-item *ngFor="let job of openRequest" [job]="job">
+      <model-job-item *ngFor="let job of openRequest" [job]="job">
         <div class="request-selection">
           <div class="reject" (click)="rejectJob(job)">
             <div class="spacer-container">
@@ -16,34 +16,34 @@
             </div>
           </div>
         </div>
-      </job-item>
+      </model-job-item>
     </div>
   </mat-tab>
   <mat-tab label="options">
     <div class="tab-container">
-      <job-item *ngFor="let job of jobOptions" [job]="job">
+      <model-job-item *ngFor="let job of jobOptions" [job]="job">
         <div class="status">
           OPTION
         </div>
-      </job-item>
+      </model-job-item>
     </div>
   </mat-tab>
   <mat-tab label="coming Jobs">
     <div class="tab-container">
-      <job-item *ngFor="let job of comingJobs" [job]="job">
+      <model-job-item *ngFor="let job of comingJobs" [job]="job">
         <div class="status">
           ACCEPTED
         </div>
-      </job-item>
+      </model-job-item>
     </div>
   </mat-tab>
   <mat-tab label="past Jobs">
     <div class="tab-container">
-      <job-item *ngFor="let job of pastJobs" [job]="job">
+      <model-job-item *ngFor="let job of pastJobs" [job]="job">
         <div class="status">
           DONE
         </div>
-      </job-item>
+      </model-job-item>
     </div>
   </mat-tab>
 </mat-tab-group>

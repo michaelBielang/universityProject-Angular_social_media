@@ -3,11 +3,11 @@ import {JobOverview, JobsService, JobStatus} from '../../../services/jobs.servic
 import {MatSnackBar} from '@angular/material';
 
 @Component({
-  selector: 'app-job-overview',
-  templateUrl: './job-overview.component.html',
-  styleUrls: ['./job-overview.component.scss']
+  selector: 'model-job-overview',
+  templateUrl: './model-job-overview.component.html',
+  styleUrls: ['./model-job-overview.component.scss']
 })
-export class JobOverviewComponent implements OnInit {
+export class ModelJobOverviewComponent implements OnInit {
 
   public jobs: JobOverview[];
   public openRequest: JobOverview[];
