@@ -4,11 +4,11 @@ import {ModelTipService} from '../../../services/model/model-tip.service';
 import {RelatedNewsService} from '../../../services/model/related-news.service';
 
 @Component({
-  selector: 'app-landing-page-model',
-  templateUrl: './landing-page-model.component.html',
-  styleUrls: ['./landing-page-model.component.scss']
+  selector: 'model-landing-page',
+  templateUrl: './model-landing-page.component.html',
+  styleUrls: ['./model-landing-page.component.scss']
 })
-export class LandingPageModelComponent implements OnInit {
+export class ModelLandingPageComponent implements OnInit {
 
   constructor(public userNewsService: UserNewsService,
               public modelTipService: ModelTipService,

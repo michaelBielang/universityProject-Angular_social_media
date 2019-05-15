@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {UserNewsService} from '../../../services/user-news.service';
 
 @Component({
-  selector: 'app-landing-page-client',
-  templateUrl: './landing-page-client.component.html',
-  styleUrls: ['./landing-page-client.component.scss']
+  selector: 'client-landing-page',
+  templateUrl: './client-landing-page.component.html',
+  styleUrls: ['./client-landing-page.component.scss']
 })
-export class LandingPageClientComponent implements OnInit {
+export class ClientLandingPageComponent implements OnInit {
 
   constructor(public userNewsService: UserNewsService) {
   }

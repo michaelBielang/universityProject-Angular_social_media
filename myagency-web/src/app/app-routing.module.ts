@@ -4,8 +4,8 @@ import {LandingPageComponent} from './components/shared/landing-page/landing-pag
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
 import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
 import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
-import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
-import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
+import {ModelLandingPageComponent} from './components/model/model-landing-page/model-landing-page.component';
+import {ClientLandingPageComponent} from './components/client/client-landing-page/client-landing-page.component';
 import {ModelJobOverviewComponent} from './components/model/model-job-overview/model-job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
 import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
   {
     path: 'client',
     children: [
-      {path: '', component: LandingPageClientComponent},
+      {path: '', component: ClientLandingPageComponent},
       {path: 'detail/:id', component: ProfileComponent},
       {path: 'search', component: SearchMaskComponent},
       {path: 'jobs', component: ClientJobOverviewComponent}
@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path: 'model',
     children: [
-      {path: '', component: LandingPageModelComponent},
+      {path: '', component: ModelLandingPageComponent},
       {path: 'jobs', component: ModelJobOverviewComponent},
       {
         path: 'job-details/:jobId',

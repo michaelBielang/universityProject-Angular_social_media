@@ -34,8 +34,8 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {LoginModalComponent} from './components/shared/landing-page/login-modal/login-modal.component';
-import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
-import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
+import {ClientLandingPageComponent} from './components/client/client-landing-page/client-landing-page.component';
+import {ModelLandingPageComponent} from './components/model/model-landing-page/model-landing-page.component';
 import {ModelJobItemComponent} from './components/model/model-job-overview/model-job-item/model-job-item.component';
 import {ModelJobOverviewComponent} from './components/model/model-job-overview/model-job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
@@ -49,7 +49,7 @@ import {JobDetailsContractsComponent} from './components/model/job-details/job-d
 import {HereMapComponent} from './components/shared/components/here-map/here-map.component';
 import {MessageComponent} from './components/model/job-details/job-details-chat/message/message.component';
 import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
-import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
+import {RelatedNewsComponent} from './components/model/model-landing-page/related-news/related-news.component';
 import {ClientJobOverviewComponent} from './components/client/client-job-overview/client-job-overview.component';
 import {ClientJobItemComponent} from './components/client/client-job-overview/client-job-item/client-job-item.component';
 
@@ -71,8 +71,8 @@ const config = {
     RegistrationModelComponent,
     RegisterStartComponent,
     LoginModalComponent,
-    LandingPageClientComponent,
-    LandingPageModelComponent,
+    ClientLandingPageComponent,
+    ModelLandingPageComponent,
     ModelJobItemComponent,
     ModelJobOverviewComponent,
     JobDetailsComponent,
@@ -85,7 +85,7 @@ const config = {
     SearchResultsComponent,
     ProfileComponent,
     NavigationComponent,
-    LandingPageModelComponent,
+    ModelLandingPageComponent,
     NewsListComponent,
     RelatedNewsComponent,
     ClientJobOverviewComponent,
