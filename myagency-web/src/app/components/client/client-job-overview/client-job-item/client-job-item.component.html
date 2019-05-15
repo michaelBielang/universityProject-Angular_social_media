@@ -1,0 +1,9 @@
+<div class="jobContainer" routerLink="/client/job-details/{{job.jobId}}">
+  <img [src]="job.imgSrc">
+  <div class="infos">
+    <span class="client">{{job.client}}</span>
+    <span class="date">{{job.date}}</span>
+    <span class="location">{{job.location}}</span>
+  </div>
+  <ng-content></ng-content>
+</div>

@@ -13,6 +13,7 @@ import {ProfileComponent} from './components/model/profile/profile.component';
 import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
 import {JobDetailsChatComponent} from './components/model/job-details/job-details-chat/job-details-chat.component';
 import {JobDetailsContractsComponent} from './components/model/job-details/job-details-contracts/job-details-contracts.component';
+import {ClientJobOverviewComponent} from './components/client/client-job-overview/client-job-overview.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: '', component: LandingPageClientComponent},
       {path: 'detail/:id', component: ProfileComponent},
       {path: 'search', component: SearchMaskComponent},
+      {path: 'jobs', component: ClientJobOverviewComponent}
     ]
   },
   {

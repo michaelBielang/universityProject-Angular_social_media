@@ -50,6 +50,8 @@ import {HereMapComponent} from './components/shared/components/here-map/here-map
 import {MessageComponent} from './components/model/job-details/job-details-chat/message/message.component';
 import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
 import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
+import { ClientJobOverviewComponent } from './components/client/client-job-overview/client-job-overview.component';
+import { ClientJobItemComponent } from './components/client/client-job-overview/client-job-item/client-job-item.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -85,7 +87,9 @@ const config = {
     NavigationComponent,
     LandingPageModelComponent,
     NewsListComponent,
-    RelatedNewsComponent
+    RelatedNewsComponent,
+    ClientJobOverviewComponent,
+    ClientJobItemComponent
   ],
   imports: [
     BrowserModule,
