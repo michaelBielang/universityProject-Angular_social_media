@@ -6,11 +6,11 @@ import {NavigatorService} from '../../../services/navigator.service';
 import {UserRole} from '../../../enums/user-role.enum';
 
 @Component({
-  selector: 'app-registration-client',
-  templateUrl: './registration-client.component.html',
-  styleUrls: ['./registration-client.component.scss']
+  selector: 'client-registration',
+  templateUrl: './client-registration.component.html',
+  styleUrls: ['./client-registration.component.scss']
 })
-export class RegistrationClientComponent implements OnInit {
+export class ClientRegistrationComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;

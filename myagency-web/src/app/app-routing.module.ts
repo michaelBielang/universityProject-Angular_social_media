@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LandingPageComponent} from './components/shared/landing-page/landing-page.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
-import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
-import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
+import {ModelRegistrationComponent} from './components/model/model-registration/model-registration.component';
+import {ClientRegistrationComponent} from './components/client/client-registration/client-registration.component';
 import {ModelLandingPageComponent} from './components/model/model-landing-page/model-landing-page.component';
 import {ClientLandingPageComponent} from './components/client/client-landing-page/client-landing-page.component';
 import {ModelJobOverviewComponent} from './components/model/model-job-overview/model-job-overview.component';
@@ -19,8 +19,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
   {path: 'landing-page', component: LandingPageComponent},
   {path: 'register', component: RegisterStartComponent},
-  {path: 'regModel', component: RegistrationModelComponent},
-  {path: 'regClient', component: RegistrationClientComponent},
+  {path: 'regModel', component: ModelRegistrationComponent},
+  {path: 'regClient', component: ClientRegistrationComponent},
   {
     path: 'client',
     children: [

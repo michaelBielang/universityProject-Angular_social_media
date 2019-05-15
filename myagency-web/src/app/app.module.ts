@@ -26,8 +26,8 @@ import {
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
-import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
+import {ClientRegistrationComponent} from './components/client/client-registration/client-registration.component';
+import {ModelRegistrationComponent} from './components/model/model-registration/model-registration.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -67,8 +67,8 @@ const config = {
     AppComponent,
     LandingPageComponent,
     TeamMembersComponent,
-    RegistrationClientComponent,
-    RegistrationModelComponent,
+    ClientRegistrationComponent,
+    ModelRegistrationComponent,
     RegisterStartComponent,
     LoginModalComponent,
     ClientLandingPageComponent,

@@ -8,10 +8,10 @@ import {UserRole} from '../../../enums/user-role.enum';
 
 @Component({
   selector: 'app-registration-model',
-  templateUrl: './registration-model.component.html',
-  styleUrls: ['./registration-model.component.scss']
+  templateUrl: './model-registration.component.html',
+  styleUrls: ['./model-registration.component.scss']
 })
-export class RegistrationModelComponent implements OnInit {
+export class ModelRegistrationComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   countryList: string[];
