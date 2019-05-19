@@ -52,6 +52,7 @@ import {NewsListComponent} from './components/shared/components/news-list/news-l
 import {RelatedNewsComponent} from './components/model/model-landing-page/related-news/related-news.component';
 import {ClientJobOverviewComponent} from './components/client/client-job-overview/client-job-overview.component';
 import {ClientJobItemComponent} from './components/client/client-job-overview/client-job-item/client-job-item.component';
+import { ClientCreateJobComponent } from './components/client/client-create-job/client-create-job.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -89,7 +90,8 @@ const config = {
     NewsListComponent,
     RelatedNewsComponent,
     ClientJobOverviewComponent,
-    ClientJobItemComponent
+    ClientJobItemComponent,
+    ClientCreateJobComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<navigation>
+</navigation>
+
+
+<div class="jobInput">
+  <mat-card>
+    <form [formGroup]="jobFormGroup">
+      <mat-form-field>
+        <input matInput placeholder="Description" formControlName="description" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Location" formControlName="location" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Budget" formControlName="budget" required>
+      </mat-form-field>
+      <br>
+      <mat-card-actions>
+        <div class="createButton">
+          <button mat-raised-button [disabled]="jobFormGroup.invalid">Create</button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
