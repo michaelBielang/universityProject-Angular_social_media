@@ -8,6 +8,7 @@ import {Job} from '../../enums/client-job-interface';
 export class ClientJobsService {
 
   clientJobs: Job[] = [];
+  selectedJobId: number;
 
   constructor() {
   }
@@ -18,5 +19,14 @@ export class ClientJobsService {
 
   get jobs(): Job[] {
     return this.clientJobs;
+  }
+
+  addModelToJob(uid: number) {
+    for (const job of this.clientJobs) {
+      if (job.id === this.selectedJobId) {
+        console.log('Success');
+        job.models.push(uid);
+      }
+    }
   }
 }

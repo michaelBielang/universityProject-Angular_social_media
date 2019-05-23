@@ -28,10 +28,12 @@ export class ClientCreateJobComponent implements OnInit {
 
   createJob(): void {
     const job: Job = {
+      id: 50,
       title: this.jobFormGroup.get('title').value,
       description: this.jobFormGroup.get('description').value,
       location: this.jobFormGroup.get('location').value,
-      budget: this.jobFormGroup.get('budget').value
+      budget: this.jobFormGroup.get('budget').value,
+      models: []
     };
     this.clientJobService.addJob(job);
     this.navigatorService.goToMain();
