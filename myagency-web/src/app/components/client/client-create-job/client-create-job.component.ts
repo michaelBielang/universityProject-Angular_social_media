@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClientJobsService} from "../../../services/client/client-jobs.service";
-import {Job} from "../../../enums/client-job-interface";
-import {NavigatorService} from "../../../services/navigator.service";
+import {ClientJobsService} from '../../../services/client/client-jobs.service';
+import {Job} from '../../../enums/client-job-interface';
+import {NavigatorService} from '../../../services/navigator.service';
 
 @Component({
   selector: 'app-client-create-job',
