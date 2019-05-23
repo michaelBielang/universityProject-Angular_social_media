@@ -8,7 +8,7 @@ import {ModelLandingPageComponent} from './components/model/model-landing-page/m
 import {ClientLandingPageComponent} from './components/client/client-landing-page/client-landing-page.component';
 import {ModelJobOverviewComponent} from './components/model/model-job-overview/model-job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
-import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
+import {SearchMaskComponent} from './components/client/client-search/search-mask.component';
 import {ProfileComponent} from './components/model/profile/profile.component';
 import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
 import {JobDetailsChatComponent} from './components/model/job-details/job-details-chat/job-details-chat.component';

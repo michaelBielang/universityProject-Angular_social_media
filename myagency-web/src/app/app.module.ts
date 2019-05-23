@@ -39,8 +39,8 @@ import {ModelLandingPageComponent} from './components/model/model-landing-page/m
 import {ModelJobItemComponent} from './components/model/model-job-overview/model-job-item/model-job-item.component';
 import {ModelJobOverviewComponent} from './components/model/model-job-overview/model-job-overview.component';
 import {JobDetailsComponent} from './components/model/job-details/job-details.component';
-import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
-import {SearchResultsComponent} from './components/client/search-mask/search-results/search-results.component';
+import {SearchMaskComponent} from './components/client/client-search/search-mask.component';
+import {SearchResultsComponent} from './components/client/client-search/search-results/search-results.component';
 import {ProfileComponent} from './components/model/profile/profile.component';
 import {NavigationComponent} from './components/shared/components/navigation/navigation.component';
 import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
