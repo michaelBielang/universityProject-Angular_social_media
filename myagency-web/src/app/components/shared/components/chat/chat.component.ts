@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavigatedFromRouteService} from '../../../model/job-details/navigated-from-route.service';
+import {NavigatedFromRouteService} from '../../../../services/navigated-from-route.service';
 import {ChatService} from './chat.service';
 
 @Component({

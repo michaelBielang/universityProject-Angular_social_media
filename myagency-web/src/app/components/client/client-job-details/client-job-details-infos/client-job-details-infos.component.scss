@@ -1,0 +1,69 @@
+@import "~src/assets/scss/variables";
+
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .tab-container {
+    $gaps: 50px;
+    max-width: 1000px;
+    width: 100%;
+    min-height: calc(100% - 2 * #{$gaps});
+    display: grid;
+    grid-gap: $gaps;
+    padding: $gaps;
+    background-color: $color-0;
+    overflow: auto;
+
+    .job-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+      div {
+        align-self: center;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .col-2 {
+        grid-column-end: span 2;
+      }
+
+      .row-2 {
+        grid-row-end: span 2;
+      }
+
+      .title {
+        text-decoration: underline;
+      }
+
+      .image {
+        justify-self: center;
+      }
+
+      .header {
+        font-weight: bold;
+        font-size: $title-font-size;
+      }
+
+      .location {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: $gaps;
+      }
+    }
+
+    .mat-accordion {
+      .content {
+        display: grid;
+
+        button {
+          align-self: end;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div class="tab-container">
+  <div class="job-details">
+    <div class="header">
+      {{job.title}}
+    </div>
+    <div>
+      <div class="title">Budget:</div>
+      <span>{{job.budget}}</span>
+    </div>
+    <div class="col-2 location">
+      <div>
+        <div class="title">Location:</div>
+        <span>{{job.location}}</span>
+      </div>
+      <here-map [address]="job.location"></here-map>
+    </div>
+    <div class="col-2">
+      <div class="title">Job details:</div>
+      <span>{{job.description}}</span>
+    </div>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let model of job.models">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{model.modelId}}
+        </mat-panel-title>
+        <mat-panel-description>
+          Status: {{JobStatus[model.status]}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="content">
+        <div>Model Infos and Pictures will be displayed here.</div>
+        <div>Fee: {{model.fee}}</div>
+        <button *ngIf="model.status === JobStatus.OPTION" mat-button (click)="acceptModel(model.modelId)">ACCEPT
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

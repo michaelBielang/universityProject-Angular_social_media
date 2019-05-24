@@ -25,6 +25,17 @@ export class ClientJobsService {
   selectedJobId: number;
 
   constructor() {
+    this.clientJobs = [{
+      jobId: 10,
+      location: 'munich',
+      description: 'super nice job',
+      title: 'WOW Amazing',
+      budget: 12345,
+      clientId: 2345,
+      models: [{modelId: 1, status: JobStatus.REQUEST, fee: '200€'},
+        {modelId: 1, status: JobStatus.COMING, fee: '190€'},
+        {modelId: 4, status: JobStatus.OPTION, fee: '250€'}]
+    }];
   }
 
   addJob(job: ClientJob): void {
@@ -41,6 +52,23 @@ export class ClientJobsService {
       currentJob.models.push({modelId, status: JobStatus.REQUEST, fee: '300€'});
       this.clientJobs = [...this.clientJobs];
     }
+  }
+
+
+  public changeModelStatus(jobId: number, modelId: number, newStatus: JobStatus) {
+    const selectedJob = this.clientJobs.find(job => job.jobId === jobId);
+    if (selectedJob) {
+      selectedJob.models.find(model => model.modelId === modelId).status = newStatus;
+      this.clientJobs = [...this.clientJobs];
+    }
+  }
+
+  /**
+   * @param jobId wich job should be returned
+   * @return ClientJob to the given jobId
+   */
+  public job(jobId: number): ClientJob {
+    return this.clientJobs.find(job => job.jobId === jobId);
   }
 }
 
