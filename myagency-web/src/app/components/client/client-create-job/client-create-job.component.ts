@@ -28,7 +28,8 @@ export class ClientCreateJobComponent implements OnInit {
 
   createJob(): void {
     const job: ClientJob = {
-      id: 50,
+      jobId: 50,
+      clientId: 123,
       title: this.jobFormGroup.get('title').value,
       description: this.jobFormGroup.get('description').value,
       location: this.jobFormGroup.get('location').value,

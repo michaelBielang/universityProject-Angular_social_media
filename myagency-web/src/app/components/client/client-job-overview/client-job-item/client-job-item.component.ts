@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {JobOverview} from '../../../../enums/model-job.type';
+
+import {ClientJob} from '../../../../enums/client-job-interface';
 
 @Component({
   selector: 'client-job-item',
@@ -9,7 +10,7 @@ import {JobOverview} from '../../../../enums/model-job.type';
 export class ClientJobItemComponent implements OnInit {
 
   @Input()
-  public job: JobOverview;
+  public job: ClientJob;
 
   constructor() {
   }
