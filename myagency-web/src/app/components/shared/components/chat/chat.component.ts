@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {NavigatedFromRouteService} from '../navigated-from-route.service';
+import {NavigatedFromRouteService} from '../../../model/job-details/navigated-from-route.service';
 import {ChatService} from './chat.service';
 
 @Component({
-  selector: 'app-job-details-chat',
-  templateUrl: './job-details-chat.component.html',
-  styleUrls: ['./job-details-chat.component.scss']
+  selector: 'chat',
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.scss']
 })
-export class JobDetailsChatComponent {
+export class ChatComponent {
 
   public value = '';
 

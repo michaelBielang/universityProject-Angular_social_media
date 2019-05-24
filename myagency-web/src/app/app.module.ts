@@ -44,15 +44,15 @@ import {SearchResultsComponent} from './components/client/client-search/search-r
 import {ProfileComponent} from './components/model/profile/profile.component';
 import {NavigationComponent} from './components/shared/components/navigation/navigation.component';
 import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
-import {JobDetailsChatComponent} from './components/model/job-details/job-details-chat/job-details-chat.component';
+import {ChatComponent} from './components/shared/components/chat/chat.component';
 import {JobDetailsContractsComponent} from './components/model/job-details/job-details-contracts/job-details-contracts.component';
 import {HereMapComponent} from './components/shared/components/here-map/here-map.component';
-import {MessageComponent} from './components/model/job-details/job-details-chat/message/message.component';
+import {MessageComponent} from './components/shared/components/chat/message/message.component';
 import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
 import {RelatedNewsComponent} from './components/model/model-landing-page/related-news/related-news.component';
 import {ClientJobOverviewComponent} from './components/client/client-job-overview/client-job-overview.component';
 import {ClientJobItemComponent} from './components/client/client-job-overview/client-job-item/client-job-item.component';
-import { ClientCreateJobComponent } from './components/client/client-create-job/client-create-job.component';
+import {ClientCreateJobComponent} from './components/client/client-create-job/client-create-job.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -78,7 +78,7 @@ const config = {
     ModelJobOverviewComponent,
     JobDetailsComponent,
     JobDetailsInfosComponent,
-    JobDetailsChatComponent,
+    ChatComponent,
     JobDetailsContractsComponent,
     HereMapComponent,
     MessageComponent,

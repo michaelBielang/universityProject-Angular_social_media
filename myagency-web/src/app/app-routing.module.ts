@@ -11,7 +11,7 @@ import {JobDetailsComponent} from './components/model/job-details/job-details.co
 import {SearchMaskComponent} from './components/client/client-search/search-mask.component';
 import {ProfileComponent} from './components/model/profile/profile.component';
 import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
-import {JobDetailsChatComponent} from './components/model/job-details/job-details-chat/job-details-chat.component';
+import {ChatComponent} from './components/shared/components/chat/chat.component';
 import {JobDetailsContractsComponent} from './components/model/job-details/job-details-contracts/job-details-contracts.component';
 import {ClientJobOverviewComponent} from './components/client/client-job-overview/client-job-overview.component';
 import {ClientCreateJobComponent} from './components/client/client-create-job/client-create-job.component';
@@ -43,7 +43,7 @@ const routes: Routes = [
         children: [
           {path: '', redirectTo: 'infos', pathMatch: 'full'},
           {path: 'infos', component: JobDetailsInfosComponent},
-          {path: 'chat', component: JobDetailsChatComponent},
+          {path: 'chat', component: ChatComponent},
           {path: 'contracts', component: JobDetailsContractsComponent}
         ]
       }
