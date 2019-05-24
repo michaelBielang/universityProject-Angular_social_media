@@ -1,35 +1,11 @@
 import {Injectable} from '@angular/core';
-
-export interface JobOverview {
-  imgSrc: string;
-  client: string;
-  date: string;
-  location: string;
-  fee: string;
-  jobId: string;
-  status: JobStatus;
-}
-
-export interface JobDetails {
-  clientDetails: string;
-  jobDetails: string;
-  contact: string;
-  detailedLocation: string;
-  photographer: string;
-  jobOverview: JobOverview;
-}
-
-export enum JobStatus {
-  REQUEST,
-  OPTION,
-  COMING,
-  PAST
-}
+import {JobDetails, JobOverview} from '../../enums/model-job.type';
+import {JobStatus} from '../../enums/job-status.type';
 
 @Injectable({
   providedIn: 'root'
 })
-export class JobsService {
+export class ModelJobsService {
 
   constructor() {
   }

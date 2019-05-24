@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {JobOverview, JobsService, JobStatus} from '../../../services/jobs.service';
+import {ModelJobsService} from '../../../services/model/model-jobs.service';
 import {MatSnackBar} from '@angular/material';
+import {JobOverview} from '../../../enums/model-job.type';
+import {JobStatus} from '../../../enums/job-status.type';
 
 @Component({
   selector: 'model-job-overview',
@@ -15,7 +17,7 @@ export class ModelJobOverviewComponent implements OnInit {
   public comingJobs: JobOverview[];
   public pastJobs: JobOverview[];
 
-  constructor(public jobsService: JobsService,
+  constructor(public jobsService: ModelJobsService,
               private snackBar: MatSnackBar) {
     this.jobs = jobsService.jobsOverview();
     this.splitJobs();

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {JobOverview} from '../../../../services/jobs.service';
+import {JobOverview} from '../../../../enums/model-job.type';
 
 @Component({
   selector: 'model-job-item',

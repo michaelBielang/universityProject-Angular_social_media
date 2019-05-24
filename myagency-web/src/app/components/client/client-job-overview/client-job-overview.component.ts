@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {JobOverview, JobsService, JobStatus} from '../../../services/jobs.service';
+import {ModelJobsService} from '../../../services/model/model-jobs.service';
+import {JobOverview} from '../../../enums/model-job.type';
+import {JobStatus} from '../../../enums/job-status.type';
 
 @Component({
   selector: 'app-client-job-overview',
@@ -13,7 +15,7 @@ export class ClientJobOverviewComponent implements OnInit {
   public comingJobs: JobOverview[];
   public pastJobs: JobOverview[];
 
-  constructor(private jobsService: JobsService) {
+  constructor(private jobsService: ModelJobsService) {
     this.jobs = jobsService.jobsOverview();
     this.splitJobs();
   }

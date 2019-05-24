@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {JobDetails, JobsService} from '../../../../services/jobs.service';
+import {ModelJobsService} from '../../../../services/model/model-jobs.service';
 import {NavigatedFromRouteService} from '../navigated-from-route.service';
+import {JobDetails} from '../../../../enums/model-job.type';
 
 @Component({
   selector: 'app-job-details-infos',
@@ -13,7 +14,7 @@ export class JobDetailsInfosComponent implements OnInit {
   public details: JobDetails;
 
   constructor(private route: ActivatedRoute,
-              private jobsService: JobsService,
+              private jobsService: ModelJobsService,
               private navigatedFromRouteService: NavigatedFromRouteService) {
     this.navigatedFromRouteService.resetCurrentUrlToPrevious();
     const id = this.route.snapshot.paramMap.get('jobId');
