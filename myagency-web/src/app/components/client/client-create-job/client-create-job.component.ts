@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ClientJobsService} from '../../../services/client/client-jobs.service';
-import {Job} from '../../../enums/client-job-interface';
+import {ClientJob} from '../../../enums/client-job-interface';
 import {NavigatorService} from '../../../services/navigator.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class ClientCreateJobComponent implements OnInit {
   }
 
   createJob(): void {
-    const job: Job = {
+    const job: ClientJob = {
       id: 50,
       title: this.jobFormGroup.get('title').value,
       description: this.jobFormGroup.get('description').value,

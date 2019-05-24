@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Job} from '../../enums/client-job-interface';
+import {ClientJob} from '../../enums/client-job-interface';
+import {BehaviorSubject} from 'rxjs';
 
 
 @Injectable({
@@ -7,26 +8,37 @@ import {Job} from '../../enums/client-job-interface';
 })
 export class ClientJobsService {
 
-  clientJobs: Job[] = [];
+  private readonly _clientJobs = new BehaviorSubject<ClientJob[]>([]);
+
+  public get clientJobs(): ClientJob[] {
+    return this._clientJobs.getValue();
+  }
+
+  public set clientJobs(val: ClientJob[]) {
+    this._clientJobs.next(val);
+  }
+
+  public readonly clientJobs$ = this._clientJobs.asObservable();
+
   selectedJobId: number;
 
   constructor() {
   }
 
-  addJob(job: Job): void {
-    this.clientJobs.push(job);
+  addJob(job: ClientJob): void {
+    this.clientJobs = [job, ...this.clientJobs];
   }
 
-  get jobs(): Job[] {
+  get jobs(): ClientJob[] {
     return this.clientJobs;
   }
 
   addModelToJob(uid: number) {
-    for (const job of this.clientJobs) {
-      if (job.id === this.selectedJobId) {
-        console.log('Success');
-        job.models.push(uid);
-      }
+    const currentJob = this.clientJobs.find(job => job.id === this.selectedJobId);
+    if (currentJob) {
+      currentJob.models.push(uid);
+      this.clientJobs = [...this.clientJobs];
     }
   }
 }
+
