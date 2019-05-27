@@ -22,16 +22,21 @@
   <mat-accordion>
     <mat-expansion-panel *ngFor="let model of job.models">
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{model.modelId}}
+        <mat-panel-title *ngIf="modelService.getModel(model.modelId) as modelDetails">
+          {{modelDetails.name}}
         </mat-panel-title>
         <mat-panel-description>
           Status: {{JobStatus[model.status]}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="content">
-        <div>Model Infos and Pictures will be displayed here.</div>
-        <div>Fee: {{model.fee}}</div>
+      <div class="content" *ngIf="modelService.getModel(model.modelId) as modelDetails">
+        <div class="model-informations">
+          <div>height: {{modelDetails.height}}</div>
+          <div>size:{{modelDetails.size}}</div>
+          <div>e-mail: {{modelDetails.email}}</div>
+          <div>location: {{modelDetails.location}}</div>
+          <div>fee: {{model.fee}}</div>
+        </div>
         <button *ngIf="model.status === JobStatus.OPTION" mat-button (click)="acceptModel(model.modelId)">ACCEPT
         </button>
       </div>
