@@ -39,8 +39,7 @@ export class SearchResultsComponent implements OnInit {
 
 
   getModels(): void {
-    this.modelService.getModels()
-      .subscribe(models => this.models = models);
+    this.models = this.modelService.models;
   }
 
 
