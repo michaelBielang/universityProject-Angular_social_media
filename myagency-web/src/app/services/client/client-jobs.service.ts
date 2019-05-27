@@ -33,7 +33,7 @@ export class ClientJobsService {
       budget: 12345,
       clientId: 2345,
       models: [{modelId: 1, status: JobStatus.REQUEST, fee: '200€'},
-        {modelId: 1, status: JobStatus.COMING, fee: '190€'},
+        {modelId: 2, status: JobStatus.COMING, fee: '190€'},
         {modelId: 4, status: JobStatus.OPTION, fee: '250€'}]
     }];
   }
