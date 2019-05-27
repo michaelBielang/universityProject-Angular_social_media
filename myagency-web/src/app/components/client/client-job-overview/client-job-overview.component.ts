@@ -25,7 +25,7 @@ export class ClientJobOverviewComponent implements OnInit {
 
   private splitJobs(): void {
     this.jobsInProgress = this.jobs.filter(job =>
-      job.models.every(model => model.status === JobStatus.REQUEST || model.status === JobStatus.OPTION));
+      job.models.some(model => model.status === JobStatus.REQUEST || model.status === JobStatus.OPTION));
     this.comingJobs = this.jobs.filter(job =>
       job.models.every(model => model.status === JobStatus.COMING));
     this.comingJobs = this.jobs.filter(job =>
