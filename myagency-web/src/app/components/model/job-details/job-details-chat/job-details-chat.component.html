@@ -1,3 +1,19 @@
-<p>
-  job-details-chat works!
-</p>
+<div class="message-container">
+  <message *ngFor="let message of chatService.messages$ | async"
+           [userId]="userId"
+           [message]="message"
+           (remove)="chatService.deleteMessage($event)"></message>
+</div>
+<mat-form-field appearance="fill">
+
+  <input matInput type="text" (keyup.enter)="sendMessage()" [(ngModel)]="value">
+
+  <div class="input-actions" matSuffix>
+    <button mat-button *ngIf="value" aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button mat-button aria-label="Send" (click)="sendMessage()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</mat-form-field>
