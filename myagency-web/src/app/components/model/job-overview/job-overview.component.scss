@@ -1,0 +1,58 @@
+@import "~src/assets/scss/variables";
+
+$gaps: 20px;
+$small-spacing: 10px;
+
+.job-tabs {
+  height: calc(100vh - #{$header-height});
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  .tab-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: $gaps;
+    padding: $gaps;
+    background-color: $color-300;
+    min-height: calc(100% - 2 * #{$gaps});
+
+    .request-selection {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+
+      .reject {
+        width: calc(100% - #{$small-spacing});
+        padding-left: $small-spacing;
+
+        .mat-icon {
+          border-right: 1px solid $color-300;
+        }
+      }
+
+      .accept {
+        width: calc(100% - #{$small-spacing});
+        padding-right: $small-spacing;
+      }
+
+
+      .spacer-container {
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid $color-300;
+
+        .mat-icon {
+          width: 100%;
+          margin: $small-spacing 0;
+        }
+      }
+    }
+
+    .status {
+      padding: $small-spacing 0;
+      margin: 0 $small-spacing;
+      border-top: 1px solid $color-300;
+      text-align: center;
+    }
+  }
+}

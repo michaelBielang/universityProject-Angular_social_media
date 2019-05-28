@@ -18,17 +18,20 @@ export class NavigatorService {
    */
   public goToMain(): void {
     this.authService.user.subscribe((user: User) => {
-      switch (user.role) {
-        case UserRole.MODEL:
-          this.router.navigate(['model']);
-          break;
-        case UserRole.CLIENT:
-          this.router.navigate(['client']);
-          break;
-        default:
-          this.router.navigate(['landing-page']);
+      if (!!user) {
+        switch (user.role) {
+          case UserRole.MODEL:
+            this.router.navigate(['model']);
+            break;
+          case UserRole.CLIENT:
+            this.router.navigate(['client']);
+            break;
+          default:
+            this.router.navigate(['landing-page']);
+        }
+      } else {
+        this.router.navigate(['landing-page']);
       }
     });
-
   }
 }

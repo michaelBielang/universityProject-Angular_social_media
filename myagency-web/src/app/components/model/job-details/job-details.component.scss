@@ -1,0 +1,12 @@
+@import "~src/assets/scss/variables";
+
+.job-tabs-container {
+  height: calc(100vh - #{$header-height});
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  .tab-container {
+    background-color: $color-300;
+    overflow: hidden;
+  }
+}
