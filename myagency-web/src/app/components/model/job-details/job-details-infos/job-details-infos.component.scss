@@ -1,0 +1,53 @@
+@import "~src/assets/scss/variables";
+
+:host {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+
+  .tab-container {
+    $gaps: 50px;
+    max-width: 1000px;
+    min-height: calc(100% - 2 * #{$gaps});
+    display: grid;
+    grid-gap: $gaps;
+    padding: $gaps;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    background-color: $color-0;
+
+    div {
+      align-self: center;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .col-2 {
+      grid-column-end: span 2;
+    }
+
+    .row-2 {
+      grid-row-end: span 2;
+    }
+
+    .title {
+      text-decoration: underline;
+    }
+
+    .image {
+      justify-self: center;
+    }
+
+    .client {
+      font-weight: bold;
+      font-size: $title-font-size;
+    }
+
+    .location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: $gaps;
+    }
+  }
+}

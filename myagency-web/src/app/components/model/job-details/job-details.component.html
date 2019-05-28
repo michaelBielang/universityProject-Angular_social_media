@@ -1,35 +1,30 @@
 <navigation></navigation>
-<a routerLink="/model/jobs">
-  <mat-icon>arrow_back</mat-icon>
-</a>
-<mat-tab-group class="job-tabs">
-  <mat-tab label="requests">
-    <div class="tab-container">
-      <div>
-        {{details.detailedLocation}}
-      </div>
-      <div>
-        {{details.contact}}
-      </div>
-      <div>
-        {{details.photographer}}
-      </div>
-      <div>
-        {{details.jobDetails}}
-      </div>
-      <div>
-        {{details.clientDetails}}
-      </div>
-    </div>
-  </mat-tab>
-  <mat-tab label="chat">
-    <div class="tab-container">
-      chat
-    </div>
-  </mat-tab>
-  <mat-tab label="contracts">
-    <div class="tab-container">
-      contracts
-    </div>
-  </mat-tab>
-</mat-tab-group>
+<div class="job-tabs-container">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link (click)="navigateBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <a mat-tab-link
+       routerLink="infos"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      Infos
+    </a>
+    <a mat-tab-link
+       routerLink="chat"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      Chat
+    </a>
+    <a mat-tab-link
+       routerLink="contracts"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      Contract
+    </a>
+
+  </nav>
+  <div clasS="tab-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
