@@ -50,21 +50,20 @@ export class ChatService {
       };
       this.messages = [randomMessage, ...this.messages];
     }
-    console.log(this.messages.length % (Math.random() * 2));
   }
 
   private createRandomMessage(messageToAnwer: string): string {
     if (messageToAnwer.indexOf('?') !== -1) {
-      const questionAnswers = ['42', 'sehr gute frage. was sagst du denn dazu?'];
-      return questionAnswers[Math.round(Math.random() * questionAnswers.length)];
+      const questionAnswers = ['42', 'Sehr gute Frage. Was sagst du denn dazu?'];
+      return questionAnswers[Math.round(Math.random() * (questionAnswers.length - 1))];
     } else {
       const answers = ['ich verstehe', 'voll und ganz', 'das finde ich sehr interessant', 'erzähl mir mehr'];
-      return answers[Math.round(Math.random() * answers.length)];
+      return answers[Math.round(Math.random() * (answers.length - 1))];
     }
   }
 
   public deleteMessage(id: string) {
-    this.messages = this.messages.filter(todo => todo.id !== id);
+    this.messages = this.messages.filter(message => message.id !== id);
   }
 
 }
