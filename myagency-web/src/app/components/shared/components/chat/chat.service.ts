@@ -7,7 +7,6 @@ import {Message} from './message.type';
 })
 export class ChatService {
 
-
   private readonly _messages = new BehaviorSubject<Message[]>([]);
 
   public get messages(): Message[] {
