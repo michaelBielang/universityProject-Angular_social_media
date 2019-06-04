@@ -24,7 +24,7 @@ export class ModelService {
     this.models = [...Users];
   }
 
-  getModel(id: number): User {
+  getModel(id: string): User {
     return this.models.find(model => model.uid === id);
   }
 

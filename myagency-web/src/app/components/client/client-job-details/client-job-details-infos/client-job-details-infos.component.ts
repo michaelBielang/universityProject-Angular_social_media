@@ -22,14 +22,14 @@ export class ClientJobDetailsInfosComponent implements OnInit {
               private navigatedFromRouteService: NavigatedFromRouteService,
               private modelService: ModelService) {
     this.navigatedFromRouteService.resetCurrentUrlToPrevious();
-    const id = +this.route.parent.snapshot.paramMap.get('jobId');
+    const id = this.route.parent.snapshot.paramMap.get('jobId');
     this.job = this.jobsService.job(id);
   }
 
   ngOnInit() {
   }
 
-  public acceptModel(modelId: number) {
+  public acceptModel(modelId: string) {
     this.jobsService.changeModelStatus(this.job.jobId, modelId, JobStatus.COMING);
   }
 

@@ -43,7 +43,7 @@ export class SearchResultsComponent implements OnInit {
   }
 
 
-  saveModel(uid: number) {
+  saveModel(uid: string) {
     this.clientJobService.addModelToJob(uid);
   }
 }

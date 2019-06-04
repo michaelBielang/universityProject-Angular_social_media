@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
 
 
   getModel(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.model = this.modelService.getModel(id);
   }
 

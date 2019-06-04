@@ -1,11 +1,10 @@
 import {JobModelDetails} from './job-model-details.type';
 
 export interface ClientJob {
-  jobId: number;
-  clientId: number;
+  jobId: string;
+  clientId: string;
   title: string;
   description: string;
   location: string;
-  budget: number;
   models: JobModelDetails[];
 }

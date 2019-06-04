@@ -20,10 +20,10 @@ export class NavigatorService {
     this.authService.user.subscribe((user: User) => {
       if (!!user) {
         switch (user.role) {
-          case UserRole.MODEL:
+          case UserRole[UserRole.MODEL]:
             this.router.navigate(['model']);
             break;
-          case UserRole.CLIENT:
+          case UserRole[UserRole.CLIENT]:
             this.router.navigate(['client']);
             break;
           default:
