@@ -48,7 +48,16 @@ export class ClientJobsService {
   }
 
   addModelToJob(modelId: string) {
+
     const currentJob = this.clientJobs.find(job => job.jobId === this.selectedJobId);
+    this.fireStore.doc(`jobs/${this.selectedJobId}`).set({
+      models: [...currentJob.models, {
+        modelId,
+        status: JobStatus.REQUEST,
+        fee: '300€'
+      }]
+    }, {merge: true}).then(response => console.log(response));
+
     if (currentJob) {
       currentJob.models.push({modelId, status: JobStatus.REQUEST, fee: '300€'});
       this.clientJobs = [...this.clientJobs];
