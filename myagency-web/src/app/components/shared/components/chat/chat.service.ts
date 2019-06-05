@@ -1,12 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-
-export interface Message {
-  content: string;
-  senderId: string;
-  timestamp: number;
-  id: string;
-}
+import {Message} from './message.type';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigatedFromRouteService} from '../navigated-from-route.service';
+import {NavigatedFromRouteService} from '../../../../services/navigated-from-route.service';
 
 @Component({
   selector: 'app-job-details-contracts',
