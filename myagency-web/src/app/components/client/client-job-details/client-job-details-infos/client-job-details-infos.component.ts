@@ -41,7 +41,7 @@ export class ClientJobDetailsInfosComponent implements OnInit {
   }
 
   public acceptModel(modelId: string) {
-    this.jobsService.changeModelStatus(this.currentJob.jobId, modelId, JobStatus.COMING);
+    this.jobsService.changeModelStatus(this.currentJob.jobId, modelId, JobStatus[JobStatus.COMING]);
   }
 
 }

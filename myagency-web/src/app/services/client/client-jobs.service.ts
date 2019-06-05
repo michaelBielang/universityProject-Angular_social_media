@@ -28,26 +28,16 @@ export class ClientJobsService {
   public readonly clientJobs$ = this._clientJobs.asObservable();
 
   public readonly jobsInProgress$ = this.clientJobs$.pipe(map(jobs => this.clientJobs.filter((job: ClientJob) =>
-    job.models.some(model => model.status === JobStatus.REQUEST || model.status === JobStatus.OPTION) || job.models.length === 0)));
+    job.models.some(model => model.status === JobStatus[JobStatus.REQUEST] || model.status === JobStatus[JobStatus.OPTION]) || job.models.length === 0)));
   public readonly comingJobs$ = this.clientJobs$.pipe(map(jobs => this.clientJobs.filter((job: ClientJob) =>
-    job.models.every(model => model.status === JobStatus.COMING) && job.models.length !== 0)));
+    job.models.every(model => model.status === JobStatus[JobStatus.COMING]) && job.models.length !== 0)));
   public readonly finishedJobs$ = this.clientJobs$.pipe(map(jobs => this.clientJobs.filter((job: ClientJob) =>
-    job.models.every(model => model.status === JobStatus.PAST))));
+    job.models.every(model => model.status === JobStatus[JobStatus.PAST]))));
 
   selectedJobId: string;
 
   constructor(private fireStore: AngularFirestore,
               private authService: AuthService) {
-    this.clientJobs = [{
-      jobId: '10',
-      location: 'munich',
-      description: 'super nice job',
-      title: 'WOW Amazing',
-      clientId: '1m09BkGZsEag5oQnek7OhF8zKJI2',
-      models: [{modelId: '1', status: JobStatus.REQUEST, fee: '200€'},
-        {modelId: '2', status: JobStatus.COMING, fee: '190€'},
-        {modelId: '4', status: JobStatus.OPTION, fee: '250€'}]
-    }];
     const currentUserJobs = this.fireStore.collection(this.jobCollectionName, ref => ref.where('clientId', '==', authService.user.getValue().uid));
     currentUserJobs.valueChanges().subscribe((jobs: ClientJob[]) => this.clientJobs = jobs);
   }
@@ -74,12 +64,12 @@ export class ClientJobsService {
   }
 
 
-  public changeModelStatus(jobId: string, modelId: string, newStatus: JobStatus) {
+  public changeModelStatus(jobId: string, modelId: string, newStatus: string) {
     const selectedJob = this.clientJobs.find(job => job.jobId === jobId);
     selectedJob.models.find(model => model.modelId === modelId).status = newStatus;
     if (selectedJob) {
       this.fireStore.doc(`${this.jobCollectionName}/${this.selectedJobId}`).update({
-        models: [...selectedJob.models]
+        models: selectedJob.models
       });
     }
   }
