@@ -1,0 +1,30 @@
+<navigation></navigation>
+<div class="job-tabs-container">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link (click)="navigateBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <a mat-tab-link
+       routerLink="infos"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      Infos
+    </a>
+    <a mat-tab-link
+       routerLink="chat"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      Chat
+    </a>
+    <a mat-tab-link
+       routerLink="contracts"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      Contract
+    </a>
+
+  </nav>
+  <div clasS="tab-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

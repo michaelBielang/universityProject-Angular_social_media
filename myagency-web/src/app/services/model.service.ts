@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {User} from '../enums/user-interface';
 import {Users} from '../mocks/model.mocks';
 
@@ -8,14 +8,24 @@ import {Users} from '../mocks/model.mocks';
 })
 export class ModelService {
 
+  private readonly _models = new BehaviorSubject<User[]>([]);
+
+  public get models(): User[] {
+    return this._models.getValue();
+  }
+
+  public set models(val: User[]) {
+    this._models.next(val);
+  }
+
+  public readonly models$ = this._models.asObservable();
+
   constructor() {
+    this.models = [...Users];
   }
 
-  getModel(id: number): Observable<User> {
-    return of(Users.find(model => model.uid === id));
+  getModel(id: number): User {
+    return this.models.find(model => model.uid === id);
   }
 
-  getModels(): Observable<User[]> {
-    return of(Users);
-  }
 }
