@@ -3,19 +3,19 @@
 <mat-tab-group class="job-tabs">
   <mat-tab label="jobs in progress">
     <div class="tab-container">
-      <client-job-item *ngFor="let job of jobsInProgress" [job]="job">
+      <client-job-item *ngFor="let job of jobsService.jobsInProgress$ | async" [job]="job">
       </client-job-item>
     </div>
   </mat-tab>
   <mat-tab label="coming jobs">
     <div class="tab-container">
-      <client-job-item *ngFor="let job of comingJobs" [job]="job">
+      <client-job-item *ngFor="let job of jobsService.comingJobs$ | async" [job]="job">
       </client-job-item>
     </div>
   </mat-tab>
   <mat-tab label="past jobs">
     <div class="tab-container">
-      <client-job-item *ngFor="let job of pastJobs" [job]="job">
+      <client-job-item *ngFor="let job of jobsService.finishedJobs$ | async" [job]="job">
       </client-job-item>
     </div>
   </mat-tab>

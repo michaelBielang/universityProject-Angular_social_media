@@ -4,6 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 import {JobStatus} from '../../enums/job-status.type';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from '../auth.service';
+import {map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class ClientJobsService {
 
 
   public get clientJobs(): ClientJob[] {
+    console.log(this._clientJobs.getValue());
     return this._clientJobs.getValue();
   }
 
@@ -25,6 +27,13 @@ export class ClientJobsService {
   }
 
   public readonly clientJobs$ = this._clientJobs.asObservable();
+
+  public readonly jobsInProgress$ = this.clientJobs$.pipe(map(jobs => this.clientJobs.filter((job: ClientJob) =>
+    job.models.some(model => model.status === JobStatus.REQUEST || model.status === JobStatus.OPTION) || job.models.length === 0)));
+  public readonly comingJobs$ = this.clientJobs$.pipe(map(jobs => this.clientJobs.filter((job: ClientJob) =>
+    job.models.every(model => model.status === JobStatus.COMING) && job.models.length !== 0)));
+  public readonly finishedJobs$ = this.clientJobs$.pipe(map(jobs => this.clientJobs.filter((job: ClientJob) =>
+    job.models.every(model => model.status === JobStatus.PAST))));
 
   selectedJobId: string;
 
@@ -41,7 +50,7 @@ export class ClientJobsService {
         {modelId: '4', status: JobStatus.OPTION, fee: '250€'}]
     }];
     const currentUserJobs = this.fireStore.collection(this.jobCollectionName, ref => ref.where('clientId', '==', authService.user.getValue().uid));
-    currentUserJobs.valueChanges().subscribe((jobs: ClientJob[]) => this.clientJobs = [...jobs, ...this.clientJobs]);
+    currentUserJobs.valueChanges().subscribe((jobs: ClientJob[]) => this.clientJobs = jobs);
   }
 
   addJob(job: ClientJob): void {
