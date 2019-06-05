@@ -1,26 +1,22 @@
-<div class="tab-container">
+<div *ngIf="!!currentJob" class="tab-container">
   <div class="job-details">
     <div class="header">
-      {{job.title}}
-    </div>
-    <div>
-      <div class="title">Budget:</div>
-      <span>{{job.budget}}</span>
+      {{currentJob.title}}
     </div>
     <div class="col-2 location">
       <div>
         <div class="title">Location:</div>
-        <span>{{job.location}}</span>
+        <span>{{currentJob.location}}</span>
       </div>
-      <here-map [address]="job.location"></here-map>
+      <here-map [address]="currentJob.location"></here-map>
     </div>
     <div class="col-2">
       <div class="title">Job details:</div>
-      <span>{{job.description}}</span>
+      <span>{{currentJob.description}}</span>
     </div>
   </div>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let model of job.models">
+    <mat-expansion-panel *ngFor="let model of currentJob.models">
       <mat-expansion-panel-header>
         <mat-panel-title *ngIf="modelService.getModel(model.modelId) as modelDetails">
           {{modelDetails.name}}

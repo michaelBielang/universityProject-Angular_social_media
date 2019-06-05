@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ClientJob} from '../../enums/client-job-interface';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {JobStatus} from '../../enums/job-status.type';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from '../auth.service';
@@ -18,7 +18,6 @@ export class ClientJobsService {
 
 
   public get clientJobs(): ClientJob[] {
-    console.log(this._clientJobs.getValue());
     return this._clientJobs.getValue();
   }
 
@@ -64,22 +63,24 @@ export class ClientJobsService {
   addModelToJob(modelId: string) {
     const currentJob = this.clientJobs.find(job => job.jobId === this.selectedJobId);
     if (currentJob) {
-      this.fireStore.doc(`${this.jobCollectionName}/${this.selectedJobId}`).set({
+      this.fireStore.doc(`${this.jobCollectionName}/${this.selectedJobId}`).update({
         models: [...currentJob.models, {
           modelId,
           status: JobStatus.REQUEST,
           fee: '300€'
         }]
-      }, {merge: true}).then(response => console.log(response));
+      });
     }
   }
 
 
   public changeModelStatus(jobId: string, modelId: string, newStatus: JobStatus) {
     const selectedJob = this.clientJobs.find(job => job.jobId === jobId);
+    selectedJob.models.find(model => model.modelId === modelId).status = newStatus;
     if (selectedJob) {
-      selectedJob.models.find(model => model.modelId === modelId).status = newStatus;
-      this.clientJobs = [...this.clientJobs];
+      this.fireStore.doc(`${this.jobCollectionName}/${this.selectedJobId}`).update({
+        models: [...selectedJob.models]
+      });
     }
   }
 
@@ -87,8 +88,8 @@ export class ClientJobsService {
    * @param jobId wich job should be returned
    * @return ClientJob to the given jobId
    */
-  public job(jobId: string): ClientJob {
-    return this.clientJobs.find(job => job.jobId === jobId);
+  public job(jobId: string): Observable<ClientJob> {
+    return this.clientJobs$.pipe(map(jobs => this.clientJobs.find(job => job.jobId === jobId)));
   }
 }
 
