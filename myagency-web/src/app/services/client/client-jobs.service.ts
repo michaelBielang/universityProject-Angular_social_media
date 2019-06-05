@@ -3,6 +3,7 @@ import {ClientJob} from '../../enums/client-job-interface';
 import {BehaviorSubject} from 'rxjs';
 import {JobStatus} from '../../enums/job-status.type';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {AuthService} from '../auth.service';
 
 
 @Injectable({
@@ -11,6 +12,8 @@ import {AngularFirestore} from '@angular/fire/firestore';
 export class ClientJobsService {
 
   private readonly _clientJobs = new BehaviorSubject<ClientJob[]>([]);
+
+  private jobCollectionName = 'jobs';
 
 
   public get clientJobs(): ClientJob[] {
@@ -25,7 +28,8 @@ export class ClientJobsService {
 
   selectedJobId: string;
 
-  constructor(private fireStore: AngularFirestore) {
+  constructor(private fireStore: AngularFirestore,
+              private authService: AuthService) {
     this.clientJobs = [{
       jobId: '10',
       location: 'munich',
@@ -36,11 +40,12 @@ export class ClientJobsService {
         {modelId: '2', status: JobStatus.COMING, fee: '190€'},
         {modelId: '4', status: JobStatus.OPTION, fee: '250€'}]
     }];
+    const currentUserJobs = this.fireStore.collection(this.jobCollectionName, ref => ref.where('clientId', '==', authService.user.getValue().uid));
+    currentUserJobs.valueChanges().subscribe((jobs: ClientJob[]) => this.clientJobs = [...jobs, ...this.clientJobs]);
   }
 
   addJob(job: ClientJob): void {
-    this.fireStore.doc(`jobs/${job.jobId}`).set(job).then(response => console.log(response));
-    this.clientJobs = [job, ...this.clientJobs];
+    this.fireStore.doc(`${this.jobCollectionName}/${job.jobId}`).set(job).then(response => console.log(response));
   }
 
   get jobs(): ClientJob[] {
@@ -48,19 +53,15 @@ export class ClientJobsService {
   }
 
   addModelToJob(modelId: string) {
-
     const currentJob = this.clientJobs.find(job => job.jobId === this.selectedJobId);
-    this.fireStore.doc(`jobs/${this.selectedJobId}`).set({
-      models: [...currentJob.models, {
-        modelId,
-        status: JobStatus.REQUEST,
-        fee: '300€'
-      }]
-    }, {merge: true}).then(response => console.log(response));
-
     if (currentJob) {
-      currentJob.models.push({modelId, status: JobStatus.REQUEST, fee: '300€'});
-      this.clientJobs = [...this.clientJobs];
+      this.fireStore.doc(`${this.jobCollectionName}/${this.selectedJobId}`).set({
+        models: [...currentJob.models, {
+          modelId,
+          status: JobStatus.REQUEST,
+          fee: '300€'
+        }]
+      }, {merge: true}).then(response => console.log(response));
     }
   }
 

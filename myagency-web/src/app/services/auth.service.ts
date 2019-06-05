@@ -14,7 +14,7 @@ import {UserRole} from '../enums/user-role.enum';
 })
 export class AuthService {
 
-  public user = new BehaviorSubject(null);
+  public user = new BehaviorSubject<User>(null);
 
   constructor(private afAuth: AngularFireAuth,
               private angularFirestore: AngularFirestore,
