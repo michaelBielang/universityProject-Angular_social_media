@@ -1,0 +1,31 @@
+<div class="progressSpinner">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode" *ngIf="getShowProgress()">
+  </mat-progress-spinner>
+</div>
+
+<div class="grid grid-pad" *ngIf="getShowResults()">
+  <div *ngFor="let model of models">
+    <mat-card class="card">
+      <a routerLink="/client/detail/{{model.uid}}">
+        <mat-card-header>
+          <mat-card-title>{{model.name}}</mat-card-title>
+          <mat-card-subtitle>High Fashion</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="../../../../assets/images/models/{{model.uid}}.jpg" alt="profile_pic">
+        <mat-card-content>
+          <p>
+            I started my modeling career at the age of 18. After moving to New York, I landed work with Victoria's
+            Secret. I reached supermodel status after appearing on the cover of Sports Illustrated swimsuit
+            issue. I have produced and served as host of the reality fashion competition show Project Runway.
+          </p>
+        </mat-card-content>
+      </a>
+      <mat-card-actions>
+        <button (click)="saveModel(model.uid)" mat-button>Save</button>
+        <button mat-button>Share</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

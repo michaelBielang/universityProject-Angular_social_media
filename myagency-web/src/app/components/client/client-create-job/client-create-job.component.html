@@ -1,0 +1,31 @@
+<navigation>
+</navigation>
+
+
+<div class="job-input">
+  <mat-card>
+    <form [formGroup]="jobFormGroup">
+      <mat-form-field class="user-input">
+        <input matInput placeholder="Title" formControlName="title" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="user-input">
+        <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="user-input">
+        <input matInput placeholder="Location" formControlName="location" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="user-input">
+        <input type="number" matInput placeholder="Budget" formControlName="budget" required>
+      </mat-form-field>
+      <br>
+      <mat-card-actions>
+        <div class="create-button">
+          <button mat-raised-button [disabled]="jobFormGroup.invalid" (click)="createJob()">Create</button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

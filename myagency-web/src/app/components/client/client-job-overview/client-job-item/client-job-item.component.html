@@ -1,0 +1,8 @@
+<div class="jobContainer" routerLink="/client/job-details/{{job.jobId}}">
+  <div class="infos">
+    <span class="client">{{job.title}}</span>
+    <span class="date">{{job.location}}</span>
+    <span class="models">Models: {{job.models.length}}</span>
+  </div>
+  <ng-content></ng-content>
+</div>

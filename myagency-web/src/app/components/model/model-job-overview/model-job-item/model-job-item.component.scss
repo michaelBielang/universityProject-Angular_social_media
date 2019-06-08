@@ -1,0 +1,48 @@
+@import "~src/assets/scss/variables";
+
+.jobContainer {
+  background-color: $color-0;
+  outline: 0;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    grid-area: img;
+  }
+
+  .infos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "client fee""date location";
+    grid-gap: 10px;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+    padding: 10px;
+
+    .client {
+      grid-area: client;
+      font-weight: bold;
+    }
+
+    .date {
+      grid-area: date;
+    }
+
+    .location {
+      grid-area: location;
+    }
+
+    .fee {
+      grid-area: fee;
+    }
+
+    .expand-icon {
+      grid-area: expand-icon;
+    }
+  }
+
+  .detailed-infos {
+    padding: 10px;
+  }
+}

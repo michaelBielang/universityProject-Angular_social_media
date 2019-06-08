@@ -26,30 +26,35 @@ import {
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {RegistrationClientComponent} from './components/client/registration-client/registration-client.component';
-import {RegistrationModelComponent} from './components/model/registration-model/registration-model.component';
+import {ClientRegistrationComponent} from './components/client/client-registration/client-registration.component';
+import {ModelRegistrationComponent} from './components/model/model-registration/model-registration.component';
 import {RegisterStartComponent} from './components/shared/register-start/register-start.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {LoginModalComponent} from './components/shared/landing-page/login-modal/login-modal.component';
-import {LandingPageClientComponent} from './components/client/landing-page-client/landing-page-client.component';
-import {LandingPageModelComponent} from './components/model/landing-page-model/landing-page-model.component';
-import {JobItemComponent} from './components/model/job-overview/job-item/job-item.component';
-import {JobOverviewComponent} from './components/model/job-overview/job-overview.component';
-import {JobDetailsComponent} from './components/model/job-details/job-details.component';
-import {SearchMaskComponent} from './components/client/search-mask/search-mask.component';
-import {SearchResultsComponent} from './components/client/search-mask/search-results/search-results.component';
+import {ClientLandingPageComponent} from './components/client/client-landing-page/client-landing-page.component';
+import {ModelLandingPageComponent} from './components/model/model-landing-page/model-landing-page.component';
+import {ModelJobItemComponent} from './components/model/model-job-overview/model-job-item/model-job-item.component';
+import {ModelJobOverviewComponent} from './components/model/model-job-overview/model-job-overview.component';
+import {ModelJobDetailsComponent} from './components/model/model-job-details/model-job-details.component';
+import {SearchMaskComponent} from './components/client/client-search/search-mask.component';
+import {SearchResultsComponent} from './components/client/client-search/search-results/search-results.component';
 import {ProfileComponent} from './components/model/profile/profile.component';
 import {NavigationComponent} from './components/shared/components/navigation/navigation.component';
-import {JobDetailsInfosComponent} from './components/model/job-details/job-details-infos/job-details-infos.component';
-import {JobDetailsChatComponent} from './components/model/job-details/job-details-chat/job-details-chat.component';
-import {JobDetailsContractsComponent} from './components/model/job-details/job-details-contracts/job-details-contracts.component';
+import {ModelJobDetailsInfosComponent} from './components/model/model-job-details/model-job-details-infos/model-job-details-infos.component';
+import {ChatComponent} from './components/shared/components/chat/chat.component';
+import {JobDetailsContractsComponent} from './components/shared/components/job-details-contracts/job-details-contracts.component';
 import {HereMapComponent} from './components/shared/components/here-map/here-map.component';
-import {MessageComponent} from './components/model/job-details/job-details-chat/message/message.component';
+import {MessageComponent} from './components/shared/components/chat/message/message.component';
 import {NewsListComponent} from './components/shared/components/news-list/news-list.component';
-import {RelatedNewsComponent} from './components/model/landing-page-model/related-news/related-news.component';
+import {RelatedNewsComponent} from './components/model/model-landing-page/related-news/related-news.component';
+import {ClientJobOverviewComponent} from './components/client/client-job-overview/client-job-overview.component';
+import {ClientJobItemComponent} from './components/client/client-job-overview/client-job-item/client-job-item.component';
+import {ClientCreateJobComponent} from './components/client/client-create-job/client-create-job.component';
+import {ClientJobDetailsComponent} from './components/client/client-job-details/client-job-details.component';
+import {ClientJobDetailsInfosComponent} from './components/client/client-job-details/client-job-details-infos/client-job-details-infos.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -65,17 +70,17 @@ const config = {
     AppComponent,
     LandingPageComponent,
     TeamMembersComponent,
-    RegistrationClientComponent,
-    RegistrationModelComponent,
+    ClientRegistrationComponent,
+    ModelRegistrationComponent,
     RegisterStartComponent,
     LoginModalComponent,
-    LandingPageClientComponent,
-    LandingPageModelComponent,
-    JobItemComponent,
-    JobOverviewComponent,
-    JobDetailsComponent,
-    JobDetailsInfosComponent,
-    JobDetailsChatComponent,
+    ClientLandingPageComponent,
+    ModelLandingPageComponent,
+    ModelJobItemComponent,
+    ModelJobOverviewComponent,
+    ModelJobDetailsComponent,
+    ModelJobDetailsInfosComponent,
+    ChatComponent,
     JobDetailsContractsComponent,
     HereMapComponent,
     MessageComponent,
@@ -83,9 +88,14 @@ const config = {
     SearchResultsComponent,
     ProfileComponent,
     NavigationComponent,
-    LandingPageModelComponent,
+    ModelLandingPageComponent,
     NewsListComponent,
-    RelatedNewsComponent
+    RelatedNewsComponent,
+    ClientJobOverviewComponent,
+    ClientJobItemComponent,
+    ClientCreateJobComponent,
+    ClientJobDetailsComponent,
+    ClientJobDetailsInfosComponent
   ],
   imports: [
     BrowserModule,
