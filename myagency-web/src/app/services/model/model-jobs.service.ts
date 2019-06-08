@@ -1,46 +1,64 @@
 import {Injectable} from '@angular/core';
-import {JobDetails, JobOverview} from '../../enums/model-job.type';
-import {JobStatus} from '../../enums/job-status.type';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AuthService} from '../auth.service';
+import {Collections} from '../../enums/collections.enum';
+import {JobModelDetails} from '../../enums/job-model-details.type';
+import {JobStatus} from '../../enums/job-status.enum';
+import {CompleteJob} from '../../enums/complete-job';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelJobsService {
 
-  constructor() {
+  private readonly _modelJobs = new BehaviorSubject<CompleteJob[]>([]);
+
+  public get modelJobs(): CompleteJob[] {
+    return this._modelJobs.getValue();
   }
 
-  public jobsOverview(): JobOverview[] {
-    const jobOverview = [];
-    for (let i = 0; i < 10; i++) {
-      const overCache = this.createDummyOverview();
-      overCache.jobId += i;
-      overCache.client += ' ' + i;
-      jobOverview.push(overCache);
-    }
-    return jobOverview;
+  public set modelJobs(val: CompleteJob[]) {
+    this._modelJobs.next(val);
   }
 
-  public jobDetails(id: string): JobDetails {
-    return {
-      clientDetails: 'XY is a high fashion designer, who tries to combine minimalism with natural elements.',
-      contact: 'Igor, phone: 12324567, mail: igor@xy.z',
-      detailedLocation: 'XY Factory, Moskva 119121, Russland Ulitsa Plyushchikha, 64',
-      jobDetails: 'Fashion shooting with magazin publication and TV commercials for 2 month. The job goes from 18.06.2019 to 20.06.2019',
-      photographer: 'Pyotr Tchaikovsky',
-      jobOverview: this.createDummyOverview()
-    };
+  public readonly modelJobs$ = this._modelJobs.asObservable();
+
+  public readonly openRequest$ = this.modelJobs$.pipe(map(jobs => this.modelJobs.filter((job: CompleteJob) =>
+    job.bookings[0].status === JobStatus.REQUEST)));
+  public readonly jobOptions$ = this.modelJobs$.pipe(map(jobs => this.modelJobs.filter((job: CompleteJob) =>
+    job.bookings[0].status === JobStatus.OPTION)));
+  public readonly comingJobs$ = this.modelJobs$.pipe(map(jobs => this.modelJobs.filter((job: CompleteJob) =>
+    job.bookings[0].status === JobStatus.COMING)));
+  public readonly pastJobs$ = this.modelJobs$.pipe(map(jobs => this.modelJobs.filter((job: CompleteJob) =>
+    job.bookings[0].status === JobStatus.PAST)));
+
+
+  constructor(private fireStore: AngularFirestore,
+              private authService: AuthService) {
+    const currentBookings = this.fireStore.collection<JobModelDetails>(Collections.JOBBOOKINGS, ref =>
+      ref.where('modelId', '==', authService.user.getValue().uid)).valueChanges();
+
+    const currentJobs = currentBookings.subscribe(bookings => bookings.forEach((booking: JobModelDetails) =>
+      this.fireStore.collection(Collections.JOBS).doc(booking.jobId).valueChanges().pipe(map(job => {
+        return {job, bookings: [booking]};
+      })).subscribe((job: CompleteJob) =>
+        this.modelJobs = [...this.modelJobs, job])));
   }
 
-  private createDummyOverview() {
-    return {
-      imgSrc: 'https://image.pitchbook.com/aVTBCrqHkm8LAvzqdXt8u8ELcJG1476941927661_200x200?uq=H8lJTeVz',
-      client: 'XY',
-      date: '18.06.2019 - 20.06.2019',
-      location: 'Moskva, Russia',
-      fee: '250.000 Rubel (~3460€)',
-      jobId: '123',
-      status: JobStatus.REQUEST
-    };
+  public changeModelStatus(jobId: string, modelId: string, newStatus: JobStatus) {
+    this.fireStore.collection(Collections.JOBBOOKINGS, ref => ref
+      .where('modelId', '==', modelId)
+      .where('jobId', '==', jobId)).valueChanges().map((bookings: JobModelDetails[]) => {
+      if (bookings.length > 0) {
+        this.fireStore.collection(Collections.JOBBOOKINGS).doc(bookings[0].uid).update({status: newStatus});
+      }
+    });
   }
+
+  public job(jobId: string): Observable<CompleteJob> {
+    return this.modelJobs$.pipe(map((jobs: CompleteJob[]) => jobs.find(job => job.job.uid === jobId)));
+  }
+
 }

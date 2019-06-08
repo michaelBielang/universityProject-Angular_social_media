@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ClientJobsService} from '../../../services/client/client-jobs.service';
-import {ClientJob} from '../../../enums/client-job-interface';
+import {Job} from '../../../enums/job.type';
 import {NavigatorService} from '../../../services/navigator.service';
 import {AuthService} from '../../../services/auth.service';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -19,7 +19,7 @@ export class ClientCreateJobComponent implements OnInit {
               private clientJobService: ClientJobsService,
               private navigatorService: NavigatorService,
               private authService: AuthService,
-              private angularFirestore: AngularFirestore) {
+              private fireStore: AngularFirestore) {
   }
 
   ngOnInit() {
@@ -31,13 +31,12 @@ export class ClientCreateJobComponent implements OnInit {
   }
 
   createJob(): void {
-    const job: ClientJob = {
-      jobId: this.angularFirestore.createId(),
+    const job: Job = {
+      uid: this.fireStore.createId(),
       clientId: this.authService.user.getValue().uid,
       title: this.jobFormGroup.get('title').value,
       description: this.jobFormGroup.get('description').value,
-      location: this.jobFormGroup.get('location').value,
-      models: []
+      location: this.jobFormGroup.get('location').value
     };
     this.clientJobService.addJob(job);
     this.navigatorService.goToMain();

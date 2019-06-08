@@ -1,3 +1,5 @@
+import {UserRole} from './user-role.enum';
+
 export interface User {
   uid: string;
   email: string;
@@ -5,5 +7,5 @@ export interface User {
   location: string;
   height: string;
   size: string;
-  role: string;
+  role: UserRole;
 }

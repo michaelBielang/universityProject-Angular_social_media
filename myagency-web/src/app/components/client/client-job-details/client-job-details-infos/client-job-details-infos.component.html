@@ -1,31 +1,31 @@
 <div *ngIf="!!currentJob" class="tab-container">
   <div class="job-details">
     <div class="header">
-      {{currentJob.title}}
+      {{currentJob.job.title}}
     </div>
     <div class="col-2 location">
       <div>
         <div class="title">Location:</div>
-        <span>{{currentJob.location}}</span>
+        <span>{{currentJob.job.location}}</span>
       </div>
-      <here-map [address]="currentJob.location"></here-map>
+      <here-map [address]="currentJob.job.location"></here-map>
     </div>
     <div class="col-2">
       <div class="title">Job details:</div>
-      <span>{{currentJob.description}}</span>
+      <span>{{currentJob.job.description}}</span>
     </div>
   </div>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let model of currentJob.models">
+    <mat-expansion-panel *ngFor="let model of currentJob.bookings">
       <mat-expansion-panel-header>
-        <mat-panel-title *ngIf="modelService.getModel(model.modelId) as modelDetails">
+        <mat-panel-title *ngIf="modelInfo(model.modelId) as modelDetails">
           {{modelDetails.name}}
         </mat-panel-title>
         <mat-panel-description>
-          Status: {{JobStatus[model.status]}}
+          Status: {{model.status}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="content" *ngIf="modelService.getModel(model.modelId) as modelDetails">
+      <div class="content" *ngIf="modelInfo(model.modelId) as modelDetails">
         <div class="model-informations">
           <img mat-card-image src="../../../../assets/images/models/{{model.modelId}}.jpg" alt="profile_pic">
           <div>height: {{modelDetails.height}}</div>
@@ -34,7 +34,8 @@
           <div>location: {{modelDetails.location}}</div>
           <div>fee: {{model.fee}}</div>
         </div>
-        <button *ngIf="model.status === JobStatus.OPTION" mat-button (click)="acceptModel(model.modelId)">ACCEPT
+        <button *ngIf="model.status === JobStatus[JobStatus.OPTION]" mat-button (click)="acceptModel(model.modelId)">
+          ACCEPT
         </button>
       </div>
     </mat-expansion-panel>

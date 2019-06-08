@@ -1,30 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ModelService} from '../../../services/model.service';
 import {User} from '../../../enums/user-interface';
 import {Location} from '@angular/common';
 import {MatSnackBar} from '@angular/material';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
   model: User;
   numberOfProfilePics = [1, 2, 3, 4, 5, 6];
 
-  constructor(
-    private route: ActivatedRoute,
-    private modelService: ModelService,
-    private location: Location,
-    private snackBar: MatSnackBar) {
+  constructor(private route: ActivatedRoute,
+              private userService: UserService,
+              private location: Location,
+              private snackBar: MatSnackBar) {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.user(id).subscribe(user => this.model = user);
   }
 
-  ngOnInit() {
-    this.getModel();
-  }
 
   savedPicture() {
     this.snackBar.open('Picture saved', 'contact', {
@@ -36,12 +34,6 @@ export class ProfileComponent implements OnInit {
     this.snackBar.open('Model saved', 'contact', {
       duration: 1500,
     });
-  }
-
-
-  getModel(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.model = this.modelService.getModel(id);
   }
 
   goBack(): void {

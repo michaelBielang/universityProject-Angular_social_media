@@ -3,11 +3,11 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../enums/user-interface';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
-import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {NotifyService} from './notify.service';
 import 'rxjs-compat/add/operator/switchMap';
 import 'rxjs-compat/add/observable/of';
 import {UserRole} from '../enums/user-role.enum';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +17,14 @@ export class AuthService {
   public user = new BehaviorSubject<User>(null);
 
   constructor(private afAuth: AngularFireAuth,
-              private angularFirestore: AngularFirestore,
               private router: Router,
-              private notify: NotifyService) {
+              private notify: NotifyService,
+              private userService: UserService) {
     this.afAuth.authState
       .switchMap(user => {
         if (user) {
           // logged in, get custom model from Firestore
-          return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.userService.user(user.uid);
         } else {
           // logged out -> null
           return Observable.of(null);
@@ -61,8 +61,8 @@ export class AuthService {
   }
 
   // Update properties on the model document
-  updateUser(user: User, data: any) {
-    return this.angularFirestore.doc(`users/${user.uid}`).update(data);
+  updateUser(user: User, data: any): Promise<void> {
+    return this.userService.setUserData(user.uid, data);
   }
 
   // If error, console log and notify model
@@ -83,17 +83,15 @@ export class AuthService {
    */
   private setUserDoc(user, role: UserRole): Promise<void> {
     const uid = user.user.uid;
-    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${uid}`);
-
     const data: User = {
       uid,
       email: user.user.email || null,
-      role: UserRole[role],
+      role,
       name: 'dummy',
       location: 'dummy',
       height: 'dummy',
       size: 'dummy',
     };
-    return userRef.set(data);
+    return this.userService.setUserData(uid, data);
   }
 }
