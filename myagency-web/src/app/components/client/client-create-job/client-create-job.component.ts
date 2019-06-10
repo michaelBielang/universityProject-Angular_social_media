@@ -5,6 +5,7 @@ import {Job} from '../../../enums/job.type';
 import {NavigatorService} from '../../../services/navigator.service';
 import {AuthService} from '../../../services/auth.service';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-client-create-job',
@@ -19,7 +20,8 @@ export class ClientCreateJobComponent implements OnInit {
               private clientJobService: ClientJobsService,
               private navigatorService: NavigatorService,
               private authService: AuthService,
-              private fireStore: AngularFirestore) {
+              private fireStore: AngularFirestore,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -31,15 +33,16 @@ export class ClientCreateJobComponent implements OnInit {
   }
 
   createJob(): void {
+    const uid = this.fireStore.createId();
     const job: Job = {
-      uid: this.fireStore.createId(),
+      uid,
       clientId: this.authService.user.getValue().uid,
       title: this.jobFormGroup.get('title').value,
       description: this.jobFormGroup.get('description').value,
       location: this.jobFormGroup.get('location').value
     };
     this.clientJobService.addJob(job);
-    this.navigatorService.goToMain();
+    this.router.navigate(['client', 'search'], {state: {data: {createdJobId: job.uid}}});
   }
 
 }

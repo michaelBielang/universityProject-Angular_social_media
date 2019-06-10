@@ -6,7 +6,7 @@
   <form [formGroup]="searchFormGroup">
     <mat-grid-tile>
       <mat-form-field>
-        <mat-select formControlName="job" placeholder="Job" required>
+        <mat-select formControlName="job" placeholder="Job" [(value)]="selectedJobId" required>
           <mat-option *ngFor="let job of clientJobService.clientJobs" [value]='job.job.uid'>
             {{job.job.title}}
           </mat-option>
@@ -91,4 +91,4 @@
 <div>
   <mat-divider></mat-divider>
 </div>
-<app-search-results></app-search-results>
+<app-search-results [selectedJobId]="selectedJobId"></app-search-results>

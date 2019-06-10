@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FindModelService} from '../../../services/find-model.service';
 import {ClientJobsService} from '../../../services/client/client-jobs.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-mask',
@@ -22,18 +24,30 @@ export class SearchMaskComponent implements OnInit {
   ages = Array.from({length: 18}, (value, key) => key + 18);
   searchFormGroup: FormGroup;
 
-  constructor(private findModelService: FindModelService, private clientJobService: ClientJobsService,
-              private formBuilder: FormBuilder) {
+  private selectedJobId;
+
+  constructor(private findModelService: FindModelService,
+              private clientJobService: ClientJobsService,
+              private formBuilder: FormBuilder,
+              public activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.searchFormGroup = this.formBuilder.group({
       job: ['', [Validators.required]]
     });
+    this.activatedRoute.paramMap
+      .pipe(map(() => window.history.state)).subscribe(state => {
+      if (state && state.data) {
+        this.selectedJobId = state.data.createdJobId;
+        this.searchFormGroup.get('job').reset(this.selectedJobId);
+      }
+    });
+    this.clientJobService.finishedJobs$.subscribe((value) =>
+      this.searchFormGroup.get('job').reset(this.selectedJobId));
   }
 
   processSearchRequest() {
-    this.clientJobService.selectedJobId = this.searchFormGroup.get('job').value;
     this.findModelService.newSearchRequested();
   }
 }

@@ -6,7 +6,7 @@ import {Collections} from '../../enums/collections.enum';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {JobModelDetails} from '../../enums/job-model-details.type';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 import {CompleteJob} from '../../enums/complete-job';
 
 
@@ -35,27 +35,27 @@ export class ClientJobsService {
   public readonly finishedJobs$ = this.clientJobs$.pipe(map(jobs => jobs.filter((job: CompleteJob) =>
     job.bookings.every(model => model.status === JobStatus.PAST))));
 
-  selectedJobId: string;
-
   constructor(private fireStore: AngularFirestore,
               private authService: AuthService) {
     const currentUserJobs: Observable<Job[]> = this.fireStore.collection<Job>(Collections.JOBS, ref =>
       ref.where('clientId', '==', authService.user.getValue().uid)).valueChanges();
 
-    currentUserJobs.subscribe((jobs: Job[]) => jobs.forEach(job =>
-      this.fireStore.collection<JobModelDetails>(Collections.JOBBOOKINGS, ref =>
+    currentUserJobs.subscribe((jobs: Job[]) => {
+      this.clientJobs = [];
+      jobs.forEach(job => this.fireStore.collection<JobModelDetails>(Collections.JOBBOOKINGS, ref =>
         ref.where('jobId', '==', job.uid)).valueChanges().pipe(map((bookings: JobModelDetails[]) => {
         return {job, bookings};
-      })).subscribe(completeJobs => this.clientJobs = [...this.clientJobs, completeJobs])));
+      })).subscribe(completeJobs => this.clientJobs = [...this.clientJobs, completeJobs]));
+    });
   }
 
   addJob(job: Job): void {
     this.fireStore.collection(Collections.JOBS).doc(job.uid).set(job);
   }
 
-  addModelToJob(modelId: string, jobId: string) {
+  public addModelToJob(modelId: string, jobId: string) {
     const uid = this.fireStore.createId();
-    this.fireStore.collection(Collections.JOBBOOKINGS).doc(uid).set({
+    return this.fireStore.collection(Collections.JOBBOOKINGS).doc(uid).set({
       uid,
       modelId,
       jobId,
@@ -64,14 +64,24 @@ export class ClientJobsService {
     });
   }
 
+  public deleteModelFromJob(modelId: string, jobId: string) {
+    this.fireStore.collection(Collections.JOBBOOKINGS, ref => ref
+      .where('modelId', '==', modelId)
+      .where('jobId', '==', jobId)).valueChanges().pipe(first()).subscribe((bookings: JobModelDetails[]) => {
+      if (bookings.length > 0) {
+        this.fireStore.collection(Collections.JOBBOOKINGS).doc(bookings[0].uid).delete();
+      }
+    });
+  }
+
   public changeModelStatus(jobId: string, modelId: string, newStatus: JobStatus) {
     this.fireStore.collection(Collections.JOBBOOKINGS, ref => ref
       .where('modelId', '==', modelId)
-      .where('jobId', '==', jobId)).valueChanges().map((bookings: JobModelDetails[]) => {
+      .where('jobId', '==', jobId)).valueChanges().pipe(map((bookings: JobModelDetails[]) => {
       if (bookings.length > 0) {
         this.fireStore.collection(Collections.JOBBOOKINGS).doc(bookings[0].uid).update({status: newStatus});
       }
-    });
+    }));
   }
 
   public models(jobId: string): Observable<JobModelDetails[]> {
