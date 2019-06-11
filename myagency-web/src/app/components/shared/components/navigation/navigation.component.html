@@ -1,9 +1,8 @@
 <div>
   <mat-toolbar class="toolbar">
-    <span>MyAgency</span>
+    <div (click)="navigatorService.goToMain()">MyAgency</div>
     <mat-icon class="material-icons-outlined">photo_camera_outline</mat-icon>
     <div class="toolbar-actions">
-      <a mat-button routerLink="/landing-page">Home</a>
       <ng-content></ng-content>
     </div>
   </mat-toolbar>
