@@ -7,10 +7,10 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" position="end">
     <div class="sidenav-actions">
-      <a mat-button routerLink="search">Search</a>
-      <a mat-button routerLink="create-job">Create a Job</a>
-      <a mat-button routerLink="jobs">Jobs</a>
-      <a mat-button>Profile</a>
+      <a mat-button (click)="sidenav.toggle()" routerLink="search">Search</a>
+      <a mat-button (click)="sidenav.toggle()" routerLink="create-job">Create a Job</a>
+      <a mat-button (click)="sidenav.toggle()" routerLink="jobs">Jobs</a>
+      <a mat-button (click)="sidenav.toggle()">Profile</a>
     </div>
   </mat-sidenav>
 
