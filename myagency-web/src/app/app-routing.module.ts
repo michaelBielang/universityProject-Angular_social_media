@@ -18,6 +18,7 @@ import {ClientCreateJobComponent} from './components/client/client-create-job/cl
 import {ClientJobDetailsInfosComponent} from './components/client/client-job-details/client-job-details-infos/client-job-details-infos.component';
 import {ClientJobDetailsComponent} from './components/client/client-job-details/client-job-details.component';
 import {ClientComponent} from './components/client/client.component';
+import {ModelComponent} from './components/model/model.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
@@ -48,6 +49,7 @@ const routes: Routes = [
   },
   {
     path: 'model',
+    component: ModelComponent,
     children: [
       {path: '', component: ModelLandingPageComponent},
       {path: 'jobs', component: ModelJobOverviewComponent},

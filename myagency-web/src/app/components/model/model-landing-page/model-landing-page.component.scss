@@ -1,27 +1,14 @@
 @import "~src/assets/scss/variables";
 
-.sidenav-container {
-  height: calc(100vh - #{$header-height});
+:host {
+  display: grid;
+  justify-content: center;
 
-  .sidenav-actions {
-    display: flex;
-    flex-direction: column;
+  div {
+    margin: 20px 0;
 
-    a {
-      margin: 10px;
-    }
-  }
-
-  mat-sidenav-content {
-    display: grid;
-    justify-content: center;
-
-    div {
-      margin: 20px 0;
-
-      .title {
-        font-size: $title-font-size;
-      }
+    .title {
+      font-size: $title-font-size;
     }
   }
 }

@@ -56,6 +56,7 @@ import {ClientCreateJobComponent} from './components/client/client-create-job/cl
 import {ClientJobDetailsComponent} from './components/client/client-job-details/client-job-details.component';
 import {ClientJobDetailsInfosComponent} from './components/client/client-job-details/client-job-details-infos/client-job-details-infos.component';
 import {ClientComponent} from './components/client/client.component';
+import {ModelComponent} from './components/model/model.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -97,7 +98,8 @@ const config = {
     ClientCreateJobComponent,
     ClientJobDetailsComponent,
     ClientJobDetailsInfosComponent,
-    ClientComponent
+    ClientComponent,
+    ModelComponent
   ],
   imports: [
     BrowserModule,
