@@ -1,9 +1,7 @@
-<div>
-  <mat-toolbar class="toolbar">
-    <div (click)="navigatorService.goToMain()">MyAgency</div>
-    <mat-icon class="material-icons-outlined">photo_camera_outline</mat-icon>
-    <div class="toolbar-actions">
-      <ng-content></ng-content>
-    </div>
-  </mat-toolbar>
-</div>
+<mat-toolbar class="toolbar">
+  <div class="myagency-logo" (click)="navigatorService.goToMain()">MyAgency</div>
+  <mat-icon class="material-icons-outlined">photo_camera_outline</mat-icon>
+  <div class="toolbar-actions">
+    <ng-content></ng-content>
+  </div>
+</mat-toolbar>
