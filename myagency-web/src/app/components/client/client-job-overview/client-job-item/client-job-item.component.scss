@@ -4,6 +4,9 @@
   background-color: $color-0;
   outline: 0;
   cursor: pointer;
+  height: 100%;
+  display: grid;
+  align-items: center;
 
   img {
     width: 100%;

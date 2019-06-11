@@ -1,47 +1,39 @@
 <div class="tab-container">
-  <div class="col-2 row-2 image">
-    <img [src]="details.jobOverview.imgSrc">
+  <div class="job-name">
+    {{currentJob.job.title}}
   </div>
   <div class="client">
-    {{details.jobOverview.client}}
+    <div class="title">Status:</div>
+    {{client?.name}}
   </div>
   <div>
     <div class="title">Status:</div>
-    <span>{{details.jobOverview.status}}</span>
+    <span>{{currentJob.bookings[0].status}}</span>
   </div>
   <div>
     <div class="title">Fee:</div>
-    <span>{{details.jobOverview.fee}}</span>
-  </div>
-  <div>
-    <div class="title">Date:</div>
-    <span>{{details.jobOverview.date}}</span>
+    <span>{{currentJob.bookings[0].fee}}</span>
   </div>
   <div class="col-2 location">
     <div>
       <div class="title">Location:</div>
-      <span>{{details.detailedLocation}}</span>
+      <span>{{currentJob.job.location}}</span>
     </div>
-    <here-map [address]="details.detailedLocation"></here-map>
+    <here-map [address]="currentJob.job.location"></here-map>
   </div>
   <div>
     <div class="title">Contact:
-      <mat-icon>phone</mat-icon>
       <mat-icon>mail_outline</mat-icon>
     </div>
     <span>
-      {{details.contact}}</span>
-  </div>
-  <div>
-    <div class="title">Photographer:</div>
-    <span>{{details.photographer}}</span>
+      {{client?.email}}</span>
   </div>
   <div class="col-2">
-    <div class="title">Job details:</div>
-    <span>{{details.jobDetails}}</span>
+    <div class="title">Job description:</div>
+    <span>{{currentJob.job.description}}</span>
   </div>
   <div class="col-2">
     <div class="title">Client details:</div>
-    <span>{{details.clientDetails}}</span>
+    <span>{{client?.location}}</span>
   </div>
 </div>

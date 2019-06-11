@@ -1,43 +1,42 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../enums/user-interface';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
-import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {NotifyService} from './notify.service';
 import 'rxjs-compat/add/operator/switchMap';
 import 'rxjs-compat/add/observable/of';
 import {UserRole} from '../enums/user-role.enum';
-import UserCredential = firebase.auth.UserCredential;
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user: Observable<User>;
+  public user = new BehaviorSubject<User>(null);
 
   constructor(private afAuth: AngularFireAuth,
-              private angularFirestore: AngularFirestore,
               private router: Router,
-              private notify: NotifyService) {
-    this.user = this.afAuth.authState
+              private notify: NotifyService,
+              private userService: UserService) {
+    this.afAuth.authState
       .switchMap(user => {
         if (user) {
           // logged in, get custom model from Firestore
-          return this.angularFirestore.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.userService.user(user.uid);
         } else {
           // logged out -> null
           return Observable.of(null);
         }
-      });
+      }).subscribe((user) => this.user.next(user));
   }
 
   /**
    * sign up with e-mail and password
-   * @param email
-   * @param password
-   * @param role
+   * @param email of the user
+   * @param password of the user
+   * @param role of the user
    */
   public emailSignUp(email: string, password: string, role: UserRole): Promise<void> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
@@ -49,8 +48,8 @@ export class AuthService {
 
   /**
    * login for the user
-   * @param userName
-   * @param password
+   * @param userName to login with
+   * @param password to login with
    */
   public loginEmail(userName: string, password: string): Promise<any> {
     return new Promise<any>((resolve, reject) => {
@@ -62,8 +61,8 @@ export class AuthService {
   }
 
   // Update properties on the model document
-  updateUser(user: User, data: any) {
-    return this.angularFirestore.doc(`users/${user.uid}`).update(data);
+  updateUser(user: User, data: any): Promise<void> {
+    return this.userService.setUserData(user.uid, data);
   }
 
   // If error, console log and notify model
@@ -77,20 +76,22 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  // Sets model data to firestore after succesful login
+  /**
+   * Sets model data to firestore after succesful login
+   * @param user to create doc for
+   * @param role of the user
+   */
   private setUserDoc(user, role: UserRole): Promise<void> {
-    const uid = user.uid;
-    const userRef: AngularFirestoreDocument<User> = this.angularFirestore.doc(`users/${uid}`);
-
+    const uid = user.user.uid;
     const data: User = {
       uid,
-      email: user.email || null,
+      email: user.user.email || null,
       role,
       name: 'dummy',
       location: 'dummy',
       height: 'dummy',
       size: 'dummy',
     };
-    return userRef.set(data);
+    return this.userService.setUserData(uid, data);
   }
 }

@@ -6,8 +6,8 @@
     <mat-grid-tile>
       <mat-form-field>
         <mat-select formControlName="job" placeholder="Job" required>
-          <mat-option *ngFor="let job of clientJobService.jobs" [value]='job.jobId'>
-            {{job.title}}
+          <mat-option *ngFor="let job of clientJobService.clientJobs" [value]='job.job.uid'>
+            {{job.job.title}}
           </mat-option>
         </mat-select>
       </mat-form-field>

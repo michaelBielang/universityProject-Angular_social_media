@@ -1,7 +1,9 @@
-import {JobStatus} from './job-status.type';
+import {JobStatus} from './job-status.enum';
 
 export interface JobModelDetails {
-  modelId: number;
+  uid: string;
+  jobId: string;
+  modelId: string;
   fee: string;
   status: JobStatus;
 }

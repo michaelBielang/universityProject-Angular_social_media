@@ -1,9 +1,9 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ModelService} from '../../../../services/model.service';
 import {User} from '../../../../enums/user-interface';
 import {FindModelService} from '../../../../services/find-model.service';
 import {ClientJobsService} from '../../../../services/client/client-jobs.service';
+import {UserService} from '../../../../services/user.service';
 
 @NgModule({
   imports: [BrowserAnimationsModule],
@@ -14,19 +14,18 @@ import {ClientJobsService} from '../../../../services/client/client-jobs.service
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent {
 
   private color = 'accent';
   private mode = 'indeterminate';
   private searchRequest = false;
   private models: User[];
 
-  constructor(private modelService: ModelService, private findModelService: FindModelService,
+  constructor(private userService: UserService, private findModelService: FindModelService,
               private clientJobService: ClientJobsService) {
-  }
-
-  ngOnInit() {
-    this.getModels();
+    userService.models().subscribe(models => {
+      this.models = models;
+    });
   }
 
   getShowResults() {
@@ -37,13 +36,7 @@ export class SearchResultsComponent implements OnInit {
     return this.findModelService.showProgress;
   }
 
-
-  getModels(): void {
-    this.models = this.modelService.models;
-  }
-
-
-  saveModel(uid: number) {
-    this.clientJobService.addModelToJob(uid);
+  saveModel(uid: string, jobId: string) {
+    this.clientJobService.addModelToJob(uid, jobId);
   }
 }

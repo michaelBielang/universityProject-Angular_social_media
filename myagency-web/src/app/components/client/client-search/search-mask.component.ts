@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FindModelService} from '../../../services/find-model.service';
-import {ClientJobsService} from "../../../services/client/client-jobs.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ClientJobsService} from '../../../services/client/client-jobs.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-search-mask',

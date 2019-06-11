@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ModelJobsService} from '../../../../services/model/model-jobs.service';
 import {NavigatedFromRouteService} from '../../../../services/navigated-from-route.service';
-import {JobDetails} from '../../../../enums/model-job.type';
+import {BehaviorSubject} from 'rxjs';
+import {UserService} from '../../../../services/user.service';
+import {CompleteJob} from '../../../../enums/complete-job';
+import {User} from '../../../../enums/user-interface';
 
 @Component({
   selector: 'app-job-details-infos',
@@ -11,14 +14,28 @@ import {JobDetails} from '../../../../enums/model-job.type';
 })
 export class ModelJobDetailsInfosComponent implements OnInit {
 
-  public details: JobDetails;
+  private _currentJob = new BehaviorSubject<CompleteJob>(null);
+
+  public get currentJob(): CompleteJob {
+    return this._currentJob.getValue();
+  }
+
+  public set currentJob(job: CompleteJob) {
+    this._currentJob.next(job);
+  }
+
+  private client: User;
 
   constructor(private route: ActivatedRoute,
               private jobsService: ModelJobsService,
+              private userService: UserService,
               private navigatedFromRouteService: NavigatedFromRouteService) {
     this.navigatedFromRouteService.resetCurrentUrlToPrevious();
     const id = this.route.parent.snapshot.paramMap.get('jobId');
-    this.details = this.jobsService.jobDetails(id);
+    this.jobsService.job(id).subscribe(job => {
+      this.currentJob = job;
+      this.userService.user(job.job.clientId).subscribe(client => this.client = client);
+    });
   }
 
   ngOnInit() {

@@ -1,7 +1,13 @@
 import {Injectable} from '@angular/core';
-import {ClientJob} from '../../enums/client-job-interface';
-import {BehaviorSubject} from 'rxjs';
-import {JobStatus} from '../../enums/job-status.type';
+import {Job} from '../../enums/job.type';
+import {JobStatus} from '../../enums/job-status.enum';
+import {AuthService} from '../auth.service';
+import {Collections} from '../../enums/collections.enum';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {JobModelDetails} from '../../enums/job-model-details.type';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {first, map, takeUntil} from 'rxjs/operators';
+import {CompleteJob} from '../../enums/complete-job';
 
 
 @Injectable({
@@ -9,66 +15,78 @@ import {JobStatus} from '../../enums/job-status.type';
 })
 export class ClientJobsService {
 
-  private readonly _clientJobs = new BehaviorSubject<ClientJob[]>([]);
+  private readonly _clientJobs = new BehaviorSubject<CompleteJob[]>([]);
 
 
-  public get clientJobs(): ClientJob[] {
+  public get clientJobs(): CompleteJob[] {
     return this._clientJobs.getValue();
   }
 
-  public set clientJobs(val: ClientJob[]) {
+  public set clientJobs(val: CompleteJob[]) {
     this._clientJobs.next(val);
   }
 
   public readonly clientJobs$ = this._clientJobs.asObservable();
 
-  selectedJobId: number;
+  public readonly jobsInProgress$ = this.clientJobs$.pipe(map(jobs => jobs.filter((job: CompleteJob) =>
+    job.bookings.some(model => model.status === JobStatus.REQUEST || model.status === JobStatus.OPTION) || job.bookings.length === 0)));
+  public readonly comingJobs$ = this.clientJobs$.pipe(map(jobs => jobs.filter((job: CompleteJob) =>
+    job.bookings.every(model => model.status === JobStatus.COMING) && job.bookings.length !== 0)));
+  public readonly finishedJobs$ = this.clientJobs$.pipe(map(jobs => jobs.filter((job: CompleteJob) =>
+    job.bookings.every(model => model.status === JobStatus.PAST))));
 
-  constructor() {
-    this.clientJobs = [{
-      jobId: 10,
-      location: 'munich',
-      description: 'super nice job',
-      title: 'WOW Amazing',
-      budget: 12345,
-      clientId: 2345,
-      models: [{modelId: 1, status: JobStatus.REQUEST, fee: '200€'},
-        {modelId: 2, status: JobStatus.COMING, fee: '190€'},
-        {modelId: 4, status: JobStatus.OPTION, fee: '250€'}]
-    }];
+  selectedJobId: string;
+
+  private unsubscribeJobbookings$ = new Subject();
+
+  constructor(private fireStore: AngularFirestore,
+              private authService: AuthService) {
+    const currentUserJobs: Observable<Job[]> = this.fireStore.collection<Job>(Collections.JOBS, ref =>
+      ref.where('clientId', '==', authService.user.getValue().uid)).valueChanges();
+
+    currentUserJobs.subscribe((jobs: Job[]) => {
+      this.unsubscribeJobbookings$.next();
+      this.clientJobs = [];
+      jobs.forEach(job =>
+        this.fireStore.collection<JobModelDetails>(Collections.JOBBOOKINGS, ref =>
+          ref.where('jobId', '==', job.uid)).valueChanges().pipe(
+          takeUntil(this.unsubscribeJobbookings$), map((bookings: JobModelDetails[]) => {
+            return {job, bookings};
+          })).subscribe(completeJobs => this.clientJobs = [...this.clientJobs, completeJobs]));
+    });
   }
 
-  addJob(job: ClientJob): void {
-    this.clientJobs = [job, ...this.clientJobs];
+  addJob(job: Job): void {
+    this.fireStore.collection(Collections.JOBS).doc(job.uid).set(job);
   }
 
-  get jobs(): ClientJob[] {
-    return this.clientJobs;
+  addModelToJob(modelId: string, jobId: string) {
+    const uid = this.fireStore.createId();
+    this.fireStore.collection(Collections.JOBBOOKINGS).doc(uid).set({
+      uid,
+      modelId,
+      jobId,
+      status: JobStatus.REQUEST,
+      fee: '300€'
+    });
   }
 
-  addModelToJob(modelId: number) {
-    const currentJob = this.clientJobs.find(job => job.jobId === this.selectedJobId);
-    if (currentJob) {
-      currentJob.models.push({modelId, status: JobStatus.REQUEST, fee: '300€'});
-      this.clientJobs = [...this.clientJobs];
-    }
+  public changeModelStatus(jobId: string, modelId: string, newStatus: JobStatus) {
+    this.fireStore.collection(Collections.JOBBOOKINGS, ref => ref
+      .where('modelId', '==', modelId)
+      .where('jobId', '==', jobId)).valueChanges().pipe(first()).subscribe((bookings: JobModelDetails[]) => {
+      if (bookings.length > 0) {
+        this.fireStore.collection(Collections.JOBBOOKINGS).doc(bookings[0].uid).update({status: newStatus});
+      }
+    });
   }
 
-
-  public changeModelStatus(jobId: number, modelId: number, newStatus: JobStatus) {
-    const selectedJob = this.clientJobs.find(job => job.jobId === jobId);
-    if (selectedJob) {
-      selectedJob.models.find(model => model.modelId === modelId).status = newStatus;
-      this.clientJobs = [...this.clientJobs];
-    }
+  public models(jobId: string): Observable<JobModelDetails[]> {
+    return this.fireStore.collection<JobModelDetails>(Collections.JOBBOOKINGS, ref => ref.where('jobId', '==', jobId)).valueChanges();
   }
 
-  /**
-   * @param jobId wich job should be returned
-   * @return ClientJob to the given jobId
-   */
-  public job(jobId: number): ClientJob {
-    return this.clientJobs.find(job => job.jobId === jobId);
+  public job(jobId: string): Observable<CompleteJob> {
+    return this.clientJobs$.pipe(map((jobs: CompleteJob[]) => jobs.find(job => job.job.uid === jobId)));
   }
 }
 
