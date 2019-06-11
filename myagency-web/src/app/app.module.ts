@@ -57,6 +57,7 @@ import {ClientJobDetailsComponent} from './components/client/client-job-details/
 import {ClientJobDetailsInfosComponent} from './components/client/client-job-details/client-job-details-infos/client-job-details-infos.component';
 import {ClientComponent} from './components/client/client.component';
 import {ModelComponent} from './components/model/model.component';
+import { FeedbackComponent } from './components/shared/feedback/feedback.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -99,7 +100,8 @@ const config = {
     ClientJobDetailsComponent,
     ClientJobDetailsInfosComponent,
     ClientComponent,
-    ModelComponent
+    ModelComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -127,10 +129,8 @@ const config = {
     FormsModule,
     MatTabsModule,
     MatIconModule,
-    MatCardModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    FormsModule,
     MatDividerModule,
     MatSnackBarModule
   ],
