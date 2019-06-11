@@ -1,3 +1,31 @@
-<p>
-  feedback works!
-</p>
+<form [formGroup]="feedbackFormGroup">
+  <div class="form-description">
+    <div class="description-title">Feedback</div>
+    <div class="description-text">Wir wissen das wir gut sind. Also bestätige uns.</div>
+  </div>
+  <mat-form-field class="user-input">
+    <input matInput placeholder="deine hs-mail adresse (fürs Gewinnspiel)" formControlName="mail" type="email" required>
+  </mat-form-field>
+  <mat-form-field class="user-input">
+    <textarea matInput placeholder="Wie war für dich die Registrierung?" formControlName="register" required></textarea>
+  </mat-form-field>
+  <mat-form-field class="user-input">
+    <textarea matInput placeholder="Verbesserungen zur Job Erstellung?" formControlName="jobCreation"
+              required></textarea>
+  </mat-form-field>
+  <mat-form-field class="user-input">
+    <textarea matInput placeholder="Models & Clients sehen ihre Jobs. Was haben wir verkackt?" formControlName="jobView"
+              required></textarea>
+  </mat-form-field>
+  <mat-form-field class="user-input">
+    <textarea matInput placeholder="Wir wissen die Idee ist richtig geil. Los stimm uns zu..."
+              formControlName="principleIdea" required></textarea>
+  </mat-form-field>
+  <mat-form-field class="user-input">
+    <textarea matInput placeholder="Und sonst darfst du uns gerne sagen das wir gut aussehen." formControlName="general"
+              required></textarea>
+  </mat-form-field>
+  <div class="data-usage-hint">Wir verwenden deine Daten.</div>
+
+  <button mat-button (click)="sendFeedback()">SEND</button>
+</form>

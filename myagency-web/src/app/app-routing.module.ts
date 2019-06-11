@@ -20,6 +20,7 @@ import {ClientJobDetailsComponent} from './components/client/client-job-details/
 import {ClientComponent} from './components/client/client.component';
 import {ModelComponent} from './components/model/model.component';
 import {FeedbackComponent} from './components/shared/feedback/feedback.component';
+import {LotteryComponent} from './components/shared/lottery/lottery.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'regModel', component: ModelRegistrationComponent},
   {path: 'regClient', component: ClientRegistrationComponent},
   {path: 'feedback', component: FeedbackComponent},
+  {path: 'lottery', component: LotteryComponent},
   {
     path: 'client',
     component: ClientComponent,

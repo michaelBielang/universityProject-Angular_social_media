@@ -58,6 +58,7 @@ import {ClientJobDetailsInfosComponent} from './components/client/client-job-det
 import {ClientComponent} from './components/client/client.component';
 import {ModelComponent} from './components/model/model.component';
 import { FeedbackComponent } from './components/shared/feedback/feedback.component';
+import { LotteryComponent } from './components/shared/lottery/lottery.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -101,7 +102,8 @@ const config = {
     ClientJobDetailsInfosComponent,
     ClientComponent,
     ModelComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    LotteryComponent
   ],
   imports: [
     BrowserModule,

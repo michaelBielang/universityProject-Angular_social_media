@@ -1,0 +1,25 @@
+@import "~src/assets/scss/variables";
+
+form {
+  padding-top: 20px;
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+
+  .form-description {
+    display: grid;
+    grid-gap: 10px;
+
+    .description-title {
+      font-size: $title-font-size;
+    }
+  }
+
+  .data-usage-hint {
+    font-size: $hint-font-size;
+    color: $color-600;
+  }
+}
