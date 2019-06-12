@@ -1,0 +1,36 @@
+<input
+  type="file"
+  #file
+  style="display: none"
+  (change)="onFilesAdded()"
+  multiple/>
+<div class="container">
+  <h1 mat-dialog-title>Upload Files</h1>
+
+  <div class="dropzone"
+       fileDrop
+       (filesDropped)="handleDrop($event)"
+       (filesHovered)="dropzoneState($event)"
+       [ngClass]="{'active': dropzoneActive}">
+    <mat-icon class="dropzone-upload-icon">cloud_upload</mat-icon>
+  </div>
+
+  <button
+    [disabled]="uploadFinished"
+    mat-mini-fab
+    color="primary"
+    class="add-files-btn"
+    (click)="addFiles()">
+    <mat-icon>attach_file</mat-icon>
+  </button>
+
+  <mat-list>
+    <mat-list-item *ngFor="let file of files">
+      <h4 mat-line>{{file.task.blob_.data_.name}}</h4>
+      <!-- mat-progress-bar
+        mode="determinate"
+        [value]="file.percentageChanges() | async">
+      </mat-progress-bar -->
+    </mat-list-item>
+  </mat-list>
+</div>

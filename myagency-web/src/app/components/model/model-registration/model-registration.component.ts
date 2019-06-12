@@ -14,6 +14,7 @@ import {UserRole} from '../../../enums/user-role.enum';
 export class ModelRegistrationComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
   countryList: string[];
   titles = ['Mr.', 'Mrs'];
   eyes = ['Blue.', 'Green', 'Brown'];
@@ -54,6 +55,11 @@ export class ModelRegistrationComponent implements OnInit {
       street: ['', [Validators.required, Validators.minLength(2)]],
       city: ['', [Validators.required, Validators.minLength(2)]],
       postcode: ['', [Validators.required, Validators.minLength(2)]]
+    });
+
+    // Third Step
+    this.fourthFormGroup = this.formBuilder.group({
+      sedCard: ['', [Validators.required]]
     });
   }
 

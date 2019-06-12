@@ -2,6 +2,17 @@
 
 <ng-container *ngIf="(authService.user | async) || {} as user">
   <mat-horizontal-stepper [linear]=true>
+    <mat-step>
+      <div class="single-step">
+        <ng-template matStepLabel>Sed Card</ng-template>
+        <file-upload></file-upload>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="signUp()">Signup</button>
+        </div>
+      </div>
+    </mat-step>
+
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" class="single-step">
         <ng-template matStepLabel>Who</ng-template>
@@ -86,6 +97,7 @@
         <mat-form-field>
           <mat-select placeholder="Age" required>
             <mat-option *ngFor="let age of ages" [value]='age'>
+
               {{age}}
             </mat-option>
           </mat-select>
@@ -141,9 +153,11 @@
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="signUp()">Signup</button>
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
         </div>
       </form>
     </mat-step>
+
+
   </mat-horizontal-stepper>
 </ng-container>
