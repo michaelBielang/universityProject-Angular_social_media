@@ -1,0 +1,21 @@
+<navigation>
+  <button mat-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</navigation>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" position="end">
+    <div class="sidenav-actions">
+      <a mat-button (click)="sidenav.toggle()" routerLink="/model/jobs">Jobs</a>
+      <a mat-button (click)="sidenav.toggle()">Messages</a>
+      <a mat-button (click)=" sidenav.toggle()">Profile</a>
+      <a mat-button (click)="sidenav.toggle()">Calendar</a>
+      <a mat-button (click)=" sidenav.toggle()">Tips & Tricks</a>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

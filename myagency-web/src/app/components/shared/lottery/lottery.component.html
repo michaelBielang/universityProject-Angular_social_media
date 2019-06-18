@@ -1,0 +1,11 @@
+<div class="winner">
+  <div>And the winner is</div>
+  <div class="winner-name">{{winner}}</div>
+  <button mat-button (click)="drawWinner()">
+    <mat-icon>shuffle</mat-icon>
+  </button>
+</div>
+<div class="chances">
+  <div class="title">Gewinnchancen:</div>
+  <div>1 : {{participants.length}}</div>
+</div>
