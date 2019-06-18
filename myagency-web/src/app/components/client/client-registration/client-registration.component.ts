@@ -60,4 +60,12 @@ export class ClientRegistrationComponent implements OnInit {
     this.authService.emailSignUp(this.email.value, this.password.value, this.role)
       .then((value) => this.navigatorService.goToMain());
   }
+
+  moveToSelectedTab(tabName: string) {
+    for (let i = 0; i < document.querySelectorAll('.mat-tab-label-content').length; i++) {
+      if ((<HTMLElement>document.querySelectorAll('.mat-tab-label-content')[i]).innerText === tabName) {
+        (<HTMLElement>document.querySelectorAll('.mat-tab-label')[i]).click();
+      }
+    }
+  }
 }

@@ -20,8 +20,6 @@ export class ClientJobsService {
     this._clientJobs.next(val);
   }
 
-  public readonly clientJobs$ = this._clientJobs.asObservable();
-
   selectedJobId: number;
 
   constructor() {
@@ -42,5 +40,6 @@ export class ClientJobsService {
       this.clientJobs = [...this.clientJobs];
     }
   }
+
 }
 

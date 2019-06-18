@@ -1,5 +1,6 @@
 <navigation></navigation>
 
+<!--
 <ng-container *ngIf="(authService.user | async) || {} as user">
   <mat-horizontal-stepper [linear]=true>
     <mat-step [stepControl]="firstFormGroup">
@@ -71,19 +72,74 @@
     </mat-step>
   </mat-horizontal-stepper>
 </ng-container>
+-->
 
-<!--
-relevant after MVP
+
 <mat-tab-group #allTabs>
 
-  <mat-tab label="Tab 1">
-    <p>Tab 1 Content</p>
-    <button mat-raised-button tabindex="-1" type="button" (click)='moveToSelectedTab("Tab 2")'>Move to Tab 2</button>
+  <mat-tab label="About you">
+    <form [formGroup]="firstFormGroup" class="single-step">
+      <mat-form-field>
+        <mat-select placeholder="Title" required>
+          <mat-option *ngFor="let title of titles " [value]='title'>
+            {{title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="name" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="surname" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="email" formControlName="email" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="password" formControlName="password" required>
+      </mat-form-field>
+    </form>
+    <div style="padding-left: 80%; padding-top: -20%">
+      <button mat-raised-button color="primary" tabindex="-1" type="button" (click)='moveToSelectedTab("About your Company")'>
+        Continue
+      </button>
+    </div>
   </mat-tab>
-  <mat-tab label="Tab 2">
-    <p>Tab 2 Content</p>
-    <button mat-raised-button tabindex="-1" type="button" (click)='moveToSelectedTab("Tab 1")'>Move to Tab 1</button>
-  </mat-tab>
-</mat-tab-group>-->
+  <mat-tab label="About your Company">
+    <form [formGroup]="firstFormGroup" class="single-step">
+      <mat-form-field>
+        <mat-select placeholder="Title" required>
+          <mat-option *ngFor="let title of titles " [value]='title'>
+            {{title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="name" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="surname" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="email" formControlName="email" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="password" formControlName="password" required>
+      </mat-form-field>
+    </form>
+    <div style="padding-left: 80%; padding-top: -20%">
+      <button mat-raised-button color="primary" tabindex="-1" type="button" (click)='moveToSelectedTab("About your Company")'>
+        Continue
+      </button>
+    </div> </mat-tab>
+</mat-tab-group>
 
 
