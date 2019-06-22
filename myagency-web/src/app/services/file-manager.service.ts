@@ -13,14 +13,13 @@ export class FileManagerService {
 
 
   public uploadFile(file: File): AngularFireUploadTask {
-    const savingPath = this.authService.user.getValue().uid + file.name;
+    const savingPath = `${this.authService.user.getValue().uid}/${file.name}`;
     const task = this.storage.upload(savingPath, file);
     return task;
   }
 
   public uploadFiles(files: File[]): AngularFireUploadTask[] {
-    const savingPath = this.authService.user.getValue().uid;
-    const tasks = files.map(file => this.storage.upload(savingPath + file.name, file));
+    const tasks = files.map(file => this.storage.upload(`${this.authService.user.getValue().uid}/${file.name}`, file));
     return tasks;
   }
 }
