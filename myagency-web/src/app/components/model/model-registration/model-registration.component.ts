@@ -42,7 +42,8 @@ export class ModelRegistrationComponent implements OnInit {
       title: ['', Validators.required],
       lastName: ['', Validators.required],
       firstName: ['', Validators.required],
-      birthday: ['', Validators.required]
+      birthday: ['', Validators.required],
+      phone: ['', Validators.required]
     });
 
     this.secondFormGroup = this.formBuilder.group({
@@ -112,7 +113,6 @@ export class ModelRegistrationComponent implements OnInit {
   }
 
   set sedCard(pictures: string[]) {
-    debugger;
     this.fourthFormGroup.setControl('sedCard', this.formBuilder.array(pictures));
   }
 
@@ -125,7 +125,6 @@ export class ModelRegistrationComponent implements OnInit {
    */
   public finish(): void {
     const modelData = {...this.firstFormGroup.value, ...this.secondFormGroup.value, ...this.thirdFormGroup.value, ...this.fourthFormGroup.value};
-    debugger;
     this.userService.setUserData(this.authService.user.getValue().uid, modelData)
       .then(() => this.navigatorService.goToMain());
   }

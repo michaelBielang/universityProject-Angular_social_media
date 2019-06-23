@@ -4,32 +4,28 @@
   <mat-horizontal-stepper [linear]=true>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" class="single-step">
-        <ng-template matStepLabel>You</ng-template>
+        <ng-template matStepLabel>Company Data</ng-template>
         <mat-form-field>
-          <mat-select placeholder="Title" required>
-            <mat-option *ngFor="let title of titles " [value]='title'>
-              {{title}}
-            </mat-option>
-          </mat-select>
+          <input matInput placeholder="company name" formControlName="companyName" required>
         </mat-form-field>
-        <br>
         <mat-form-field>
-          <input matInput placeholder="name" required>
+          Company Logo
+          <file-upload [maxImages]="1"
+                       (uploadFinished)="profilePictureUploadReady = $event"
+                       (imageRefListChange)="profilePicture = $event"></file-upload>
         </mat-form-field>
-        <br>
         <mat-form-field>
-          <input matInput placeholder="surname" required>
+          <textarea matInput placeholder="company description" formControlName="companyDescription" required></textarea>
         </mat-form-field>
-        <br>
         <mat-form-field>
-          <input matInput placeholder="email" formControlName="email" required>
+          <input matInput placeholder="contact person" formControlName="contact" required>
         </mat-form-field>
-        <br>
         <mat-form-field>
-          <input matInput placeholder="password" formControlName="password" required>
+          <input matInput type="tel" placeholder="phone" formControlName="phone" required>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid || profilePictureUploadReady">Next
+          </button>
         </div>
       </form>
     </mat-step>
@@ -37,23 +33,16 @@
 
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup" class="single-step">
-        <ng-template matStepLabel>Company</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Company" formControlName="content" required>
-        </mat-form-field>
-        <br>
+        <ng-template matStepLabel>Location</ng-template>
         <mat-form-field>
           <input matInput placeholder="Street" formControlName="content" required>
         </mat-form-field>
-        <br>
         <mat-form-field>
           <input matInput placeholder="City" formControlName="content" required>
         </mat-form-field>
-        <br>
         <mat-form-field>
           <input matInput placeholder="Postcode" formControlName="content" required>
         </mat-form-field>
-        <br>
         <mat-form-field>
           <mat-select placeholder="Country" required>
             <mat-option *ngFor="let country of countryList" [value]='country'>
@@ -64,26 +53,10 @@
         <br>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button [disabled]="secondFormGroup.invalid" (click)="signUp()">signup</button>
+          <button mat-button [disabled]="secondFormGroup.invalid" (click)="signUp()">FINISH</button>
           <br>
         </div>
       </form>
     </mat-step>
   </mat-horizontal-stepper>
 </ng-container>
-
-<!--
-relevant after MVP
-<mat-tab-group #allTabs>
-
-  <mat-tab label="Tab 1">
-    <p>Tab 1 Content</p>
-    <button mat-raised-button tabindex="-1" type="button" (click)='moveToSelectedTab("Tab 2")'>Move to Tab 2</button>
-  </mat-tab>
-  <mat-tab label="Tab 2">
-    <p>Tab 2 Content</p>
-    <button mat-raised-button tabindex="-1" type="button" (click)='moveToSelectedTab("Tab 1")'>Move to Tab 1</button>
-  </mat-tab>
-</mat-tab-group>-->
-
-

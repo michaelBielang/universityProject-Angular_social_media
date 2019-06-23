@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CountryList} from '../../../enums/country-list';
 import {AuthService} from '../../../services/auth.service';
 import {NavigatorService} from '../../../services/navigator.service';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'client-registration',
@@ -14,45 +15,43 @@ export class ClientRegistrationComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   countryList: string[] = CountryList;
-  titles = ['Mr.', 'Mrs'];
+  profilePictureUploadReady: boolean;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
+              private userService: UserService,
               private navigatorService: NavigatorService) {
   }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      companyName: ['', [Validators.required, Validators.email]],
+      profilePicture: ['', Validators.required],
+      companyDescription: ['', [Validators.required]],
+      contact: ['', Validators.required],
+      phone: ['', Validators.required]
     });
 
-    // Second Step
     this.secondFormGroup = this.formBuilder.group({
-      content: ['', Validators.required]
+      street: ['', [Validators.required, Validators.minLength(2)]],
+      city: ['', [Validators.required, Validators.minLength(2)]],
+      postcode: ['', [Validators.required, Validators.minLength(2)]],
+      country: ['', Validators.required]
     });
   }
 
-  get email() {
-    return this.firstFormGroup.get('email');
-  }
-
-  get content() {
-    return this.secondFormGroup.get('content');
-  }
-
-  get countries() {
-    return this.countryList;
-  }
-
-  get password() {
-    return this.firstFormGroup.get('password');
+  set profilePicture(picture: string[]) {
+    if (picture.length > 0) {
+      this.firstFormGroup.patchValue({profilePicture: picture[0]});
+    }
   }
 
   /**
    * signs up wit with e-mail and password
    */
   public signUp(): void {
-    this.navigatorService.goToMain();
+    const clientData = {...this.firstFormGroup.value, ...this.secondFormGroup.value};
+    this.userService.setUserData(this.authService.user.getValue().uid, clientData)
+      .then(() => this.navigatorService.goToMain());
   }
 }
