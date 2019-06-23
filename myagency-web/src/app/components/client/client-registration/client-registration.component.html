@@ -8,12 +8,11 @@
         <mat-form-field>
           <input matInput placeholder="company name" formControlName="companyName" required>
         </mat-form-field>
-        <mat-form-field>
-          Company Logo
-          <file-upload [maxImages]="1"
-                       (uploadFinished)="profilePictureUploadReady = $event"
-                       (imageRefListChange)="profilePicture = $event"></file-upload>
-        </mat-form-field>
+        Company Logo
+        <mat-divider></mat-divider>
+        <file-upload [maxImages]="1"
+                     (uploadFinished)="profilePictureUploadReady = $event"
+                     (imageRefListChange)="profilePicture = $event"></file-upload>
         <mat-form-field>
           <textarea matInput placeholder="company description" formControlName="companyDescription" required></textarea>
         </mat-form-field>
@@ -24,7 +23,7 @@
           <input matInput type="tel" placeholder="phone" formControlName="phone" required>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid || profilePictureUploadReady">Next
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid || !profilePictureUploadReady">Next
           </button>
         </div>
       </form>
@@ -35,16 +34,16 @@
       <form [formGroup]="secondFormGroup" class="single-step">
         <ng-template matStepLabel>Location</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Street" formControlName="content" required>
+          <input matInput placeholder="Street" formControlName="street" required>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="City" formControlName="content" required>
+          <input matInput placeholder="City" formControlName="city" required>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Postcode" formControlName="content" required>
+          <input matInput placeholder="Postcode" formControlName="postcode" required>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Country" required>
+          <mat-select placeholder="Country" formControlName="country" required>
             <mat-option *ngFor="let country of countryList" [value]='country'>
               {{country}}
             </mat-option>

@@ -25,7 +25,7 @@ export class ClientRegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      companyName: ['', [Validators.required, Validators.email]],
+      companyName: ['', [Validators.required]],
       profilePicture: ['', Validators.required],
       companyDescription: ['', [Validators.required]],
       contact: ['', Validators.required],
