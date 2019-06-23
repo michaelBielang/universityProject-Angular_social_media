@@ -34,4 +34,13 @@ export class NavigatorService {
       }
     });
   }
+
+  goToRegistrationProfile(role: UserRole) {
+    if (role === UserRole.MODEL) {
+      this.router.navigate(['regModel']);
+    } else {
+      this.router.navigate(['regClient']);
+    }
+    return undefined;
+  }
 }

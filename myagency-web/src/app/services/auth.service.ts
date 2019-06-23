@@ -38,11 +38,8 @@ export class AuthService {
    * @param password of the user
    * @param role of the user
    */
-  public emailSignUp(email: string, password: string, role: UserRole): Promise<void> {
+  public emailSignUp(email: string, password: string): Promise<any> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(user => {
-        return this.setUserDoc(user, role);
-      })
       .catch(error => this.handleError(error));
   }
 
@@ -77,20 +74,16 @@ export class AuthService {
   }
 
   /**
-   * Sets model data to firestore after succesful login
+   * Sets model data to firestore after successful login
    * @param user to create doc for
    * @param role of the user
    */
-  private setUserDoc(user, role: UserRole): Promise<void> {
+  public setUserDoc(user, role: UserRole): Promise<void> {
     const uid = user.user.uid;
     const data: User = {
       uid,
       email: user.user.email || null,
-      role,
-      name: 'dummy',
-      location: 'dummy',
-      height: 'dummy',
-      size: 'dummy',
+      role
     };
     return this.userService.setUserData(uid, data);
   }

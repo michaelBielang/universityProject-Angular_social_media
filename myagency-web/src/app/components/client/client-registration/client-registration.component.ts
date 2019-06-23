@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CountriesService} from '../../../services/countries.service';
+import {CountryList} from '../../../enums/country-list';
 import {AuthService} from '../../../services/auth.service';
 import {NavigatorService} from '../../../services/navigator.service';
-import {UserRole} from '../../../enums/user-role.enum';
 
 @Component({
   selector: 'client-registration',
@@ -14,15 +13,12 @@ export class ClientRegistrationComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  countryList: string[];
+  countryList: string[] = CountryList;
   titles = ['Mr.', 'Mrs'];
-  private role = UserRole.CLIENT;
 
   constructor(private formBuilder: FormBuilder,
-              private countriesService: CountriesService,
               private authService: AuthService,
               private navigatorService: NavigatorService) {
-    this.countryList = countriesService.countries;
   }
 
   ngOnInit() {
@@ -57,7 +53,6 @@ export class ClientRegistrationComponent implements OnInit {
    * signs up wit with e-mail and password
    */
   public signUp(): void {
-    this.authService.emailSignUp(this.email.value, this.password.value, this.role)
-      .then((value) => this.navigatorService.goToMain());
+    this.navigatorService.goToMain();
   }
 }

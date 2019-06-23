@@ -9,6 +9,7 @@ import {TeamMembersComponent} from './components/shared/landing-page/team-member
 import {
   MatButtonModule,
   MatCardModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
@@ -17,6 +18,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatNativeDateModule,
   MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
@@ -57,8 +59,8 @@ import {ClientCreateJobComponent} from './components/client/client-create-job/cl
 import {ClientJobDetailsComponent} from './components/client/client-job-details/client-job-details.component';
 import {ClientJobDetailsInfosComponent} from './components/client/client-job-details/client-job-details-infos/client-job-details-infos.component';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-import { FileUploadComponent } from './components/shared/components/file-upload/file-upload.component';
-import { FileDropDirective } from './components/shared/components/file-upload/file-drop.directive';
+import {FileUploadComponent} from './components/shared/components/file-upload/file-upload.component';
+import {FileDropDirective} from './components/shared/components/file-upload/file-drop.directive';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -136,7 +138,9 @@ const config = {
     FormsModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent]

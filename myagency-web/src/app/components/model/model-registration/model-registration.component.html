@@ -2,22 +2,11 @@
 
 <ng-container *ngIf="(authService.user | async) || {} as user">
   <mat-horizontal-stepper [linear]=true>
-    <mat-step>
-      <div class="single-step">
-        <ng-template matStepLabel>Sed Card</ng-template>
-        <file-upload></file-upload>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="signUp()">Signup</button>
-        </div>
-      </div>
-    </mat-step>
-
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" class="single-step">
         <ng-template matStepLabel>Who</ng-template>
         <mat-form-field>
-          <mat-select placeholder="Title" required>
+          <mat-select placeholder="Title" formControlName="title" required>
             <mat-option *ngFor="let title of titles" [value]='title'>
               {{title}}
             </mat-option>
@@ -29,36 +18,28 @@
             Please enter your name
           </mat-error>
         </mat-form-field>
-        <br>
         <mat-form-field>
           <input matInput placeholder="surname" formControlName="lastName" required>
           <mat-error *ngIf="lastName.invalid && lastName.touched">
             Please enter your surname
           </mat-error>
         </mat-form-field>
-        <br>
         <mat-form-field>
-          <input matInput placeholder="email" formControlName="email" required>
-          <mat-error *ngIf="email.invalid && email.touched">
-            Please enter your email
-          </mat-error>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput placeholder="password" formControlName="password" required>
-          <mat-error *ngIf="password.invalid && password.touched">
-            Please enter your password
-          </mat-error>
+          <input matInput [matDatepicker]="picker" placeholder="birthday" formControlName="birthday" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">
+            Next
+          </button>
         </div>
       </form>
     </mat-step>
 
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup" class="single-step">
-        <ng-template matStepLabel>Where</ng-template>
+        <ng-template matStepLabel>Home</ng-template>
         <mat-form-field>
           <input matInput placeholder="Street" formControlName="street" required>
           <mat-error *ngIf="street.invalid && street.touched">
@@ -78,7 +59,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Country" required>
+          <mat-select placeholder="Country" formControlName="country" required>
             <mat-option *ngFor="let country of countryList" [value]='country'>
               {{country}}
             </mat-option>
@@ -86,78 +67,107 @@
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
+          <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">
+            Next
+          </button>
         </div>
       </form>
     </mat-step>
 
     <mat-step>
-      <form [formGroup]="firstFormGroup" class="single-step">
+      <form [formGroup]="thirdFormGroup" class="single-step">
         <ng-template matStepLabel>Body</ng-template>
         <mat-form-field>
-          <mat-select placeholder="Age" required>
-            <mat-option *ngFor="let age of ages" [value]='age'>
-
-              {{age}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select placeholder="Height" required>
+          <mat-select placeholder="height" formControlName="height" required>
             <mat-option *ngFor="let height of heights" [value]='height'>
               {{height}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Clothes Size" required>
-            <mat-option *ngFor="let size of clothesSize" [value]='size'>
-              {{size}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select placeholder="Hair Color" required>
+          <mat-select placeholder="hair color" formControlName="hairColor" required>
             <mat-option *ngFor="let color of hairColors" [value]='color'>
               {{color}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Eye Color" required>
+          <mat-select placeholder="eye color" formControlName="eyeColor" required>
             <mat-option *ngFor="let color of eyes" [value]='color'>
               {{color}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Hip Size" required>
+          <mat-select placeholder="clothes size" formControlName="clothesSize" required>
+            <mat-option *ngFor="let size of clothesSize" [value]='size'>
+              {{size}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="hip size" formControlName="hipSize" required>
             <mat-option *ngFor="let hip of hipMeasurement" [value]='hip'>
               {{hip}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Waist Size" required>
+          <mat-select placeholder="waist size" formControlName="waistSize" required>
             <mat-option *ngFor="let waist of waistMeasurement" [value]='waist'>
               {{waist}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Bust Size" required>
+          <mat-select placeholder="bust size" formControlName="bustSize" required>
             <mat-option *ngFor="let bust of bustMeasurement" [value]='bust'>
               {{bust}}
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="shoe size" formControlName="shoeSize" required>
+            <mat-option *ngFor="let shoe of shoeMeasurement" [value]='shoe'>
+              {{shoe}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+          <button mat-button matStepperNext [disabled]="thirdFormGroup.invalid">
+            Next
+          </button>
         </div>
       </form>
     </mat-step>
 
+    <mat-step>
+      <div class="single-step">
+        <ng-template matStepLabel>Sed Card</ng-template>
+        Profile picture
+        <mat-divider></mat-divider>
+        <file-upload [maxImages]="1"
+                     (uploadFinished)="profilePictureUploadReady = $event"
+                     (imageRefListChange)="profilePicture = $event"></file-upload>
+        Polaroids
+        <mat-divider></mat-divider>
+        <file-upload [maxImages]="3"
+                     (uploadFinished)="polariodsPictureUploadReady = $event"
+                     (imageRefListChange)="polaroids = $event"></file-upload>
+        Sed Card
+        <mat-divider></mat-divider>
+        <file-upload [maxImages]="6"
+                     (uploadFinished)="sedCardPictureUploadReady = $event"
+                     (imageRefListChange)="sedCard = $event"></file-upload>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="finish()" [disabled]="uploadInProgress()">
+            FINISH
+          </button>
+        </div>
+      </div>
+    </mat-step>
 
   </mat-horizontal-stepper>
 </ng-container>

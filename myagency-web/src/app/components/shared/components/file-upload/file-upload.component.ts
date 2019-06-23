@@ -23,22 +23,22 @@ export class FileUploadComponent implements OnInit {
   public maxImages: number;
 
   @Output()
-  public downloadSrcListChange: EventEmitter<string[]> = new EventEmitter<string[]>();
+  public imageRefListChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   @Output()
   public uploadFinished: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   private uploadFinishedCount = 0;
 
-  private _downloadSrcList: BehaviorSubject<string[]> = new BehaviorSubject([]);
+  private _imageRefList: BehaviorSubject<string[]> = new BehaviorSubject([]);
 
-  public set downloadSrcList(list: string[]) {
-    this._downloadSrcList.next(list);
-    this.downloadSrcListChange.emit(list);
+  public set imageRefList(list: string[]) {
+    this._imageRefList.next(list);
+    this.imageRefListChange.emit(list);
   }
 
-  public get downloadSrcList(): string[] {
-    return this._downloadSrcList.getValue();
+  public get imageRefList(): string[] {
+    return this._imageRefList.getValue();
   }
 
 
@@ -75,7 +75,7 @@ export class FileUploadComponent implements OnInit {
     this.files.delete(task);
 
     this.uploadFinished.emit(this.uploadFinishedCount === this.files.size);
-    task.src.then(src => this.downloadSrcList = this.downloadSrcList.filter(savedSrc => src !== savedSrc));
+    this.imageRefList = this.imageRefList.filter(savedSrc => task.task.snapshot.ref.fullPath !== savedSrc);
   }
 
   dropzoneState($event: boolean) {
@@ -107,7 +107,7 @@ export class FileUploadComponent implements OnInit {
     imageUpload.task.on(firebase.storage.TaskEvent.STATE_CHANGED, null, null, () => {
       this.uploadFinishedCount++;
       this.uploadFinished.emit(this.uploadFinishedCount === this.files.size);
+      this.imageRefList = [...this.imageRefList, imageUpload.task.snapshot.ref.fullPath];
     });
-    imageUpload.src.then(url => this.downloadSrcList = [...this.downloadSrcList, url]);
   }
 }

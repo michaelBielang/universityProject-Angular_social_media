@@ -1,13 +1,4 @@
-<input
-  type="file"
-  #file
-  style="display: none"
-  access=".png,.jpg"
-  (change)=" onFilesAdded()"
-  multiple/>
 <div class="container">
-  <h1 mat-dialog-title>Upload Files</h1>
-
   <div class="dropzone"
        fileDrop
        (filesDropped)="uploadFiles($event)"
@@ -27,11 +18,10 @@
 
       <div class="name upload-full-width">{{file.task.snapshot.ref.name}}</div>
 
-      <mat-progress-bar
-        class="upload-full-width"
-        [attr.aria-lable]="'test'"
-        mode="determinate"
-        [value]="file.uploadPercentage | async">
+      <mat-progress-bar class="upload-full-width"
+                        [attr.aria-lable]="'test'"
+                        mode="determinate"
+                        [value]="file.uploadPercentage | async">
       </mat-progress-bar>
 
       <div class="upload-percentage">
@@ -52,3 +42,11 @@
     </div>
   </div>
 </div>
+
+
+<input type="file"
+       #file
+       style="display: none"
+       access=".png,.jpg"
+       (change)=" onFilesAdded()"
+       multiple/>
