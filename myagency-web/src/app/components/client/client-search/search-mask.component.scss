@@ -1,4 +1,15 @@
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+$gap: 40px;
+
+.page-title {
+  margin: $gap/2 $gap;
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: $gap;
+  padding: 0 $gap;
+}
 
 .buttonGrid {
   display: grid;

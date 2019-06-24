@@ -1,82 +1,63 @@
-<br>
-<p style="text-align: center; padding: 5px">Find what you are looking for</p>
+<div class="page-title">Add models to your job...</div>
 
-<mat-grid-list cols="4" rowHeight="4:1">
-  <form [formGroup]="searchFormGroup">
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select formControlName="job" placeholder="Job" [(value)]="selectedJobId" required>
-          <mat-option *ngFor="let job of clientJobService.clientJobs" [value]='job.job.uid'>
-            {{job.job.title}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select placeholder="Height" required>
-          <mat-option *ngFor="let height of heights" [value]='height'>
-            {{height}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select placeholder="Clothes Size" required>
-          <mat-option *ngFor="let size of clothesSize" [value]='size'>
-            {{size}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select placeholder="Hair Color" required>
-          <mat-option *ngFor="let color of hairColors" [value]='color'>
-            {{color}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select placeholder="Eye Color" required>
-          <mat-option *ngFor="let color of eyes" [value]='color'>
-            {{color}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select placeholder="Hip Size" required>
-          <mat-option *ngFor="let hip of hipMeasurement" [value]='hip'>
-            {{hip}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select placeholder="Waist Size" required>
-          <mat-option *ngFor="let waist of waistMeasurement" [value]='waist'>
-            {{waist}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select placeholder="Bust Size" required>
-          <mat-option *ngFor="let bust of bustMeasurement" [value]='bust'>
-            {{bust}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-  </form>
-</mat-grid-list>
+<form [formGroup]="searchFormGroup" class="search-form">
+  <mat-form-field>
+    <mat-select formControlName="job" placeholder="Job" formControlName="job" required>
+      <mat-option *ngFor="let job of clientJobService.clientJobs" [value]='job.job.uid'>
+        {{job.job.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Height" required>
+      <mat-option *ngFor="let height of heights" [value]='height'>
+        {{height}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Clothes Size" required>
+      <mat-option *ngFor="let size of clothesSize" [value]='size'>
+        {{size}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Hair Color" required>
+      <mat-option *ngFor="let color of hairColors" [value]='color'>
+        {{color}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Eye Color" required>
+      <mat-option *ngFor="let color of eyes" [value]='color'>
+        {{color}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Hip Size" required>
+      <mat-option *ngFor="let hip of hipMeasurement" [value]='hip'>
+        {{hip}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Waist Size" required>
+      <mat-option *ngFor="let waist of waistMeasurement" [value]='waist'>
+        {{waist}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Bust Size" required>
+      <mat-option *ngFor="let bust of bustMeasurement" [value]='bust'>
+        {{bust}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
 
 <div class="buttonGrid">
   <button mat-raised-button color="primary" [disabled]="searchFormGroup.invalid" (click)="processSearchRequest()">

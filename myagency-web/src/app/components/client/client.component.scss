@@ -3,12 +3,16 @@
 .sidenav-container {
   height: calc(100vh - #{$header-height});
 
-  .sidenav-actions {
-    display: flex;
-    flex-direction: column;
+  .sidenav {
+    min-width: 250px;
 
-    a {
-      margin: 10px;
+    .sidenav-actions {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        margin: 10px;
+      }
     }
   }
 }
