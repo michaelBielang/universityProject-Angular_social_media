@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../enums/user-interface';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {Router} from '@angular/router';
 import {NotifyService} from './notify.service';
 import 'rxjs-compat/add/operator/switchMap';
 import 'rxjs-compat/add/observable/of';
@@ -17,7 +16,6 @@ export class AuthService {
   public user = new BehaviorSubject<User>(null);
 
   constructor(private afAuth: AngularFireAuth,
-              private router: Router,
               private notify: NotifyService,
               private userService: UserService) {
     this.afAuth.authState
@@ -57,11 +55,6 @@ export class AuthService {
     });
   }
 
-  // Update properties on the model document
-  updateUser(user: User, data: any): Promise<void> {
-    return this.userService.setUserData(user.uid, data);
-  }
-
   // If error, console log and notify model
   private handleError(error) {
     console.error(error);
@@ -70,7 +63,6 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.auth.signOut();
-    this.router.navigate(['/']);
   }
 
   /**

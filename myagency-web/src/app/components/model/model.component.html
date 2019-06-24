@@ -9,9 +9,10 @@
     <div class="sidenav-actions">
       <a mat-button (click)="sidenav.toggle()" routerLink="/model/jobs">Jobs</a>
       <a mat-button (click)="sidenav.toggle()">Messages</a>
-      <a mat-button (click)=" sidenav.toggle()">Profile</a>
+      <a mat-button (click)="sidenav.toggle()">Profile</a>
       <a mat-button (click)="sidenav.toggle()">Calendar</a>
-      <a mat-button (click)=" sidenav.toggle()">Tips & Tricks</a>
+      <a mat-button (click)="sidenav.toggle()">Tips & Tricks</a>
+      <a mat-button (click)="authService.signOut()" routerLink="/">Logout</a>
     </div>
   </mat-sidenav>
 
