@@ -29,5 +29,9 @@ export interface Model extends User {
 }
 
 export interface Client extends User {
-  company?: string;
+  companyName?: string;
+  profilePicture?: string;
+  companyDescription?: string;
+  contact?: string;
+  phone?: string;
 }

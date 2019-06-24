@@ -23,15 +23,13 @@ export class RegisterStartComponent implements OnInit {
 
   ngOnInit() {
     this.registerFormGroup = this.formBuilder.group({
-      email: ['', [
-        Validators.required,
-        Validators.email]],
+      role: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.minLength(5),
         Validators.maxLength(25),
         Validators.required
-      ]],
-      role: ['', Validators.required]
+      ]]
     });
   }
 

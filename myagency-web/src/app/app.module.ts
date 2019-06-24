@@ -61,6 +61,7 @@ import {ClientJobDetailsInfosComponent} from './components/client/client-job-det
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {FileUploadComponent} from './components/shared/components/file-upload/file-upload.component';
 import {FileDropDirective} from './components/shared/components/file-upload/file-drop.directive';
+import {SearchResultItemComponent} from './components/client/client-search/search-results/search-result-item/search-result-item.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -103,7 +104,8 @@ const config = {
     ClientJobDetailsComponent,
     ClientJobDetailsInfosComponent,
     FileUploadComponent,
-    FileDropDirective
+    FileDropDirective,
+    SearchResultItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/storage';
 import {AuthService} from './auth.service';
-import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +23,7 @@ export class FileManagerService {
     return tasks;
   }
 
-  public downLoadUrl(ref: string): Observable<string> {
-    return this.storage.ref(ref).getDownloadURL();
+  public downLoadUrl(ref: string): Promise<string> {
+    return this.storage.ref(ref).getDownloadURL().toPromise();
   }
 }

@@ -150,17 +150,20 @@
         <ng-template matStepLabel>Sed Card</ng-template>
         Profile picture
         <mat-divider></mat-divider>
-        <file-upload [maxImages]="1"
+        <file-upload class="file-upload"
+                     [maxImages]="1"
                      (uploadFinished)="profilePictureUploadReady = $event"
                      (imageRefListChange)="profilePicture = $event"></file-upload>
         Polaroids
         <mat-divider></mat-divider>
-        <file-upload [maxImages]="3"
+        <file-upload class="file-upload"
+                     [maxImages]="3"
                      (uploadFinished)="polariodsPictureUploadReady = $event"
                      (imageRefListChange)="polaroids = $event"></file-upload>
         Sed Card
         <mat-divider></mat-divider>
-        <file-upload [maxImages]="6"
+        <file-upload class="file-upload"
+                     [maxImages]="6"
                      (uploadFinished)="sedCardPictureUploadReady = $event"
                      (imageRefListChange)="sedCard = $event"></file-upload>
         <div>

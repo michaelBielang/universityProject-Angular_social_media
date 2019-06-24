@@ -11,10 +11,10 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 export class SearchMaskComponent implements OnInit {
 
-  eyes = ['Blue.', 'Green', 'Brown'];
-  hairColors = ['Blond.', 'Brunette', 'Black'];
-  clothesSize = ['S', 'M', 'L', 'XL'];
-  heights = Array.from({length: (210 - 150)}, (value, key) => key + 150);
+  eyes = ['Blue', 'Green', 'Brown'];
+  hairColors = ['Blond', 'Brunette', 'Black'];
+  clothesSize = ['XS', 'S', 'M', 'L'];
+  heights = Array.from({length: (200 - 160)}, (value, key) => key + 160);
   bustMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
   waistMeasurement = Array.from({length: (90 - 40)}, (value, key) => key + 40);
   hipMeasurement = Array.from({length: (100 - 50)}, (value, key) => key + 50);
@@ -22,7 +22,8 @@ export class SearchMaskComponent implements OnInit {
   ages = Array.from({length: 18}, (value, key) => key + 18);
   searchFormGroup: FormGroup;
 
-  constructor(private findModelService: FindModelService, private clientJobService: ClientJobsService,
+  constructor(private findModelService: FindModelService,
+              private clientJobService: ClientJobsService,
               private formBuilder: FormBuilder) {
   }
 

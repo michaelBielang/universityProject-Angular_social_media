@@ -1,8 +1,7 @@
 import {Component, NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {User} from '../../../../enums/user-interface';
+import {Model} from '../../../../enums/user-interface';
 import {FindModelService} from '../../../../services/find-model.service';
-import {ClientJobsService} from '../../../../services/client/client-jobs.service';
 import {UserService} from '../../../../services/user.service';
 
 @NgModule({
@@ -19,12 +18,13 @@ export class SearchResultsComponent {
   private color = 'accent';
   private mode = 'indeterminate';
   private searchRequest = false;
-  private models: User[];
+  private models: Model[];
 
-  constructor(private userService: UserService, private findModelService: FindModelService,
-              private clientJobService: ClientJobsService) {
-    userService.models().subscribe(models => {
+  constructor(private userService: UserService,
+              private findModelService: FindModelService) {
+    userService.models().subscribe((models: Model[]) => {
       this.models = models;
+      console.log('new models');
     });
   }
 
@@ -34,9 +34,5 @@ export class SearchResultsComponent {
 
   getShowProgress() {
     return this.findModelService.showProgress;
-  }
-
-  saveModel(uid: string, jobId: string) {
-    this.clientJobService.addModelToJob(uid, jobId);
   }
 }

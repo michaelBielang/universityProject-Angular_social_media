@@ -1,0 +1,16 @@
+@import "~src/assets/scss/variables";
+
+.card {
+  &:hover {
+    background-color: $color-100;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .button-right {
+    float: right;
+  }
+}
