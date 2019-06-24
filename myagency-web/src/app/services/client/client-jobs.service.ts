@@ -35,8 +35,6 @@ export class ClientJobsService {
   public readonly finishedJobs$ = this.clientJobs$.pipe(map(jobs => jobs.filter((job: CompleteJob) =>
     job.bookings.every(model => model.status === JobStatus.PAST))));
 
-  selectedJobId: string;
-
   private unsubscribeJobbookings$ = new Subject();
 
   constructor(private fireStore: AngularFirestore,
@@ -60,14 +58,24 @@ export class ClientJobsService {
     this.fireStore.collection(Collections.JOBS).doc(job.uid).set(job);
   }
 
-  addModelToJob(modelId: string, jobId: string) {
+  public addModelToJob(modelId: string, jobId: string) {
     const uid = this.fireStore.createId();
-    this.fireStore.collection(Collections.JOBBOOKINGS).doc(uid).set({
+    return this.fireStore.collection(Collections.JOBBOOKINGS).doc(uid).set({
       uid,
       modelId,
       jobId,
       status: JobStatus.REQUEST,
       fee: '300€'
+    });
+  }
+
+  public deleteModelFromJob(modelId: string, jobId: string) {
+    this.fireStore.collection(Collections.JOBBOOKINGS, ref => ref
+      .where('modelId', '==', modelId)
+      .where('jobId', '==', jobId)).valueChanges().pipe(first()).subscribe((bookings: JobModelDetails[]) => {
+      if (bookings.length > 0) {
+        this.fireStore.collection(Collections.JOBBOOKINGS).doc(bookings[0].uid).delete();
+      }
     });
   }
 

@@ -62,6 +62,10 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {FileUploadComponent} from './components/shared/components/file-upload/file-upload.component';
 import {FileDropDirective} from './components/shared/components/file-upload/file-drop.directive';
 import {SearchResultItemComponent} from './components/client/client-search/search-results/search-result-item/search-result-item.component';
+import {ClientComponent} from './components/client/client.component';
+import {ModelComponent} from './components/model/model.component';
+import {FeedbackComponent} from './components/shared/feedback/feedback.component';
+import {LotteryComponent} from './components/shared/lottery/lottery.component';
 
 const config = {
   apiKey: 'AIzaSyAxeq6ggYW5LBGdwXoJO0sTC-a0R_3fKUg',
@@ -105,7 +109,11 @@ const config = {
     ClientJobDetailsInfosComponent,
     FileUploadComponent,
     FileDropDirective,
-    SearchResultItemComponent
+    SearchResultItemComponent,
+    ClientComponent,
+    ModelComponent,
+    FeedbackComponent,
+    LotteryComponent
   ],
   imports: [
     BrowserModule,
@@ -134,10 +142,8 @@ const config = {
     FormsModule,
     MatTabsModule,
     MatIconModule,
-    MatCardModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    FormsModule,
     MatDividerModule,
     MatSnackBarModule,
     MatProgressBarModule,

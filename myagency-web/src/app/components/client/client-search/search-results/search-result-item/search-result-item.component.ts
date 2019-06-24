@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Model} from '../../../../../enums/user-interface';
 import {FileManagerService} from '../../../../../services/file-manager.service';
-import {ClientJobsService} from '../../../../../services/client/client-jobs.service';
 
 @Component({
   selector: 'search-result-item',
@@ -13,19 +12,17 @@ export class SearchResultItemComponent implements OnInit {
   @Input()
   public model: Model;
 
+  @Output()
+  public modelAdded: EventEmitter<string> = new EventEmitter<string>();
+
   public downloadUrl: string;
 
   public favorite: boolean;
 
-  constructor(private fileManagerService: FileManagerService,
-              private clientJobService: ClientJobsService) {
+  constructor(private fileManagerService: FileManagerService) {
   }
 
   ngOnInit() {
     this.fileManagerService.downLoadUrl(this.model.profilePicture).then(src => this.downloadUrl = src);
-  }
-
-  saveModel(uid: string, jobId: string) {
-    this.clientJobService.addModelToJob(uid, jobId);
   }
 }

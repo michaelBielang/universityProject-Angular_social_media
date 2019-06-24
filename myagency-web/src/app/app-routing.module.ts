@@ -17,6 +17,10 @@ import {ClientJobOverviewComponent} from './components/client/client-job-overvie
 import {ClientCreateJobComponent} from './components/client/client-create-job/client-create-job.component';
 import {ClientJobDetailsInfosComponent} from './components/client/client-job-details/client-job-details-infos/client-job-details-infos.component';
 import {ClientJobDetailsComponent} from './components/client/client-job-details/client-job-details.component';
+import {ClientComponent} from './components/client/client.component';
+import {ModelComponent} from './components/model/model.component';
+import {FeedbackComponent} from './components/shared/feedback/feedback.component';
+import {LotteryComponent} from './components/shared/lottery/lottery.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
@@ -24,8 +28,11 @@ const routes: Routes = [
   {path: 'register', component: RegisterStartComponent},
   {path: 'regModel', component: ModelRegistrationComponent},
   {path: 'regClient', component: ClientRegistrationComponent},
+  {path: 'feedback', component: FeedbackComponent},
+  {path: 'lottery', component: LotteryComponent},
   {
     path: 'client',
+    component: ClientComponent,
     children: [
       {path: '', component: ClientLandingPageComponent},
       {path: 'detail/:id', component: ProfileComponent},
@@ -46,6 +53,7 @@ const routes: Routes = [
   },
   {
     path: 'model',
+    component: ModelComponent,
     children: [
       {path: '', component: ModelLandingPageComponent},
       {path: 'jobs', component: ModelJobOverviewComponent},

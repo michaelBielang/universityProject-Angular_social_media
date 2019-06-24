@@ -1,0 +1,27 @@
+:host {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  align-items: center;
+
+  .winner {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+
+    .winner-name {
+      font-size: 10vmin;
+      line-height: 3em;
+    }
+  }
+
+  .chances {
+    justify-self: end;
+    padding: 30px;
+    text-align: center;
+  }
+}

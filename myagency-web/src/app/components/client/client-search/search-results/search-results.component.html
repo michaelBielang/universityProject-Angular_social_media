@@ -1,10 +1,12 @@
 <div class="progressSpinner">
   <mat-progress-spinner
-    [color]="color"
-    [mode]="mode" *ngIf="getShowProgress()">
+    [color]="spinnerColor"
+    [mode]="spinnerMode" *ngIf="getShowProgress()">
   </mat-progress-spinner>
 </div>
 
 <div class="model-list" *ngIf="getShowResults()">
-  <search-result-item *ngFor="let model of models" [model]="model"></search-result-item>
+  <search-result-item *ngFor="let model of models"
+                      [model]="model"
+                      (modelAdded)="saveModel($event, selectedJobId)"></search-result-item>
 </div>

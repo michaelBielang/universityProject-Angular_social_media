@@ -8,7 +8,7 @@
          alt="profile_pic">
   </a>
   <mat-card-actions>
-    <button (click)="saveModel(model.uid, clientJobService.selectedJobId)" mat-button>ADD</button>
+    <button (click)="modelAdded.emit(model.uid)" mat-button>ADD</button>
     <button mat-button>share</button>
     <button mat-button class="button-right" (click)="favorite = !favorite"
             [attr.aria-pressed]="favorite">

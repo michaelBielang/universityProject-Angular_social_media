@@ -1,10 +1,8 @@
-<div>
-  <mat-toolbar class="toolbar">
-    <span>MyAgency</span>
-    <mat-icon class="material-icons-outlined">photo_camera_outline</mat-icon>
-    <div class="toolbar-actions">
-      <a mat-button routerLink="/landing-page">Home</a>
-      <ng-content></ng-content>
-    </div>
-  </mat-toolbar>
-</div>
+<mat-toolbar class="toolbar">
+  <div class="myagency-logo" (click)="navigatorService.goToMain()">MyAgency</div>
+  <mat-icon class="material-icons-outlined">photo_camera_outline</mat-icon>
+  <div class="toolbar-actions">
+    <button mat-button routerLink="/feedback">Feedback</button>
+    <ng-content></ng-content>
+  </div>
+</mat-toolbar>

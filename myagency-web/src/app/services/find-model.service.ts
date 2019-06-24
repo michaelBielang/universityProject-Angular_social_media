@@ -1,4 +1,7 @@
 import {Injectable} from '@angular/core';
+import {UserService} from './user.service';
+import {Observable} from 'rxjs';
+import {Model} from '../enums/user-interface';
 
 
 @Injectable({
@@ -9,7 +12,11 @@ export class FindModelService {
   showResults = false;
   showProgress = false;
 
-  constructor() {
+  constructor(private userService: UserService) {
+  }
+
+  public modelSearch(): Observable<Model[]> {
+    return this.userService.models();
   }
 
   async newSearchRequested() {
