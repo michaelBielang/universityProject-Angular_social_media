@@ -1,8 +1,11 @@
 <div class="jobContainer">
-  <div class="infos" routerLink="/client/job-details/{{job.job.uid}}">
-    <span class="client">{{job.job.title}}</span>
-    <span class="date">{{job.job.location}}</span>
-    <span class="models">Models: {{job.bookings.length}}</span>
+  <div routerLink="/client/job-details/{{job.job.uid}}">
+    <img class="col-2 row-2" *ngIf="jobImage" [src]="jobImage">
+    <div class="infos">
+      <span class="job-title">{{job.job.title}}</span>
+      <span class="date">{{job.job.date}}</span>
+      <span class="models">Models: {{job.bookings.length}}</span>
+    </div>
   </div>
   <ng-content></ng-content>
 </div>

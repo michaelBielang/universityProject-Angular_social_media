@@ -16,6 +16,8 @@ export class ClientCreateJobComponent implements OnInit {
 
   jobFormGroup: FormGroup;
 
+  jobImageUploadReady: boolean;
+
   constructor(private formBuilder: FormBuilder,
               private clientJobService: ClientJobsService,
               private navigatorService: NavigatorService,
@@ -28,8 +30,16 @@ export class ClientCreateJobComponent implements OnInit {
     this.jobFormGroup = this.formBuilder.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      location: ['', [Validators.required]]
+      location: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      jobImage: ['']
     });
+  }
+
+  set jobImage(picture: string[]) {
+    if (picture.length > 0) {
+      this.jobFormGroup.patchValue({profilePicture: picture[0]});
+    }
   }
 
   createJob(): void {
@@ -37,9 +47,7 @@ export class ClientCreateJobComponent implements OnInit {
     const job: Job = {
       uid,
       clientId: this.authService.user.getValue().uid,
-      title: this.jobFormGroup.get('title').value,
-      description: this.jobFormGroup.get('description').value,
-      location: this.jobFormGroup.get('location').value
+      ...this.jobFormGroup.value
     };
     this.clientJobService.addJob(job);
     this.router.navigate(['client', 'search'], {state: {data: {createdJobId: job.uid}}});

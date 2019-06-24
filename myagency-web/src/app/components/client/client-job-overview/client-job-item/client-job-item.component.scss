@@ -15,15 +15,15 @@
   .infos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "client fee""date location";
+    grid-template-areas: "job-title job-title""date models";
     grid-gap: 10px;
     justify-items: center;
     align-content: center;
     text-align: center;
     padding: 10px;
 
-    .client {
-      grid-area: client;
+    .job-title {
+      grid-area: job-title;
       font-weight: bold;
     }
 
@@ -31,20 +31,8 @@
       grid-area: date;
     }
 
-    .location {
-      grid-area: location;
+    .models {
+      grid-area: models;
     }
-
-    .fee {
-      grid-area: fee;
-    }
-
-    .expand-icon {
-      grid-area: expand-icon;
-    }
-  }
-
-  .detailed-infos {
-    padding: 10px;
   }
 }

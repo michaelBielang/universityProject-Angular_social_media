@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CompleteJob} from '../../../../enums/complete-job';
+import {FileManagerService} from '../../../../services/file-manager.service';
 
 @Component({
   selector: 'client-job-item',
@@ -11,10 +12,15 @@ export class ClientJobItemComponent implements OnInit {
   @Input()
   public job: CompleteJob;
 
-  constructor() {
+  public jobImage: string;
+
+  constructor(private fileManagerService: FileManagerService) {
   }
 
   ngOnInit() {
+    if (this.job.job.jobImage) {
+      this.fileManagerService.downLoadUrl(this.job.job.jobImage).then(src => this.jobImage = src);
+    }
   }
 
 }
