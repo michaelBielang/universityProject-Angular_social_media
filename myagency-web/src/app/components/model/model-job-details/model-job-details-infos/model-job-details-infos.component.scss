@@ -1,25 +1,28 @@
 @import "~src/assets/scss/variables";
 
 :host {
+  height: 100%;
   display: flex;
   justify-content: center;
   min-height: 100%;
+  overflow: auto;
+  background-color: $color-0;
 
   .tab-container {
     $gaps: 50px;
     max-width: 1000px;
+    width: 100%;
     min-height: calc(100% - 2 * #{$gaps});
     display: grid;
     grid-gap: $gaps;
     padding: $gaps;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    background-color: $color-0;
 
     div {
       align-self: center;
 
       img {
-        height: 100%;
+        width: 100%;
       }
     }
 
@@ -39,7 +42,7 @@
       justify-self: center;
     }
 
-    .client {
+    .job-name {
       font-weight: bold;
       font-size: $title-font-size;
     }
@@ -48,6 +51,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: $gaps;
+
     }
   }
 }

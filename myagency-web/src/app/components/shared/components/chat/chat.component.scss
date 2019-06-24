@@ -1,13 +1,13 @@
 @import "../../../../../assets/scss/variables";
 
-$max-message-container-width: 800px;
+$max-message-container-width: 1000px;
 
 :host {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-rows: 1fr auto;
-  grid-template-columns: minmax(800px, 1fr);
+  grid-template-columns: 1fr;
   justify-items: center;
 
   .message-container {

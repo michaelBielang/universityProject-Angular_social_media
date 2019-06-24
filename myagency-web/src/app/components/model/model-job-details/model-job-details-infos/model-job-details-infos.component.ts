@@ -5,7 +5,8 @@ import {NavigatedFromRouteService} from '../../../../services/navigated-from-rou
 import {BehaviorSubject} from 'rxjs';
 import {UserService} from '../../../../services/user.service';
 import {CompleteJob} from '../../../../enums/complete-job';
-import {User} from '../../../../enums/user-interface';
+import {Client} from '../../../../enums/user-interface';
+import {FileManagerService} from '../../../../services/file-manager.service';
 
 @Component({
   selector: 'app-job-details-infos',
@@ -24,17 +25,24 @@ export class ModelJobDetailsInfosComponent implements OnInit {
     this._currentJob.next(job);
   }
 
-  private client: User;
+  private client: Client;
+
+  public jobImage: string;
+  public clientImage: string;
 
   constructor(private route: ActivatedRoute,
               private jobsService: ModelJobsService,
               private userService: UserService,
-              private navigatedFromRouteService: NavigatedFromRouteService) {
+              private navigatedFromRouteService: NavigatedFromRouteService,
+              private fileManagerService: FileManagerService) {
     this.navigatedFromRouteService.resetCurrentUrlToPrevious();
     const id = this.route.parent.snapshot.paramMap.get('jobId');
     this.jobsService.job(id).subscribe(job => {
       this.currentJob = job;
-      this.userService.user(job.job.clientId).subscribe(client => this.client = client);
+      this.userService.user(job.job.clientId).subscribe(client => {
+        this.client = client;
+        this.fileManagerService.downLoadUrl(this.client.profilePicture).then(src => this.clientImage = src);
+      });
     });
   }
 

@@ -30,6 +30,7 @@ export class ModelRegistrationComponent implements OnInit {
   polariodsPictureUploadReady: boolean;
   sedCardPictureUploadReady: boolean;
 
+  startDate: Date = new Date('01/01/2000 00:00:00');
 
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,

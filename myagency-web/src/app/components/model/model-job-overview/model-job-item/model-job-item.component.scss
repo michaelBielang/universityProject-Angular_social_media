@@ -13,16 +13,20 @@
   .infos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "client fee""date location";
+    grid-template-areas: "job-name job-name""client fee""date location";
     grid-gap: 10px;
     justify-items: center;
     align-content: center;
     text-align: center;
     padding: 10px;
 
+    .job-name {
+      grid-area: job-name;
+      font-weight: bold;
+    }
+
     .client {
       grid-area: client;
-      font-weight: bold;
     }
 
     .date {

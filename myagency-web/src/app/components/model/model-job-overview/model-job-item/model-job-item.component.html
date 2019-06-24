@@ -1,8 +1,13 @@
 <div class="jobContainer">
-  <div class="infos" routerLink="/model/job-details/{{job.job.uid}}">
-    <span class="client">{{client?.name}}</span>
-    <span class="location">{{job.job.location}}</span>
-    <span class="fee">{{job.bookings[0].fee}}</span>
+  <div routerLink="/model/job-details/{{job.job.uid}}">
+    <img class="image" [src]="!!jobImage ? jobImage : clientImage">
+    <div class="infos">
+      <span class="job-name">{{job.job.title}}</span>
+      <span class="client">{{client?.companyName}}</span>
+      <span class="fee">{{job.bookings[0].fee}}</span>
+      <span class="date">10/10/2019</span>
+      <span class="location">{{job.job.location}}</span>
+    </div>
   </div>
   <ng-content></ng-content>
 </div>

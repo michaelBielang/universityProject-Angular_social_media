@@ -1,10 +1,9 @@
 <div class="tab-container">
+  <div class="image col-2 row-2">
+    <img [src]="jobImage ? jobImage : clientImage">
+  </div>
   <div class="job-name">
     {{currentJob.job.title}}
-  </div>
-  <div class="client">
-    <div class="title">Status:</div>
-    {{client?.name}}
   </div>
   <div>
     <div class="title">Status:</div>
@@ -14,6 +13,10 @@
     <div class="title">Fee:</div>
     <span>{{currentJob.bookings[0].fee}}</span>
   </div>
+  <div class="client">
+    <div class="title">Client:</div>
+    {{client?.companyName}}
+  </div>
   <div class="col-2 location">
     <div>
       <div class="title">Location:</div>
@@ -22,11 +25,19 @@
     <here-map [address]="currentJob.job.location"></here-map>
   </div>
   <div>
-    <div class="title">Contact:
-      <mat-icon>mail_outline</mat-icon>
+    <div class="title">Contact:</div>
+    <span> {{client?.contact}} </span>
+    <div class="mail">
+      <a
+        [href]="'mailto:' + client?.email + '?Subject=MyAgency Job ' + currentJob.job.title + '&body=Hey ' + client?.contact + ','">
+        <mat-icon>mail_outline</mat-icon>
+        <span> {{client?.email}}</span></a>
     </div>
-    <span>
-      {{client?.email}}</span>
+    <div class=" phone">
+      <a [href]="'tel:' + client?.phone">
+        <mat-icon>phone</mat-icon>
+        <span> {{client?.phone}}</span></a>
+    </div>
   </div>
   <div class="col-2">
     <div class="title">Job description:</div>
@@ -34,6 +45,6 @@
   </div>
   <div class="col-2">
     <div class="title">Client details:</div>
-    <span>{{client?.location}}</span>
+    <span>{{client?.companyDescription}}</span>
   </div>
 </div>

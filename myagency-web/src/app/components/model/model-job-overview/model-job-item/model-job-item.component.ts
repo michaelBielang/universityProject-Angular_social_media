@@ -1,16 +1,17 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../../../services/user.service';
-import {User} from '../../../../enums/user-interface';
+import {Client, User} from '../../../../enums/user-interface';
 import {BehaviorSubject} from 'rxjs';
 import {filter, mergeMap} from 'rxjs/operators';
 import {CompleteJob} from '../../../../enums/complete-job';
+import {FileManagerService} from '../../../../services/file-manager.service';
 
 @Component({
   selector: 'model-job-item',
   templateUrl: './model-job-item.component.html',
   styleUrls: ['./model-job-item.component.scss']
 })
-export class ModelJobItemComponent {
+export class ModelJobItemComponent implements OnInit {
 
   private _job: BehaviorSubject<CompleteJob> = new BehaviorSubject(null);
 
@@ -25,11 +26,20 @@ export class ModelJobItemComponent {
 
   private job$ = this._job.asObservable();
 
-  private client: User;
+  public client: Client;
+  public jobImage: string;
+  public clientImage: string;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private fileManagerService: FileManagerService) {
+  }
+
+  ngOnInit(): void {
     this.job$.pipe(filter(job => job !== null),
       mergeMap(job => this.userService.user(job.job.clientId)))
-      .subscribe((client: User) => this.client = client);
+      .subscribe((client: User) => {
+        this.client = client;
+        this.fileManagerService.downLoadUrl(this.client.profilePicture).then(src => this.clientImage = src);
+      });
   }
 }
