@@ -1,69 +1,32 @@
-<mat-grid-list cols="4" rowHeight="50px">
-  <mat-grid-tile colspan="1" rowspan="1">
-    <div class="text-inside-grid">
-      <span style="font-weight: bold;">Height:</span> {{model.height}}
-      <span class="span-text" style="font-weight: bold;">Size:</span> {{model.size}}
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="3" rowspan="1">
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1">
-    <div class="text-inside-grid"><span style="font-weight: bold">Location:</span> {{model.location}}</div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1">
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1">
-    <div class="contact-and-back-button">
-      <button mat-raised-button (click)="saveModel()">Save</button>
-      <button class="button-back" mat-raised-button color="primary" (click)="goBack()">Back</button>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>
-
+<div class="model-info">
+  <div class="model-name">{{model?.firstName}} {{model?.lastName}}</div>
+  <div><span class="model-info-title">clothing size:</span>{{model?.clothesSize}}</div>
+  <div><span class="model-info-title">Sizes:</span>{{model?.bustSize}}/{{model?.waistSize}}
+    /{{model?.hipSize}}</div>
+  <div><span class="model-info-title">height:</span>{{model?.height}}</div>
+  <div><span class="model-info-title">shoe size:</span>{{model?.shoeSize}}</div>
+  <div><span class="model-info-title">eye color:</span>{{model?.eyeColor}}</div>
+  <div><span class="model-info-title">hair color:</span>{{model?.hairColor}}</div>
+  <div><span class="model-info-title">age:</span> <span *ngIf="!!model">{{calculateAge(model.birthday)}}</span></div>
+  <div><span class="model-info-title">location:</span>{{model?.postcode}} {{model?.city}}, {{model?.country}}</div>
+</div>
+<div class="actions">
+  <button mat-raised-button (click)="saveModel()">ADD</button>
+  <button class="button-back" mat-raised-button color="primary" (click)="goBack()">BACK</button>
+</div>
 <mat-tab-group class="mat-tab-group" mat-align-tabs="center" animationDuration="2000ms">
-  <mat-tab label="High-Fashion">
-    <div class="grid grid-pad">
-      <a *ngFor="let profilePic of numberOfProfilePics">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-subtitle>High Fashion</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image
-               src="../../../../assets/images/models/highfashion/{{profilePic}}.jpg" alt="profile_pic">
-          <mat-card-content>
-            <div class="job-description">
-              <p>
-                Job for Dior
-              </p>
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button (click)="savedPicture()">Save</button>
-          </mat-card-actions>
-        </mat-card>
-      </a>
+  <mat-tab label="sed card">
+    <div class="grid">
+      <img mat-card-image
+           *ngFor="let image of sedCard"
+           [src]="image" alt="profile_pic">
     </div>
   </mat-tab>
-  <mat-tab label="Outdoor">
-    <div class="grid grid-pad">
-      <a *ngFor="let profilePic of numberOfProfilePics">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-subtitle>Outdoor</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="../../../../assets/images/models/outdoor/{{profilePic}}.jpg" alt="profile_pic">
-          <mat-card-content>
-            <div class="job-description">
-              <p>
-                Job for MyDays
-              </p>
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button (click)="savedPicture()">Save</button>
-          </mat-card-actions>
-        </mat-card>
-      </a>
+  <mat-tab label="polaroids">
+    <div class="grid">
+      <img mat-card-image
+           *ngFor="let image of polaroids"
+           [src]="image" alt="profile_pic">
     </div>
   </mat-tab>
   <mat-tab label="Instagram">

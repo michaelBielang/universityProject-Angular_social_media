@@ -1,0 +1,33 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title class="card-title">
+      {{model?.firstName}} {{model?.lastName}}
+    </mat-panel-title>
+    <mat-panel-description>
+      Status: {{modelJob.status}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="content">
+    <div class="model-informations">
+      <img mat-card-image [src]="profileSrc" alt="profile_pic">
+      <div><span class="model-info-title">clothing size:</span>{{model?.clothesSize}}</div>
+      <div><span class="model-info-title">Sizes:</span>{{model?.bustSize}}/{{model?.waistSize}}
+        /{{model?.hipSize}}</div>
+      <div><span class="model-info-title">height:</span>{{model?.height}}</div>
+      <div><span class="model-info-title">shoe size:</span>{{model?.shoeSize}}</div>
+      <div><span class="model-info-title">eye color:</span>{{model?.eyeColor}}</div>
+      <div><span class="model-info-title">hair color:</span>{{model?.hairColor}}</div>
+      <div><span class="model-info-title">age:</span> <span
+        *ngIf="!!model">{{calculateAge(model.birthday)}}</span>
+      </div>
+      <div><span class="model-info-title">location:</span>{{model?.postcode}} {{model?.city}}
+        , {{model?.country}}
+      </div>
+      <div><span class="model-info-title">fee:</span>{{modelJob.fee}}</div>
+    </div>
+    <button *ngIf="modelJob.status === JobStatus[JobStatus.OPTION]" mat-button
+            (click)="modelAccepted.emit(modelJob.modelId)">
+      ACCEPT
+    </button>
+  </div>
+</mat-expansion-panel>

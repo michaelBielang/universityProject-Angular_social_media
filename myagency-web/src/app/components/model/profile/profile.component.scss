@@ -1,47 +1,41 @@
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+.model-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
 
-.button-back {
-  position: absolute;
-  right: 15px;
-  justify-content: right;
+  .model-name {
+    font-weight: bold;
+  }
+
+  .model-info-title {
+    text-decoration: underline;
+    margin-right: 5px;
+  }
 }
 
-img {
-  max-width: 80%;
-  height: 80%;
-  border-radius: 30px;
-}
+.actions {
+  display: flex;
+  justify-content: flex-end;
 
-.text-inside-grid {
-  position: absolute;
-  left: 15px;
+  button {
+    margin: 0 10px;
 
-}
-
-.span-text {
-  padding-left: 15px;
-}
-
-
-.mat-tab-group {
-  margin-top: -30px;
+    &.button-back {
+      margin-right: 20px;
+    }
+  }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 20px;
   padding: 20px;
+
+  img {
+    width: 100%;
+    border-radius: 5px;
+  }
 }
 
-.mat-card-image {
-  margin: 0px 16px 0px 16px;
-}
-
-.job-description{
-  padding-top: 10px;
-  padding-left: 20px;
-}
-
-.contact-and-back-button{
-}

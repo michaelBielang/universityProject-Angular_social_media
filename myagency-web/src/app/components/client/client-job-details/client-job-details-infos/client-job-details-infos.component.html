@@ -16,28 +16,8 @@
     </div>
   </div>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let model of currentJob.bookings">
-      <mat-expansion-panel-header>
-        <mat-panel-title *ngIf="modelInfo(model.modelId) as modelDetails">
-          {{modelDetails.name}}
-        </mat-panel-title>
-        <mat-panel-description>
-          Status: {{model.status}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div class="content" *ngIf="modelInfo(model.modelId) as modelDetails">
-        <div class="model-informations">
-          <img mat-card-image src="../../../../assets/images/models/{{model.modelId}}.jpg" alt="profile_pic">
-          <div>height: {{modelDetails.height}}</div>
-          <div>size:{{modelDetails.size}}</div>
-          <div>e-mail: {{modelDetails.email}}</div>
-          <div>location: {{modelDetails.location}}</div>
-          <div>fee: {{model.fee}}</div>
-        </div>
-        <button *ngIf="model.status === JobStatus[JobStatus.OPTION]" mat-button (click)="acceptModel(model.modelId)">
-          ACCEPT
-        </button>
-      </div>
-    </mat-expansion-panel>
+    <client-job-model-details *ngFor="let modelJob of currentJob.bookings"
+                              [modelJob]="modelJob"
+                              (modelAccepted)="acceptModel($event)"></client-job-model-details>
   </mat-accordion>
 </div>

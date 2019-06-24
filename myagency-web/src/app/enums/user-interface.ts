@@ -18,7 +18,7 @@ export interface Model extends User {
   height?: number;
   hairColor?: string;
   eyeColor?: string;
-  confectionSize?: number;
+  clothesSize?: string;
   hipSize?: number;
   waistSize?: number;
   bustSize?: number;

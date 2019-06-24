@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {User} from '../../../enums/user-interface';
+import {Model} from '../../../enums/user-interface';
 import {Location} from '@angular/common';
 import {MatSnackBar} from '@angular/material';
 import {UserService} from '../../../services/user.service';
+import {FileManagerService} from '../../../services/file-manager.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,15 +13,23 @@ import {UserService} from '../../../services/user.service';
 })
 export class ProfileComponent {
 
-  model: User;
-  numberOfProfilePics = [1, 2, 3, 4, 5, 6];
+  public model: Model;
+  public polaroids: string[];
+  public sedCard: string[];
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
               private location: Location,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private fileManagerService: FileManagerService) {
     const id = this.route.snapshot.paramMap.get('id');
-    this.userService.user(id).subscribe(user => this.model = user);
+    this.userService.user(id).subscribe((user: Model) => {
+      this.model = user;
+      this.sedCard = [];
+      this.model.sedCard.forEach(ref => this.fileManagerService.downLoadUrl(ref).then(src => this.sedCard.push(src)));
+      this.polaroids = [];
+      this.model.polaroids.forEach(ref => this.fileManagerService.downLoadUrl(ref).then(src => this.polaroids.push(src)));
+    });
   }
 
 
@@ -38,5 +47,10 @@ export class ProfileComponent {
 
   goBack(): void {
     this.location.back();
+  }
+
+  calculateAge(birthdate) {
+    const timeDiff = Math.abs(Date.now() - birthdate.toMillis());
+    return Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
   }
 }
