@@ -10,13 +10,10 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class FeedbackComponent implements OnInit {
 
-
-  private mailFormGroup: FormGroup;
-
-  private feedbackFormGroup: FormGroup;
+  public feedbackFormGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private navigatorService: NavigatorService,
+              public navigatorService: NavigatorService,
               private fireStore: AngularFirestore) {
   }
 

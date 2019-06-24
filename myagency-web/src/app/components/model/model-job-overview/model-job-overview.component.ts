@@ -14,7 +14,7 @@ export class ModelJobOverviewComponent {
 
   private readonly modelUid: string;
 
-  constructor(private jobsService: ModelJobsService,
+  constructor(public jobsService: ModelJobsService,
               private snackBar: MatSnackBar,
               authService: AuthService) {
     this.modelUid = authService.user.getValue().uid;

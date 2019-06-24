@@ -14,7 +14,7 @@ export class ChatComponent {
   private userId = '123';
 
   constructor(private navigatedFromRouteService: NavigatedFromRouteService,
-              private chatService: ChatService) {
+              public chatService: ChatService) {
     this.navigatedFromRouteService.resetCurrentUrlToPrevious();
   }
 

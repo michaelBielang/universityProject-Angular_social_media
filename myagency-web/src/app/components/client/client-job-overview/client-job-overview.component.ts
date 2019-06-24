@@ -8,7 +8,7 @@ import {ClientJobsService} from '../../../services/client/client-jobs.service';
 })
 export class ClientJobOverviewComponent implements OnInit {
 
-  constructor(private jobsService: ClientJobsService) {
+  constructor(public jobsService: ClientJobsService) {
   }
 
   ngOnInit() {

@@ -25,7 +25,7 @@ export class SearchMaskComponent implements OnInit {
   searchFormGroup: FormGroup;
 
   constructor(private findModelService: FindModelService,
-              private clientJobService: ClientJobsService,
+              public clientJobService: ClientJobsService,
               private formBuilder: FormBuilder,
               public activatedRoute: ActivatedRoute) {
   }

@@ -16,7 +16,7 @@ export class ClientJobDetailsInfosComponent {
   public id: string;
   public jobImage: string;
 
-  private currentJob: CompleteJob;
+  public currentJob: CompleteJob;
 
   constructor(private route: ActivatedRoute,
               private jobsService: ClientJobsService,

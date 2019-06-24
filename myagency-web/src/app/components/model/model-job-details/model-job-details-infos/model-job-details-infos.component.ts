@@ -25,7 +25,7 @@ export class ModelJobDetailsInfosComponent implements OnInit {
     this._currentJob.next(job);
   }
 
-  private client: Client;
+  public client: Client;
 
   public jobImage: string;
   public clientImage: string;

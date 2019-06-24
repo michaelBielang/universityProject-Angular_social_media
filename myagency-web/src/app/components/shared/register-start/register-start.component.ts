@@ -18,7 +18,7 @@ export class RegisterStartComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
-              private navigatorService: NavigatorService) {
+              public navigatorService: NavigatorService) {
   }
 
   ngOnInit() {

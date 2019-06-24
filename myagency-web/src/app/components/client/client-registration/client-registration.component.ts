@@ -18,9 +18,9 @@ export class ClientRegistrationComponent implements OnInit {
   profilePictureUploadReady: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService,
+              public authService: AuthService,
               private userService: UserService,
-              private navigatorService: NavigatorService) {
+              public navigatorService: NavigatorService) {
   }
 
   ngOnInit() {
