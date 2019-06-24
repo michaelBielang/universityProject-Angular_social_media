@@ -22,4 +22,9 @@ form {
     font-size: $hint-font-size;
     color: $color-600;
   }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

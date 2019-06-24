@@ -27,5 +27,8 @@
   </mat-form-field>
   <div class="data-usage-hint">Wir verwenden deine Daten.</div>
 
-  <button mat-button (click)="sendFeedback()">SEND</button>
+  <div class="actions">
+    <button mat-button (click)="sendFeedback()">SEND</button>
+    <button mat-button (click)="navigatorService.goToMain()">CANCEL</button>
+  </div>
 </form>
