@@ -36,4 +36,9 @@ export class ClientJobDetailsInfosComponent {
   public acceptModel(modelId: string) {
     this.jobsService.changeModelStatus(this.currentJob.job.uid, modelId, JobStatus.COMING);
   }
+
+  formatDate(timestamp) {
+    const date = new Date(timestamp.toMillis());
+    return date.toDateString();
+  }
 }

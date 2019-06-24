@@ -3,7 +3,7 @@
     <img class="col-2 row-2" *ngIf="jobImage" [src]="jobImage">
     <div class="infos">
       <span class="job-title">{{job.job.title}}</span>
-      <span class="date">{{job.job.date}}</span>
+      <span class="date">{{formatDate(job.job.date)}}</span>
       <span class="models">Models: {{job.bookings.length}}</span>
     </div>
   </div>

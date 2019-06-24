@@ -1,12 +1,12 @@
 <div *ngIf="!!currentJob" class="tab-container">
   <div class="job-details">
-    <img class="col-2 row-2" *ngIf="jobImage" [src]="jobImage">
+    <img class="row-2" *ngIf="jobImage" [src]="jobImage">
     <div class="header">
       {{currentJob.job.title}}
     </div>
-    <div class="col-2">
+    <div>
       <div class="title">Date:</div>
-      <span>{{currentJob.job.date}}</span>
+      <span>{{formatDate(currentJob.job.date)}}</span>
     </div>
     <div class="col-2 location">
       <div>

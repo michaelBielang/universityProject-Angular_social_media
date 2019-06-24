@@ -40,6 +40,14 @@ export class ModelJobItemComponent implements OnInit {
       .subscribe((client: User) => {
         this.client = client;
         this.fileManagerService.downLoadUrl(this.client.profilePicture).then(src => this.clientImage = src);
+        if (this.job.job.jobImage) {
+          this.fileManagerService.downLoadUrl(this.job.job.jobImage).then(src => this.jobImage = src);
+        }
       });
+  }
+
+  formatDate(timestamp) {
+    const date = new Date(timestamp.toMillis());
+    return date.toDateString();
   }
 }

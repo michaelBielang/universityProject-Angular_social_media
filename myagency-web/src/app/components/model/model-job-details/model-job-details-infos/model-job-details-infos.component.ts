@@ -42,6 +42,9 @@ export class ModelJobDetailsInfosComponent implements OnInit {
       this.userService.user(job.job.clientId).subscribe(client => {
         this.client = client;
         this.fileManagerService.downLoadUrl(this.client.profilePicture).then(src => this.clientImage = src);
+        if (this.currentJob.job.jobImage) {
+          this.fileManagerService.downLoadUrl(this.currentJob.job.jobImage).then(src => this.jobImage = src);
+        }
       });
     });
   }
@@ -49,4 +52,8 @@ export class ModelJobDetailsInfosComponent implements OnInit {
   ngOnInit() {
   }
 
+  formatDate(timestamp) {
+    const date = new Date(timestamp.toMillis());
+    return date.toDateString();
+  }
 }

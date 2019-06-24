@@ -12,6 +12,7 @@
         <mat-divider></mat-divider>
         <file-upload class="file-upload"
                      [maxImages]="1"
+                     [folderName]="authService.user.getValue().uid"
                      (uploadFinished)="profilePictureUploadReady = $event"
                      (imageRefListChange)="profilePicture = $event"></file-upload>
         <mat-form-field>

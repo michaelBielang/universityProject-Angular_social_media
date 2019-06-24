@@ -1,18 +1,23 @@
-.job-input {
-  text-align: center;
-  min-width: 150px;
-  max-width: 350px;
+:host {
   width: 100%;
-  position: absolute;
-  left: 35%;
-  top: 20%;
-  box-shadow: 0 0 5px 0 #8d8d8d;
-}
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 
-.user-input {
-  width: 100%;
-}
+  .job-input {
+    text-align: center;
+    min-width: 150px;
+    max-width: 350px;
+    width: 100%;
+    box-shadow: 0 0 5px 0 #8d8d8d;
+  }
 
-.create-button {
-  float: right;
+  .user-input {
+    width: 100%;
+  }
+
+  .create-button {
+    float: right;
+  }
 }

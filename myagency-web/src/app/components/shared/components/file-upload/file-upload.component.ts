@@ -22,6 +22,9 @@ export class FileUploadComponent implements OnInit {
   @Input()
   public maxImages: number;
 
+  @Input()
+  public folderName: string;
+
   @Output()
   public imageRefListChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
@@ -88,7 +91,7 @@ export class FileUploadComponent implements OnInit {
     if (this.files.size + newFiles.length > this.maxImages) {
       this.snackBar.open('You reached the max size');
     } else {
-      const uploads = this.fileManagerService.uploadFiles(newFiles);
+      const uploads = this.fileManagerService.uploadFiles(newFiles, this.folderName);
       uploads.forEach(upload => {
         this.storeUpload(upload);
       });

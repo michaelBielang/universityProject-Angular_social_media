@@ -154,18 +154,21 @@
         <mat-divider></mat-divider>
         <file-upload class="file-upload"
                      [maxImages]="1"
+                     [folderName]="authService.user.getValue().uid"
                      (uploadFinished)="profilePictureUploadReady = $event"
                      (imageRefListChange)="profilePicture = $event"></file-upload>
         Polaroids
         <mat-divider></mat-divider>
         <file-upload class="file-upload"
                      [maxImages]="3"
+                     [folderName]="authService.user.getValue().uid"
                      (uploadFinished)="polariodsPictureUploadReady = $event"
                      (imageRefListChange)="polaroids = $event"></file-upload>
         Sed Card
         <mat-divider></mat-divider>
         <file-upload class="file-upload"
                      [maxImages]="6"
+                     [folderName]="authService.user.getValue().uid"
                      (uploadFinished)="sedCardPictureUploadReady = $event"
                      (imageRefListChange)="sedCard = $event"></file-upload>
         <div>

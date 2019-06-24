@@ -5,7 +5,7 @@
       <span class="job-name">{{job.job.title}}</span>
       <span class="client">{{client?.companyName}}</span>
       <span class="fee">{{job.bookings[0].fee}}</span>
-      <span class="date">10/10/2019</span>
+      <span class="date">{{formatDate(job.job.date)}}</span>
       <span class="location">{{job.job.location}}</span>
     </div>
   </div>

@@ -17,6 +17,7 @@ export class ClientCreateJobComponent implements OnInit {
   jobFormGroup: FormGroup;
 
   jobImageUploadReady: boolean;
+  public uid: string;
 
   constructor(private formBuilder: FormBuilder,
               private clientJobService: ClientJobsService,
@@ -27,6 +28,7 @@ export class ClientCreateJobComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.uid = this.fireStore.createId();
     this.jobFormGroup = this.formBuilder.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -43,9 +45,8 @@ export class ClientCreateJobComponent implements OnInit {
   }
 
   createJob(): void {
-    const uid = this.fireStore.createId();
     const job: Job = {
-      uid,
+      uid: this.uid,
       clientId: this.authService.user.getValue().uid,
       ...this.jobFormGroup.value
     };

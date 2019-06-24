@@ -23,4 +23,9 @@ export class ClientJobItemComponent implements OnInit {
     }
   }
 
+  formatDate(timestamp) {
+    const date = new Date(timestamp.toMillis());
+    return date.toDateString();
+  }
+
 }
