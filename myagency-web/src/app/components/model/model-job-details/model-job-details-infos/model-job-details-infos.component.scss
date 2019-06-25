@@ -6,52 +6,59 @@
   justify-content: center;
   min-height: 100%;
   overflow: auto;
-  background-color: $color-0;
 
   .tab-container {
     $gaps: 50px;
     max-width: 1000px;
     width: 100%;
     min-height: calc(100% - 2 * #{$gaps});
-    display: grid;
-    grid-gap: $gaps;
-    padding: $gaps;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
-    div {
-      align-self: center;
-
-      img {
-        width: 100%;
-      }
-    }
-
-    .col-2 {
-      grid-column-end: span 2;
-    }
-
-    .row-2 {
-      grid-row-end: span 2;
-    }
-
-    .title {
-      text-decoration: underline;
-    }
-
-    .image {
-      justify-self: center;
-    }
-
-    .job-name {
-      font-weight: bold;
-      font-size: $title-font-size;
-    }
-
-    .location {
+    .job-info {
       display: grid;
-      grid-template-columns: 1fr 1fr;
       grid-gap: $gaps;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      background-color: $color-0;
+      padding: $gaps;
 
+      div {
+        align-self: center;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .col-2 {
+        grid-column-end: span 2;
+      }
+
+      .row-2 {
+        grid-row-end: span 2;
+      }
+
+      .row-3 {
+        grid-row-end: span 3;
+      }
+
+      .title {
+        text-decoration: underline;
+      }
+
+      .image {
+        justify-self: center;
+      }
+
+      .job-name {
+        font-weight: bold;
+        font-size: $title-font-size;
+      }
+
+      .location {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: $gaps;
+
+      }
     }
   }
 }

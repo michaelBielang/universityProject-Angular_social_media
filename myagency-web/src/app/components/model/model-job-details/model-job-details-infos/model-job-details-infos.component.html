@@ -1,54 +1,56 @@
 <div class="tab-container">
-  <div class="image col-2 row-2">
-    <img [src]="jobImage">
-  </div>
-  <div class="job-name">
-    {{currentJob.job.title}}
-  </div>
-  <div>
-    <div class="title">Status:</div>
-    <span>{{currentJob.bookings[0].status}}</span>
-  </div>
-  <div>
-    <div class="title">Fee:</div>
-    <span>{{currentJob.bookings[0].fee}}</span>
-  </div>
-  <div class="client">
-    <div class="title">Client:</div>
-    {{client?.companyName}}
-  </div>
-  <div class="date">
-    <div class="title">Date:</div>
-    {{formatDate(currentJob.job.date)}}
-  </div>
-  <div class="col-2 location">
+  <div class="job-info">
+    <div class="job-name col-2">
+      {{currentJob.job.title}}
+    </div>
+    <div class="image col-2 row-3">
+      <img [src]="jobImage">
+    </div>
     <div>
-      <div class="title">Location:</div>
-      <span>{{currentJob.job.location}}</span>
+      <div class="title">Status:</div>
+      <span>{{currentJob.bookings[0].status}}</span>
     </div>
-    <here-map [address]="currentJob.job.location"></here-map>
-  </div>
-  <div>
-    <div class="title">Contact:</div>
-    <span> {{client?.contact}} </span>
-    <div class="mail">
-      <a
-        [href]="'mailto:' + client?.email + '?Subject=MyAgency Job ' + currentJob.job.title + '&body=Hey ' + client?.contact + ','">
-        <mat-icon>mail_outline</mat-icon>
-        <span> {{client?.email}}</span></a>
+    <div>
+      <div class="title">Fee:</div>
+      <span>{{currentJob.bookings[0].fee}}</span>
     </div>
-    <div class=" phone">
-      <a [href]="'tel:' + client?.phone">
-        <mat-icon>phone</mat-icon>
-        <span> {{client?.phone}}</span></a>
+    <div class="client">
+      <div class="title">Client:</div>
+      {{client?.companyName}}
     </div>
-  </div>
-  <div class="col-2">
-    <div class="title">Job description:</div>
-    <span>{{currentJob.job.description}}</span>
-  </div>
-  <div class="col-2">
-    <div class="title">Client details:</div>
-    <span>{{client?.companyDescription}}</span>
+    <div>
+      <div class="title">Contact:</div>
+      <span> {{client?.contact}} </span>
+      <div class="mail">
+        <a
+          [href]="'mailto:' + client?.email + '?Subject=MyAgency Job ' + currentJob.job.title + '&body=Hey ' + client?.contact + ','">
+          <mat-icon>mail_outline</mat-icon>
+          <span> {{client?.email}}</span></a>
+      </div>
+      <div class=" phone">
+        <a [href]="'tel:' + client?.phone">
+          <mat-icon>phone</mat-icon>
+          <span> {{client?.phone}}</span></a>
+      </div>
+    </div>
+    <div class="date">
+      <div class="title">Date:</div>
+      {{formatDate(currentJob.job.date)}}
+    </div>
+    <div class="col-2 location">
+      <div>
+        <div class="title">Location:</div>
+        <span>{{currentJob.job.location}}</span>
+      </div>
+      <here-map [address]="currentJob.job.location"></here-map>
+    </div>
+    <div class="col-2">
+      <div class="title">Job description:</div>
+      <span>{{currentJob.job.description}}</span>
+    </div>
+    <div class="col-2">
+      <div class="title">Client details:</div>
+      <span>{{client?.companyDescription}}</span>
+    </div>
   </div>
 </div>
