@@ -12,14 +12,14 @@
     min-height: calc(100% - 2 * #{$gaps});
     display: grid;
     grid-gap: $gaps;
-    padding: $gaps;
     background-color: $color-0;
     overflow: auto;
 
     .job-details {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-gap: $gaps;
+      padding: $gaps;
 
       img {
         width: 100%;
@@ -33,8 +33,8 @@
         grid-column-end: span 2;
       }
 
-      .row-2 {
-        grid-row-end: span 2;
+      .row-3 {
+        grid-row-end: span 3;
       }
 
       .title {
@@ -58,7 +58,7 @@
     }
 
     .mat-accordion {
-      padding: 10px 0;
+      padding: $gaps;
     }
   }
 }

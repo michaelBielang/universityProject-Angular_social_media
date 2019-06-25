@@ -18,7 +18,9 @@
 <div id="discover-model" class="fullscreen">
   <div>
     <div class="title">Why models join us</div>
-    <div>{{lorem}}</div>
+    <mat-list>
+      <mat-list-item *ngFor="let reason of modelJoin"><span class="reason">{{reason}}</span></mat-list-item>
+    </mat-list>
   </div>
   <div class="image manequins"></div>
 </div>
@@ -27,7 +29,9 @@
   <div class="image tailor"></div>
   <div>
     <div class="title"> Why clients join us</div>
-    <div>{{lorem}}</div>
+    <mat-list>
+      <mat-list-item *ngFor="let reason of clientJoin"><span class="reason">{{reason}}</span></mat-list-item>
+    </mat-list>
   </div>
 </div>
 

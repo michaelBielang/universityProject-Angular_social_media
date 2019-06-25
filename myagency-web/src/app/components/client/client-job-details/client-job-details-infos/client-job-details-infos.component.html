@@ -1,9 +1,9 @@
 <div *ngIf="!!currentJob" class="tab-container">
   <div class="job-details">
-    <img class="row-2" *ngIf="jobImage" [src]="jobImage">
-    <div class="header">
+    <div class="header col-2">
       {{currentJob.job.title}}
     </div>
+    <img class="row-3 col-2" *ngIf="jobImage" [src]="jobImage">
     <div>
       <div class="title">Date:</div>
       <span>{{formatDate(currentJob.job.date)}}</span>
@@ -20,7 +20,7 @@
       <span>{{currentJob.job.description}}</span>
     </div>
   </div>
-  <mat-accordion>
+  <mat-accordion *ngIf="currentJob.bookings.length > 0">
     <client-job-model-details *ngFor="let modelJob of currentJob.bookings"
                               [modelJob]="modelJob"
                               (modelAccepted)="acceptModel($event)"></client-job-model-details>

@@ -2,7 +2,7 @@
 @import "../../../../assets/scss/basic";
 
 .intro.fullscreen {
-  height: calc(100vh - #{$header-height});
+  min-height: calc(100vh - #{$header-height});
   display: grid;
   grid-template-columns: calc((90vh - #{$header-height}) / 2) 1fr 1fr;
   grid-column-gap: 5%;
@@ -11,15 +11,15 @@
 
   &.clothes {
     background-attachment: fixed;
-    background-position-x: left;
+    background-position-x: 100vmax;
     background-position-y: 40%;
-    background-size: 110%;
+    background-size: 110vmax;
   }
 
   img {
     height: auto;
-    margin-left: calc((-90vh + #{$header-height}) / 2);
-    width: calc(90vh - #{$header-height});
+    margin-left: calc((-95vh + #{$header-height}) / 2);
+    width: calc(100vh - #{$header-height});
   }
 }
 
@@ -59,6 +59,10 @@
 
   div {
     margin: 20px 0;
+  }
+
+  .reason {
+    margin: 0 auto;
   }
 
   .image {

@@ -9,7 +9,9 @@ import {LoginModalComponent} from './login-modal/login-modal.component';
 })
 export class LandingPageComponent {
 
-  public readonly lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
+  public clientJoin = ['Fast', 'Quality Models', 'Wider Choice', 'Low fees', 'Direct Contact with the Model', 'Worldwide'];
+  public modelJoin = ['More Job Opportunities', 'Trusted Quality Clients', 'Model’s Voice, Model’s Choice', 'Tips & Tricks',
+    'Transparency', 'Direct Contact with Clients'];
 
   constructor(public dialog: MatDialog) {
   }
