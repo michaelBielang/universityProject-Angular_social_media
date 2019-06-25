@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CompleteJob} from '../../../../enums/complete-job';
 import {FileManagerService} from '../../../../services/file-manager.service';
+import {DefaultImageRef} from '../../../../enums/defaults';
 
 @Component({
   selector: 'client-job-item',
@@ -18,9 +19,13 @@ export class ClientJobItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    let imageRef;
     if (this.job.job.jobImage) {
-      this.fileManagerService.downLoadUrl(this.job.job.jobImage).then(src => this.jobImage = src);
+      imageRef = this.job.job.jobImage;
+    } else {
+      imageRef = DefaultImageRef;
     }
+    this.fileManagerService.downLoadUrl(imageRef).then(src => this.jobImage = src);
   }
 
   formatDate(timestamp) {

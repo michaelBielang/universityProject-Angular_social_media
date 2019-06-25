@@ -5,6 +5,7 @@ import {BehaviorSubject} from 'rxjs';
 import {filter, mergeMap} from 'rxjs/operators';
 import {CompleteJob} from '../../../../enums/complete-job';
 import {FileManagerService} from '../../../../services/file-manager.service';
+import {DefaultImageRef} from '../../../../enums/defaults';
 
 @Component({
   selector: 'model-job-item',
@@ -28,7 +29,6 @@ export class ModelJobItemComponent implements OnInit {
 
   public client: Client;
   public jobImage: string;
-  public clientImage: string;
 
   constructor(private userService: UserService,
               private fileManagerService: FileManagerService) {
@@ -39,11 +39,20 @@ export class ModelJobItemComponent implements OnInit {
       mergeMap(job => this.userService.user(job.job.clientId)))
       .subscribe((client: User) => {
         this.client = client;
-        this.fileManagerService.downLoadUrl(this.client.profilePicture).then(src => this.clientImage = src);
-        if (this.job.job.jobImage) {
-          this.fileManagerService.downLoadUrl(this.job.job.jobImage).then(src => this.jobImage = src);
-        }
+        this.fetchJobImage();
       });
+  }
+
+  private fetchJobImage() {
+    let imageRef;
+    if (this.job.job.jobImage) {
+      imageRef = this.job.job.jobImage;
+    } else if (this.client.profilePicture) {
+      imageRef = this.client.profilePicture;
+    } else {
+      imageRef = DefaultImageRef;
+    }
+    this.fileManagerService.downLoadUrl(imageRef).then(src => this.jobImage = src);
   }
 
   formatDate(timestamp) {

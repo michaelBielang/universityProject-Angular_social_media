@@ -5,6 +5,7 @@ import {JobStatus} from '../../../../enums/job-status.enum';
 import {NavigatedFromRouteService} from '../../../../services/navigated-from-route.service';
 import {CompleteJob} from '../../../../enums/complete-job';
 import {FileManagerService} from '../../../../services/file-manager.service';
+import {DefaultImageRef} from '../../../../enums/defaults';
 
 @Component({
   selector: 'app-job-details-infos',
@@ -27,9 +28,13 @@ export class ClientJobDetailsInfosComponent {
     this.jobsService.job(id)
       .subscribe(job => {
         this.currentJob = job;
+        let imageRef;
         if (!!this.currentJob.job.jobImage) {
-          this.fileManagerService.downLoadUrl(this.currentJob.job.jobImage).then(src => this.jobImage = src);
+          imageRef = this.currentJob.job.jobImage;
+        } else {
+          imageRef = DefaultImageRef;
         }
+        this.fileManagerService.downLoadUrl(imageRef).then(src => this.jobImage = src);
       });
   }
 

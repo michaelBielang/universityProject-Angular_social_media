@@ -50,7 +50,10 @@ export class ClientJobsService {
           ref.where('jobId', '==', job.uid)).valueChanges().pipe(
           takeUntil(this.unsubscribeJobbookings$), map((bookings: JobModelDetails[]) => {
             return {job, bookings};
-          })).subscribe(completeJobs => this.clientJobs = [...this.clientJobs, completeJobs]));
+          })).subscribe(completeJob => {
+          const filteredClientJobs = this.clientJobs.filter(savedJob => savedJob.job.uid !== completeJob.job.uid);
+          this.clientJobs = [...filteredClientJobs, completeJob];
+        }));
     });
   }
 

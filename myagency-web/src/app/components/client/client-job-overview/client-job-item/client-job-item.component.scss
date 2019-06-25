@@ -10,6 +10,8 @@
   img {
     width: 100%;
     grid-area: img;
+    object-fit: cover;
+    max-height: 250px;
   }
 
   .infos {

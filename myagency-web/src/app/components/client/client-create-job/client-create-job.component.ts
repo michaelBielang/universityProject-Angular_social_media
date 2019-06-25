@@ -40,7 +40,7 @@ export class ClientCreateJobComponent implements OnInit {
 
   set jobImage(picture: string[]) {
     if (picture.length > 0) {
-      this.jobFormGroup.patchValue({profilePicture: picture[0]});
+      this.jobFormGroup.patchValue({jobImage: picture[0]});
     }
   }
 

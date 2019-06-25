@@ -7,6 +7,7 @@ import {UserService} from '../../../../services/user.service';
 import {CompleteJob} from '../../../../enums/complete-job';
 import {Client} from '../../../../enums/user-interface';
 import {FileManagerService} from '../../../../services/file-manager.service';
+import {DefaultImageRef} from '../../../../enums/defaults';
 
 @Component({
   selector: 'app-job-details-infos',
@@ -28,7 +29,6 @@ export class ModelJobDetailsInfosComponent implements OnInit {
   public client: Client;
 
   public jobImage: string;
-  public clientImage: string;
 
   constructor(private route: ActivatedRoute,
               private jobsService: ModelJobsService,
@@ -41,12 +41,22 @@ export class ModelJobDetailsInfosComponent implements OnInit {
       this.currentJob = job;
       this.userService.user(job.job.clientId).subscribe(client => {
         this.client = client;
-        this.fileManagerService.downLoadUrl(this.client.profilePicture).then(src => this.clientImage = src);
-        if (this.currentJob.job.jobImage) {
-          this.fileManagerService.downLoadUrl(this.currentJob.job.jobImage).then(src => this.jobImage = src);
-        }
+        this.fetchJobImage();
       });
     });
+  }
+
+
+  private fetchJobImage() {
+    let imageRef;
+    if (this.currentJob.job.jobImage) {
+      imageRef = this.currentJob.job.jobImage;
+    } else if (this.client.profilePicture) {
+      imageRef = this.client.profilePicture;
+    } else {
+      imageRef = DefaultImageRef;
+    }
+    this.fileManagerService.downLoadUrl(imageRef).then(src => this.jobImage = src);
   }
 
   ngOnInit() {

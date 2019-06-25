@@ -1,6 +1,6 @@
 <div class="jobContainer">
   <div routerLink="/client/job-details/{{job.job.uid}}">
-    <img class="col-2 row-2" *ngIf="jobImage" [src]="jobImage">
+    <img class="col-2 row-2" [src]="jobImage">
     <div class="infos">
       <span class="job-title">{{job.job.title}}</span>
       <span class="date">{{formatDate(job.job.date)}}</span>

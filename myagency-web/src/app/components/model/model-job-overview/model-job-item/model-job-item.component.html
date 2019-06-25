@@ -1,6 +1,6 @@
 <div class="jobContainer">
   <div routerLink="/model/job-details/{{job.job.uid}}">
-    <img class="image" [src]="!!jobImage ? jobImage : clientImage">
+    <img class="image" [src]="jobImage">
     <div class="infos">
       <span class="job-name">{{job.job.title}}</span>
       <span class="client">{{client?.companyName}}</span>
