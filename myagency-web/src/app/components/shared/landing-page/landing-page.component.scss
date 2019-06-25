@@ -21,6 +21,10 @@
     margin-left: calc((-95vh + #{$header-height}) / 2);
     width: calc(100vh - #{$header-height});
   }
+
+  .discover-btn {
+    text-shadow: 0 0 5px #fff;
+  }
 }
 
 #discover {
