@@ -57,6 +57,7 @@ const routes: Routes = [
     children: [
       {path: '', component: ModelLandingPageComponent},
       {path: 'jobs', component: ModelJobOverviewComponent},
+      {path: 'profile/:id', component: ProfileComponent},
       {
         path: 'job-details/:jobId',
         component: ModelJobDetailsComponent,
